@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing User Competences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Competence</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_competences.each do |user_competence| %>
+      <tr>
+        <td><%= user_competence.user %></td>
+        <td><%= user_competence.competence %></td>
+        <td><%= link_to 'Show', user_competence %></td>
+        <td><%= link_to 'Edit', edit_user_competence_path(user_competence) %></td>
+        <td><%= link_to 'Destroy', user_competence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User competence', new_user_competence_path %>

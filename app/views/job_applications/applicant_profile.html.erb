@@ -1,0 +1,326 @@
+<div class="dbbody_wrap">
+  <div>
+    <div class="dbbody_con">
+      <div class="profilesettting_con">
+        <div class="profile_imgbtns">
+          <div class="row">
+            <!-==================================== Image Show START ====================================>
+            <div class="col-sm-3">
+              <div class="profileS_boxesprofile">
+                <%if @applicant.image_url.url%>
+                  <h4>
+                    <%= image_tag(@applicant.image_url.url, alt: 'logo', id: 'my_image',  class: 'img-thumbnail img-responsive profileImVi') %>
+                  </h4>
+                <%else%>
+                  <%= image_tag('212x244.png', alt: 'logo', id: 'my_image',  class: 'img-thumbnail img-responsive profileImVi') %>
+                <%end%>
+                <button class="btn fa fa-camera">  </button>
+              </div>
+            </div>
+            <!-==================================== Image Show START ====================================>
+
+            <!-==================================== Video Show START ====================================>
+            <!-============================ Video Show Display video in LightBox =============================>
+
+            <div class="col-sm-3">
+              <div class="profileS_boxesprofile">
+                <%if @applicant.video_url.url%>
+                  <h4>
+                    <a href= <%= @applicant.video_url.to_s.html_safe %> class="html5lightbox" data-width="480" data-height="320" title="">
+                      <%=  image_tag("video.png", class: 'img-thumbnail img-responsive profileImVi' )%></a>
+                  </h4>
+                <%else%>
+                  <%= image_tag('212x244.png', alt: 'Video', id: 'my_image',  class: 'img-thumbnail img-responsive profileImVi') %>
+                <%end%>
+                  <button class="btn"><i class="fa fa-video-camera"></i></button>
+              </div>
+            </div>
+
+
+            <!-==================================== Video Show END ====================================>
+
+            <div class="col-sm-6">
+              <div class="profile_btns">
+                <button class="btn btn-default btn-primary mb10"><i class="fa fa-comment-o"></i><%=t('page_profile.personal_info.contact_me')%></button><br>
+                <button class="btn btn-default btn-primary"><%=t('page_profile.personal_info.send_job_agreement')%></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="profilesettting_heading">
+          <h1>
+            <%= @applicant.user_first_name%> <%= @applicant.user_last_name%>
+          </h1>
+        </div>
+
+        <div class="profileS_con">
+          <div class="profileS_box">
+            <!-==================================== About Me Show START ====================================>
+            <div class="profile_boxn">
+              <div class="profileboxn_heading"><%=t('page_profile.personal_info.profile')%>
+              </div>
+              <div class="profileboxn_con">
+                <%if @applicant.about_me%>
+                  <div id='aboutMeShowDiv'>
+                    <%= @applicant.about_me%>
+                  </div>
+                <%else%>
+                  <p id="about_me_text88">
+                    <%=t('page_profile.no_about_me')%>
+                  </p>
+                <%end%>
+              </div>
+            </div>
+            <!-==================================== About Me Show END ====================================>
+            <div class="row">
+              <!-==================================== PERSONAL INFO Show START ====================================>
+              <div class="col-sm-6">
+                <div class="profile_boxn">
+                  <div class="profileboxn_heading"><%=t('page_profile.personal_info.personal')%>
+                  </div>
+                  <div class="profileboxn_con">
+                    <div id="showPersonalInfo" class="personal_info">
+                      <ul>
+                        <li><label><%=t('page_profile.personal_info.first_name')%></label><span><%= @applicant.user_first_name%></span></li>
+                        <li><label><%=t('page_profile.personal_info.last_name')%></label><span><%= @applicant.user_last_name%></span></li>
+                        <li><label><%=t('page_profile.personal_info.mobile_phone')%></label><span><%= @applicant.user_cell_phone%></span></li>
+                        <li><label><%=t('page_profile.personal_info.email_address')%></label><span><%= @applicant.email%></span></li>
+                        <li><label><%=t('page_profile.personal_info.address')%></label><span><%= @applicant.user_address_street%></span></li>
+                        <li><label><%=t('page_profile.personal_info.zip')%></label><span><%= @applicant.user_address_zip%></span></li>
+                        <li><label><%=t('page_profile.personal_info.town')%></label><span><%= @applicant.user_address_city%></span></li>
+                        <li><label><%=t('page_profile.personal_info.personal_number')%></label><span><%= @applicant.user_personal_number%></span></li>
+                        <li><label><%=t('page_profile.personal_info.gender')%></label><span><%= @applicant.user_gender%></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <!-==================================== PERSONAL INFO Show END ====================================>
+
+                <!-==================================== Experience Show START ====================================>
+
+                <div class="profile_boxn">
+                  <div class="profileboxn_heading"><%=t('page_profile.experience')%>
+                  </div>
+                  <div class="profileboxn_con">
+                    <div id='experiencesShowDiv'>
+                      <% if @user_experiences.count > 0 %>
+                        <% @user_experiences.each do |experience| %>
+                            <div class="profileboxn_subheading"><%= experience.experience_title %>
+                              <strong>
+                                <%= experience.experience_date_from %>
+                                <% if experience.experience_date_to %>
+                                  to
+                                <%end%>
+                                <%= experience.experience_date_to %>
+                              </strong>
+                            </div>
+                            <p><%= experience.experience_company_name %></p>
+                            <p><%= experience.experience_description %></p>
+                        <%end%>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-==================================== Experience Show END ====================================>
+
+              <!-==================================== Education Show START ====================================>
+              <div class="col-sm-6">
+                <div class="profile_boxn">
+                  <div class="profileboxn_heading"><%=t('page_profile.education')%>
+                  </div>
+                  <div class="profileboxn_con">
+                      <% if @user_educations.count > 0 %>
+                        <% @user_educations.each do |education| %>
+                          <div class='show_icon' id='education_<%=education.id%>'>
+                            <div class="profileboxn_subheading"><%= education.education_title %>
+                              <strong><%= education.education_date_from %> to <%= education.education_date_to %></strong>
+                            </div>
+                            <p><%= education.education_school_name %></p>
+                            <p><%= education.education_description %></p>
+                          </div>
+                        <%end%>
+                      <%end%>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-==================================== SKILLS DIV START ====================================>
+        <div class="profileS_con">
+          <div class="profileS_box">
+            <div class="row">
+              <div class="profile_boxn">
+                <div class="profileboxn_heading"><%=t('page_profile.skills')%></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <!-==================================== Competence Show START ====================================>
+                  <div class="profile_boxn">
+                    <div class="profileboxn_heading"><%=t('page_profile.competences') %>
+                    </div>
+                    <div class="profileboxn_con">
+                      <div class="skills">
+                          <ul>
+                            <% if @user_competences.count > 0 %>
+                              <% @user_competences.each do |user_competence| %>
+                                <div class='show_icon' id='user_competence_<%= user_competence.id %>'>
+                                  <li><label><%= user_competence.competence.competence_name %></label><span> <!--Don't change indentation-->
+                                <div class="progress" style="width: 50% !important;">
+                                  <div class="progress-bar progress-bar-black"  role="progressbar" aria-valuenow="#{<%= user_competence.competence_level %>}" aria-valuemin="0" aria-valuemax="100" style="width: <%= user_competence.competence_level %>%;">
+                                  </div>
+                                </div>
+                              </span>
+                                  </li>
+                                </div>
+                              <%end%>
+                            <%end%>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!-==================================== Competence Show END ====================================>
+
+                  <!-==================================== Language Show START ====================================>
+                  <h id='addMoreLanguages'></h>
+                  <div class="profile_boxn">
+                    <div class="profileboxn_heading"><%=t('page_profile.language')%>
+                    </div>
+                    <div class="profileboxn_con">
+                        <% if @user_languages.count > 0 %>
+                          <% @user_languages.each do |language| %>
+                            <div class='show_icon' id='language_<%=language.id%>'>
+                              <div class="profileboxn_subheading">
+                                <%= language.language_name %>
+                              </div>
+                              <p><%= language.language_skill %></p>
+                            </div>
+                          <%end%>
+                        <%end%>
+                    </div>
+                  </div>
+                </div>
+                <!-==================================== Language Show END ====================================>
+
+                <!-==================================== Certificate Show START ====================================>
+                <h id='addMoreCertificates'></h>
+                <div class="col-sm-6">
+                  <div class="profile_boxn">
+                    <div class="profileboxn_heading"><%=t('page_profile.certificate')%>
+                    </div>
+                    <div class="profileboxn_con">
+                        <% if @user_certificates.count > 0 %>
+                          <% @user_certificates.each do |certificate| %>
+                            <div class='show_icon' id='certificate_<%=certificate.id%>'>
+                              <div class="profileboxn_subheading"><%= certificate.certificate_name %>
+                                <strong><%= certificate.certificate_publish_date %></strong>
+                              </div>
+                              <p><%= certificate.certificate_publisher %></p>
+                              <p><%= certificate.certificate_description %></p>
+                            </div>
+                          <%end%>
+                        <%end%>
+                    </div>
+                  </div>
+                  <!-==================================== Certificate Show END ====================================>
+
+                  <!-==================================== Driving License Show START ====================================>
+                  <h id='addMoreDrivingLicenses'></h>
+                  <div class="profile_boxn">
+                    <div class="profileboxn_heading"><%=t('page_profile.driving_license')%>
+                    </div>
+                    <div class="profileboxn_con">
+                      <div class="hobbies">
+                        <div id='drivingLicenseShowDiv'>
+                          <% if @driving_license %>
+                            <div class='show_icon' id='driving_license_<%=@driving_license.id%>'>
+                              <ul>
+                                <% if @driving_license.dl_a %>
+                                  <li><span><i class="fa fa-motorcycle" aria-hidden="true"></i></span><label>A</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_a2 %>
+                                  <li><span><i class="fa fa-motorcycle" aria-hidden="true"></i></span><label>A2</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_aa %>
+                                  <li><span><i class="fa fa-motorcycle" aria-hidden="true"></i></span><label>AA</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_am %>
+                                  <li><span><i class="fa fa-motorcycle" aria-hidden="true"></i></span><label>AM</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_b %>
+                                  <li><span><i class="fa fa-car" aria-hidden="true"></i></span><label>B</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_be %>
+                                  <li><span><i class="fa fa-car" aria-hidden="true"></i></span><label>BE</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_c %>
+                                  <li><span><i class="fa fa-bus" aria-hidden="true"></i></span><label>C</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_ce %>
+                                  <li><span><i class="fa fa-bus" aria-hidden="true"></i></span><label>CE</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_c1 %>
+                                  <li><span><i class="fa fa-bus" aria-hidden="true"></i></span><label>C1</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_c1e %>
+                                  <li><span><i class="fa fa-bus" aria-hidden="true"></i></span><label>C1E</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_d %>
+                                  <li><span><i class="fa fa-truck" aria-hidden="true"></i></span><label>D</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_de %>
+                                  <li><span><i class="fa fa-truck" aria-hidden="true"></i></span><label>DE</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_d1 %>
+                                  <li><span><i class="fa fa-truck" aria-hidden="true"></i></span><label>D1</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_d1e %>
+                                  <li><span><i class="fa fa-truck" aria-hidden="true"></i></span><label>D1E</label></li>
+                                <%end%>
+                              </ul>
+                            </div>
+                          <%end%>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-==================================== Driving Licences Show END ====================================>
+
+                  <!-==================================== HOBBIES Show START ====================================>
+                  <h id='addMoreHobbies'></h>
+                  <div class="profile_boxn">
+                    <div class="profileboxn_heading"><%=t('page_profile.add_hobby_popup.hobbies') %>
+                    </div>
+                    <div class="profileboxn_con">
+                      <div class="hobbies">
+                          <ul>
+                            <% if @user_hobbies.count > 0 %>
+                              <% @user_hobbies.each do |hobby| %>
+                                <div class="ed_hobby_inline">
+                                  <div class='show_icon' id='hobby_<%=hobby.id%>'>
+                                    <li><span><i class="fa <%= hobby.hobby_icon %>" aria-hidden="true"></i></span><label><%= hobby.hobby_name %></label></li>
+                                  </div>
+                                </div>
+                              <%end%>
+                            <%end%>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-==================================== HOBBIES Show END ====================================>
+            </div>
+          </div>
+        </div>
+        <!-==================================== SKILLS DIV END ====================================>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!------------------------------------------- Page Content END ---------------------------------------->

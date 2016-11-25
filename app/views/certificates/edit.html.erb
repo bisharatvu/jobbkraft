@@ -1,0 +1,48 @@
+<div class="dbbody_wrap">
+  <div class="addnew_job_con">
+    <h1><%=t('page_profile.edit_certificate') %></h1>
+    <div class="addnew_job_box">
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+          <div class="addjobpopup_box">
+            <%= form_for(@certificate, html: {id: "add_certificate_form", "data-toggle" => "validator", role: "form"}) do |f| %>
+              <div class="consultant_con">
+                <div class="addjob_subbox">
+
+                  <div class="form-group">
+                    <%= f.label t('page_profile.add_certificat_popup.certificat_name') %>
+                    <%= f.text_field :certificate_name, placeholder: t('page_profile.add_certificat_popup.placeholder.certificat_name'), id: 'certificate_name', class: 'form-control', required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label t('page_profile.add_certificat_popup.certificat_publisher') %>
+                    <%= f.text_field :certificate_publisher, placeholder: t('page_profile.add_certificat_popup.placeholder.certificat_publisher'), id: 'certificate_publisher', class: 'form-control', required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label t('page_profile.add_certificat_popup.certificat_publish_date') %>
+                        <%= f.text_field :certificate_publish_date, placeholder: '23-10-2016', id: 'certificate_publish_date', class: 'form-control', 'data-behaviour' => 'datepicker', required: true %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label t('page_profile.add_certificat_popup.certificat_description') %>
+                    <%= f.text_area :certificate_description, rows: 6,  placeholder: t('page_profile.add_certificat_popup.placeholder.certificat_description'), id: 'certificate_description', class: "form-control", required: true %>
+                  </div>
+
+                </div>
+              </div>
+              <div class="modal-footer">
+                <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+              </div>
+            <%end%>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

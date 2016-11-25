@@ -1,0 +1,30 @@
+<div class="dbbody_wrap">
+  <div class="addnew_job_con">
+    <h1><%=t('page_profile.edit_competences') %></h1>
+    <div class="addnew_job_box">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="addjobpopup_box">
+            <%= form_for(@user_competence, html: { id: 'editCompetenceForm', 'data-toggle' => 'validator', role: 'form'}) do |f| %>
+              <div class="consultant_con">
+                <div class="addjob_subbox">
+                  <div class='form-group'>
+                    <label for="exampleInputEmail1"><%=t('page_profile.add_competence_popup.competence_name') %></label>
+                    <%= f.autocomplete_field :competence_name, autocomplete_competence_competence_name_competences_path, update_elements: {}, class: 'form-control', required: true, id: 'competence_text'%>
+                  </div>
+                  <div class='form-group'>
+                    <label for="exampleInputEmail1"><%=t('page_profile.add_competence_popup.competence_level') %></label>
+                    <%= f.select(:competence_level,([['1', '10'],['2', '20'],['3', '30'],['4', '40'],['5', '50'],['6', '60'],['7', '70'],['8', '80'],['9', '90'],['10', '100']]), {prompt: t('page_profile.add_competence_popup.placeholder.competence_level')}, class: 'form-control', id: "competence_level" , required: true) %>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+              </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

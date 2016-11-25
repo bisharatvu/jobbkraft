@@ -1,0 +1,2 @@
+json.extract! experience, :id, :experience_company_name, :experience_title, :experience_date_from, :experience_date_to, :experience_i_am_work_here, :experience_branch, :experience_description, :user_id, :created_at, :updated_at
+json.url experience_url(experience, format: :json)

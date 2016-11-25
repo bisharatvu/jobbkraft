@@ -1,0 +1,9 @@
+<%if @user_job_type %>
+  <b>Want to Work For Job Type:</b><br>
+  <%if @user_job_type.consultant %>
+    - Consultant<br>
+  <%end%>
+  <%if @user_job_type.hire %>
+    - Hire<br>
+  <%end%>
+<%end%>

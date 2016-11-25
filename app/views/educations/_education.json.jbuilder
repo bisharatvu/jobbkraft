@@ -1,0 +1,2 @@
+json.extract! education, :id, :education_title, :education_school_name, :education_date_from, :education_date_to, :education_description, :user_id, :created_at, :updated_at
+json.url education_url(education, format: :json)

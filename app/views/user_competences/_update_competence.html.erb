@@ -1,0 +1,13 @@
+<div class='show_icon' id='user_competence_<%= user_competence.id %>'>
+<div class='ed_icon'>
+  <%= link_to edit_user_competence_path(user_competence), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+  <%= link_to user_competence, method: :delete, data: {confirm: "You are deleting '#{user_competence.competence.competence_name}'", commit: 'Sure!'} , remote: true do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+  <li><label><%= user_competence.competence.competence_name %></label><span> <!--Don't change indentation-->
+                                <div class="progress" style="width: 50% !important;">
+                                  <div class="progress-bar progress-bar-black"  role="progressbar" aria-valuenow="#{<%= user_competence.competence_level %>}" aria-valuemin="0" aria-valuemax="100" style="width: <%= user_competence.competence_level %>%;">
+                                  </div>
+                                </div>
+                              </span>
+  </li>
+</div>
+</div>

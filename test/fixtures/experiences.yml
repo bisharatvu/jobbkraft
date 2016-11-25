@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  experience_company_name: MyString
+  experience_title: MyString
+  experience_date_from: MyString
+  experience_date_to: MyString
+  experience_i_am_work_here: false
+  experience_branch: MyString
+  experience_description: MyText
+  user_id: 
+
+two:
+  experience_company_name: MyString
+  experience_title: MyString
+  experience_date_from: MyString
+  experience_date_to: MyString
+  experience_i_am_work_here: false
+  experience_branch: MyString
+  experience_description: MyText
+  user_id: 

@@ -1,0 +1,9 @@
+<div class="ed_hobby_inline">
+  <div class='show_icon' id='hobby_<%=hobby.id%>'>
+    <div class="ed_hobby_icon">
+      <%= link_to edit_hobby_path(hobby), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+      <%= link_to hobby, method: :delete, data: {title: t('page_profile.delete_title'), confirm: "#{t('page_profile.delete_confirm')} '#{hobby.hobby_name}'", commit: 'Sure!'} , remote: true do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+    </div>
+    <li class="li_hobby"><span><i class="fa <%= hobby.hobby_icon %>" aria-hidden="true"></i></span><label><%= hobby.hobby_name %></label></li>
+  </div>
+</div>

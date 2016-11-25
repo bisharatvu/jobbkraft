@@ -1,0 +1,3 @@
+$("#language_<%=@language.id%>").replaceWith("<%= j render partial: 'update_language', locals: {language: @language} %>");
+$('#editModel').modal('hide');
+toastr.success('<%=t('languages_controller.languages_update_success')%>');

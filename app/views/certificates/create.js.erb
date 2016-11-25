@@ -1,0 +1,4 @@
+$("<%= j render partial: 'update_certificate', locals: {certificate: @certificate} %>").appendTo("#certificatesShowDiv");
+$('#addCertificateForm')[0].reset();
+$('#addCertificate').modal('hide');
+toastr.success('<%=t('certificates_controller.certificates_create_success') %>');

@@ -1,0 +1,613 @@
+// Place all the styles related to the Competences controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*-----------------changed------------------*/
+
+.userhomeprofile_img{
+  background: #ebebeb none repeat scroll 0 0;
+  border: 1px solid #929292;
+  border-radius: 100px;
+  float: left;
+  height: 100px;
+  overflow: hidden;
+  text-align: center;
+  width: 100px;
+  margin-right: 20px;
+}
+
+
+.stylefor-navbar-fixed-top{
+  background-color: #000;
+  opacity: 0.5;
+}
+.ok-btn-text-color {
+  /*font-size: 13px;*/
+  color:#191919;;
+}
+.img-fixed-bottom-left{
+  float: left;
+  bottom: 0;
+  background-color: #191919;
+
+}
+
+/*Side bar setting*/
+.modal-backdrop {
+  z-index: -1 !important;
+}
+.push_popup {
+  /* height: 240px;*/
+  margin-bottom: 40px;
+}
+/*a:hover {
+  color: #fff;
+}*/
+/*Side bar setting*/
+/*Side bar setting*/
+
+/*---------------------- style for SETTINGS subleft_menu START-----------------------------------*/
+
+.static_menu  .nav > li:hover .subleft_menu_setting,.static_menu  .nav > li.active .subleft_menu_setting{
+  display:block;
+  height: 80px;
+}
+
+.subleft_menu_setting{
+  font-size: 13px;
+  height: 0;
+  list-style-type: none;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+  padding: 0;
+  transition: height 1.3s ease 0s
+}
+
+.subleft_menu_setting li{
+  margin-bottom:10px;
+  padding-left:30px;
+}
+
+.static_menu .nav > li > a {
+  color: #6d6d6d;
+}
+
+.subleft_menu_setting > li > a {
+  color: #6d6d6d;
+  display:block;
+  text-decoration:none;
+}
+
+.static_menu  .nav-sidebar > .active > a,.static_menu  .nav-sidebar > .active > a:hover,.static_menu  .nav-sidebar > .active > a:focus {
+  background-color: #eee;
+  border-left:3px solid #6d6d6d;
+  padding-left:17px;
+}
+
+.static_menu  .nav > li > a:hover,.static_menu  .nav > li > a:focus {
+  background-color: #eee;
+  text-decoration: none;
+  border-left:3px solid #6d6d6d;
+  padding-left:17px;
+}
+
+.subleft_menu_setting > li  {
+  padding-left: 47px;
+  line-height:35px;
+}
+
+.subleft_menu_setting > li:hover  {
+  background-color: #eee;
+  //border-left: 3px solid #6d6d6d;
+  font-weight: 600;
+  padding-left: 44px;
+
+}
+.static_menu  .subleft_menu_setting > .active > a,.static_menu  .subleft_menu_setting > .active > a:hover,.static_menu  .subleft_menu_setting > .active > a:focus {
+  background-color: #dbdbdb;
+  border-left:3px solid #6d6d6d;
+  margin-left:0px;
+
+}
+.subleft_menu_setting{
+  li {
+    padding-left: 0px  !important;
+    a {
+      padding-left: 47px ;
+    }
+  }
+}
+/*---------------------- style for SETTINGS subleft_menu END-----------------------------------*/
+
+/*---------------------- style for Worker SETTINGS subleft_menu START-----------------------------------*/
+.static_menu  .nav > li:hover .subleft_menu_setting_worker,.static_menu  .nav > li.active .subleft_menu_setting_worker{
+  display:block;
+  height: 130px;
+}
+
+.subleft_menu_setting_worker{
+  font-size: 13px;
+  height: 0;
+  list-style-type: none;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+  padding: 0;
+  transition: height 1.3s ease 0s
+}
+
+.subleft_menu_setting_worker li{
+  margin-bottom:10px;
+  padding-left:30px;
+}
+
+.static_menu .nav > li > a {
+  color: #6d6d6d;
+}
+
+.subleft_menu_setting_worker > li > a {
+  color: #6d6d6d;
+  display:block;
+  text-decoration:none;
+}
+
+.static_menu  .nav-sidebar > .active > a,.static_menu  .nav-sidebar > .active > a:hover,.static_menu  .nav-sidebar > .active > a:focus {
+  background-color: #eee;
+  border-left:3px solid #6d6d6d;
+  padding-left:17px;
+}
+
+.static_menu  .nav > li > a:hover,.static_menu  .nav > li > a:focus {
+  background-color: #eee;
+  text-decoration: none;
+  border-left:3px solid #6d6d6d;
+  padding-left:17px;
+}
+
+.subleft_menu_setting_worker > li  {
+  padding-left: 47px;
+  line-height:35px;
+}
+
+.subleft_menu_setting_worker > li:hover  {
+  background-color: #eee;
+  //border-left: 3px solid #6d6d6d;
+  font-weight: 600;
+  padding-left: 44px;
+
+}
+.static_menu  .subleft_menu_setting_worker > .active > a,.static_menu  .subleft_menu_setting_worker > .active > a:hover,.static_menu  .subleft_menu_setting_worker > .active > a:focus {
+  background-color: #dbdbdb;
+  border-left:3px solid #6d6d6d;
+  margin-left:0px;
+
+}
+.subleft_menu_setting_worker{
+  li {
+    padding-left: 0px  !important;
+    a {
+      padding-left: 47px ;
+    }
+  }
+}
+
+/*---------------------- style for Worker SETTINGS subleft_menu END-----------------------------------*/
+
+
+/*---------------------- style for WORKER ALL JOB SETTINGS subleft_menu START-----------------------------------*/
+.static_menu  .nav > li:hover .subleft_menu_worker_job,.static_menu  .nav > li.active .subleft_menu_worker_job{
+  display:block;
+  height: 440px;
+}
+
+.subleft_menu_worker_job{
+  font-size: 13px;
+  height: 0;
+  list-style-type: none;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+  padding: 0;
+  transition: height 1.3s ease 0s
+}
+
+.subleft_menu_worker_job li{
+  margin-bottom:10px;
+  padding-left:30px;
+}
+
+.static_menu .nav > li > a {
+  color: #6d6d6d;
+}
+
+.subleft_menu_worker_job > li > a {
+  color: #6d6d6d;
+  display:block;
+  text-decoration:none;
+}
+
+.static_menu  .nav-sidebar > .active > a,.static_menu  .nav-sidebar > .active > a:hover,.static_menu  .nav-sidebar > .active > a:focus {
+  background-color: #eee;
+  border-left:3px solid #6d6d6d;
+  padding-left:17px;
+}
+
+.static_menu  .nav > li > a:hover,.static_menu  .nav > li > a:focus {
+  background-color: #eee;
+  text-decoration: none;
+  border-left:3px solid #6d6d6d;
+  padding-left:17px;
+}
+
+.subleft_menu_worker_job > li  {
+  padding-left: 47px;
+  line-height:35px;
+}
+
+.subleft_menu_worker_job > li:hover  {
+  background-color: #eee;
+  //border-left: 3px solid #6d6d6d;
+  font-weight: 600;
+  padding-left: 44px;
+
+}
+.static_menu  .subleft_menu_worker_job > .active > a,.static_menu  .subleft_menu_worker_job > .active > a:hover,.static_menu  .subleft_menu_worker_job > .active > a:focus {
+  background-color: #dbdbdb;
+  border-left: 3px solid #6d6d6d;
+  margin-left:0px;
+
+}
+.subleft_menu_worker_job{
+  li {
+    padding-left: 0px  !important;
+    a {
+      padding-left: 47px ;
+    }
+  }
+}
+
+/*---------------------- style for WORKER ALL JOB SETTINGS subleft_menu END-----------------------------------*/
+
+
+/*---------------------- style for Company ALL JOB SETTINGS subleft_menu START-----------------------------------*/
+.static_menu  .nav > li:hover .subleft_menu_company_job,.static_menu  .nav > li.active .subleft_menu_company_job{
+  display:block;
+  height: 400px;
+}
+
+.subleft_menu_company_job{
+  font-size: 13px;
+  height: 0;
+  list-style-type: none;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+  padding: 0;
+  transition: height 1.3s ease 0s
+}
+
+.subleft_menu_company_job li{
+  margin-bottom:10px;
+  padding-left:30px;
+}
+
+.static_menu .nav > li > a {
+  color: #6d6d6d;
+}
+
+.subleft_menu_company_job > li > a {
+  color: #6d6d6d;
+  display:block;
+  text-decoration:none;
+}
+
+.static_menu  .nav-sidebar > .active > a,.static_menu  .nav-sidebar > .active > a:hover,.static_menu  .nav-sidebar > .active > a:focus {
+  background-color: #eee;
+  border-left:3px solid #6d6d6d;
+  padding-left:17px;
+}
+
+.static_menu  .nav > li > a:hover,.static_menu  .nav > li > a:focus {
+  background-color: #eee;
+  text-decoration: none;
+  //border-left:3px solid #6d6d6d;
+  padding-left:17px;
+}
+
+.subleft_menu_company_job > li  {
+  padding-left: 47px;
+  line-height:35px;
+}
+
+.subleft_menu_company_job > li:hover  {
+  background-color: #eee;
+  border-left: 3px solid #6d6d6d;
+  font-weight: 600;
+  padding-left: 44px;
+
+}
+.static_menu  .subleft_menu_company_job > .active > a,.static_menu  .subleft_menu_company_job > .active > a:hover,.static_menu  .subleft_menu_worker_job > .active > a:focus {
+  background-color: #dbdbdb;
+  border-left: 3px solid #6d6d6d;
+  margin-left:0px;
+
+}
+.subleft_menu_company_job{
+  li {
+    padding-left: 0px  !important;
+    a {
+      padding-left: 47px ;
+    }
+  }
+}
+
+/*---------------------- style for Company ALL JOB SETTINGS subleft_menu END-----------------------------------*/
+
+
+
+/*---------------------- style for WORKPOOL subleft_menu START-----------------------------------*/
+
+.static_menu  .nav > li:hover .subleft_menu_workpool{
+  display:block;
+  height: 80px;
+}
+
+.subleft_menu_workpool{
+  font-size: 13px;
+  height: 0;
+  list-style-type: none;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+  padding: 0;
+  transition: height 1.3s ease 0s
+}
+
+.subleft_menu_workpool li{
+  margin-bottom:10px;
+  padding-left:30px;
+}
+
+
+.subleft_menu_workpool > li > a {
+  color: #6d6d6d;
+  display:block;
+  text-decoration:none;
+}
+
+.subleft_menu_workpool > li  {
+  padding-left: 47px;
+  line-height:35px;
+}
+
+.subleft_menu_workpool > li:hover  {
+  background-color: #eee;
+  border-left: 3px solid #6d6d6d;
+  font-weight: 600;
+  padding-left: 44px;
+
+}
+/*---------------------- style for WORKPOOL subleft_menu END-----------------------------------*/
+
+.bbtn_find_worker{
+  background: transparent !important;
+  color: #fff !important;
+  border: 2px solid #fff  !important;
+  &:hover  {
+    background: #ffffff  !important;
+    color: #2a2626  !important;
+  }
+}
+.carousel-caption .btn_find_worker {
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  color: #2a2626;
+  margin-top: 5%;
+  padding: 10px 35px;
+
+}
+
+
+/*---------------------- apply active class on subleft_menu START-----------------------------------*/
+
+.static_menu  .subleft_menu > .active > a,.static_menu  .sublesubleft_menuft_menu > .active > a:hover,.static_menu  .subleft_menu > .active > a:focus {
+  background-color: #eee;
+  border-left:3px solid #6d6d6d;
+  margin-left:0px;
+
+}
+.subleft_menu{
+  li {
+    padding-left: 0px  !important;
+    a {
+      padding-left: 47px ;
+    }
+  }
+}
+/*---------------------- apply active class on subleft_menu END-----------------------------------*/
+
+.navbar-inverse .navbar-nav>li:hover>a {
+  background-color: #ffffff  !important;
+  background-image: none;
+  background-repeat: repeat-x;
+  border: 3px solid #ffffff;
+  border-radius: 10px;
+  padding: 7px 12px;
+  color: #2a2626  !important;
+}
+
+
+.carousel-caption {
+  h1{
+    font-family: 'Futura PT Bold';
+    font-weight: normal;
+
+  }
+  h3{
+    font-family: 'Futura PT Bold';
+    //font-size: 30px;
+    font-weight: bold;
+  }
+
+}
+.findjob_con {
+
+  h1,h2 {
+    font-family: 'Futura PT Bold';
+    font-weight: normal;
+  }
+  p{
+    font-family: 'Futura Md BT';
+    font-size: 13px;
+    font-weight: normal;
+  }
+
+}
+
+//fd
+.stylish-input-group .input-group-addon{
+  background: white !important;
+}
+.stylish-input-group .form-control{
+  border-right:0;
+  box-shadow:0 0 0;
+  border-color:#ccc;
+}
+.stylish-input-group button{
+  border:0;
+  background:transparent;
+}
+
+/*------------Show Job company logo Start ----------------------*/
+.company_logo{
+  width: 276px;
+  height: 136px
+}
+/*------------Show Job company logo END ----------------------*/
+/*------------AutoComplete styles START ----------------------*/
+
+/*------------AutoComplete styles END ----------------------*/
+
+/*------------Profile edit and delete icon style START ----------------------*/
+.edit_delete_icon{
+  text-transform:uppercase;
+  font-size:16px;
+  font-weight:700;
+  display: none;
+  float:left;
+  width:100%;
+  padding-bottom:1px;
+  margin-bottom:1px;
+  position:relative;
+}
+
+.edit_delete_icon a{
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  display: none;
+  float: right;
+  font-size: 14px;
+  height: 30px;
+  line-height: 26px;
+  text-align: center;
+  width: 30px;
+  margin-left:5px;
+}
+.show_icon:hover {
+
+.edit_delete_icon{
+  display: inline-block;
+  a{
+  display: inline-block;
+  margin-bottom: 20px !important;
+}
+}
+}
+
+/*------------Profile edit and delete icon style END ----------------------*/
+
+/*------------Profile Competence Progressbar color START ----------------------*/
+.progress-bar-black {
+  background-image: none;
+  background-color: #292929 !important;
+}
+/*------------Profile Competence Progressbar color END ----------------------*/
+
+/*------------Profile Competence Progressbar color START ----------------------*/
+.progress-bar-yellow {
+  background-image: none;
+  background-color: #ffc20e !important;
+}
+/*------------Profile Competence Progressbar color END ----------------------*/
+
+/*------------Profile Competence label span Style Start ----------------------*/
+.p_label{
+  display:inline-block;
+  float:left;
+  min-width:120px;
+}
+
+.p_span{
+  display:inline-block;
+  float: right;
+}
+/*------------Profile Competence label span Style END ----------------------*/
+
+/*------------Profile Hobby Select Icon Style START ----------------------*/
+.fontawesome-select {
+  font-family: 'FontAwesome', 'Helvetica';
+}
+/*------------Profile Hobby Select Icon Style END ----------------------*/
+
+/*------------Profile edit and delete icon style START ----------------------*/
+.ed_hobby_icon{
+  text-transform:uppercase;
+  font-size:16px;
+  font-weight:700;
+  display: none;
+  float:left;
+  width:100%;
+  padding-bottom:1px;
+  margin-bottom:1px;
+  position:relative;
+}
+
+.ed_hobby_icon a{
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  display: none;
+  font-size: 14px;
+  height: 30px;
+  line-height: 26px;
+  text-align: center;
+  width: 30px;
+  margin-left:5px;
+}
+.show_icon:hover {
+
+  .ed_hobby_icon{
+    display: inline-block;
+    a{
+      display: inline-block;
+    }
+  }
+}
+
+/*------------Profile edit and delete icon style END ----------------------*/
+
+/*------------Display Hobby Inline START ----------------------*/
+
+.ed_hobby_inline {
+  display: inline-block;
+}
+/*------------Display Hobby Inline END ----------------------*/
+
+/*------------Fix Height and Width of Profile Image and Video START ----------------------*/
+.profileImVi {
+  width: 212px !important;
+  height: 244px !important;
+}
+/*------------Fix Height and Width of Profile Image and Video END ----------------------*/
+/*------------Fix Height overview panel START ----------------------*/
+.panel-height {
+  height: 60px;
+}
+/*------------Fix Height overview panel END ----------------------*/
+

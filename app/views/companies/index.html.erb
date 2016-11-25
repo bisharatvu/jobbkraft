@@ -1,0 +1,252 @@
+<div class="dbbody_wrap">
+  <div class="addnew_job_con">
+    <h1><%= t('comany_home.pagecontent.my_companies')%></h1>
+    <div class="team_heading">
+      <%= link_to t('company_my_company.add_company'), new_company_path, class: 'btn btn-warning pull-lefy'%>
+      <div class="search_top">
+        <div class="input-group">
+          <input class="form-control" id="exampleInputAmount" placeholder=<%=t('company_my_company.add_company_popup.keyword')%>>
+          <div class="input-group-addon btn-warning search_btn"><%= t('company_my_company.add_company_popup.search') %></div>
+        </div>
+      </div>
+    </div>
+    <div class="team_con">
+      <div class="team_box">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th width="20"><input type="checkbox"></th>
+            <td><%= t('company_my_company.add_company_popup.company_name') %></td>
+            <td><%= t('company_my_company.add_company_popup.contect_person') %></td>
+            <td><%= t('company_my_company.add_company_popup.company_address_address') %></td>
+            <td><%= t('company_my_company.add_company_popup.company_address_zip_cod') %></td>
+            <td><%= t('company_my_company.add_company_popup.town') %></td>
+            <td><%= t('company_my_company.add_company_popup.job') %></td>
+            <th width="100"><%= t('company_my_company.add_company_popup.action') %><%= t('company_my_company.add_company_popup.company_name') %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <%if @companies%>
+            <% @companies.each do |company| %>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>
+                  <%#= link_to company.company_name, company %>
+                  <%= company.company_name %>
+                </td>
+                <td><%= company.invoice_person_name %></td>
+                <td><%= company.company_address_street %></td>
+                <td><%= company.company_address_zip %></td>
+                <td><%= company.company_address_city %></td>
+                <td><%= company.jobs.count %></td>
+                <td>
+                  <a href=""><i class="fa fa-list" aria-hidden="true"></i></a>
+                  <%= link_to edit_company_path(company) do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+                  <%= link_to company, method: :delete, data: {title: t('page_profile.delete_title'), confirm: "#{t('page_profile.delete_confirm')} '#{company.company_name}'", commit: 'Sure!' } do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+                </td>
+              </tr>
+            <%end%>
+          <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+ <div class="dbbody_wrap">
+    <div >
+      <div class="dbbody_con">
+      	<div class="company_con">
+          <div class="company_heading">
+            <h1><%= t('comany_home.pagecontent.my_companies')%></h1>
+            <%= link_to t('company_my_company.add_company'), new_company_path, class: "btn btn-warning pull-right" %>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+          &lt;!&ndash;<div class="cfilter_box">
+          <h4>Filter</h4>
+          	<div class="row">
+            	<div class="col-sm-3"><input type="text" placeholder="Job type"></div>
+                <div class="col-sm-3"><input type="text" placeholder="Place"></div>
+                <div class="col-sm-3"><input type="text" placeholder="Etc"></div>
+                <div class="col-sm-3"><input type="text" placeholder="Etc"></div>
+            </div>
+          </div>&ndash;&gt;
+          <div class="all_companies">
+            <%if @companies%>
+            <% @companies.each do |company| %>
+          	<div class="allcompanies_box">
+                  <div class="allcompanies_img"> <%= link_to image_tag("http://placehold.it/280x280", alt: "logo", width: "140", class: "img-circle img-thumbnail img-responsive"), "#" %>
+                  </div>
+                  <div class="allcompanies_msg">
+                    <h4><%= company.company_name %></h4>
+                    <%= company.company_about_us %>
+
+                  <div class="allcompanies_locationtime">
+                      <ul>
+                        <li><i class="fa fa-map-marker"></i> <%= company.company_invoice_address_city %>,<%= company.company_invoice_address_country %></li>
+                        &lt;!&ndash;<li><i aria-hidden="true" class="fa fa-clock-o"></i></li>&ndash;&gt;
+                        <li class="pull-right">
+                          <%if company.is_active%>
+                            Active Company
+                          <%else%>
+                          <%= form_for(:company, url: active_company_path, html: {method: :post, id: "edit_company", "data-toggle" => "validator", role: "form"},format: :json, remote: true ) do |f| %>
+                            <div class="hidden">
+                              <%= f.text_field :company_id, value: company.id %>
+                            </div>
+                            <div class="checkbox">
+                              <label><%= f.check_box :is_active %>Check This Company Active</label>
+                            </div>
+                            <div class="hidden">
+                              <%= f.submit %>
+                            </div>
+                          <%end%>
+                          <%end%>
+
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+&lt;!&ndash;---------------------------- Modal Add Company Popup Start------------------------------------------&ndash;&gt;
+
+
+  &lt;!&ndash; Modal &ndash;&gt;
+  <div class="modal fade" id="addcompany" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+          <div class="modal-body">
+
+            <div class="addjobpopup_box">
+              <%= form_for(:company, html: {id: "add_compny_form", "data-toggle" => "validator", role: "form", multipart: true},format: :json ) do |f| %>
+              <div class="consultant_con">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel"><%= t('company_my_company.add_company')%></h4>
+                </div>
+                <div class="addjob_subbox">
+                  <div class="subheading_addjob">Company Information:</div>
+                    <div class="form-group">
+                      <%= f.label t('company_my_company.add_company_popup.company_name') %>
+                      <%= f.text_field :company_name, placeholder: t('company_my_company.add_company_popup.placeholder.company_name'), id: "company_name", class: "form-control", required: true %>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                  <div class="form-group">
+                    <%= f.label 'Phone number *' %>
+                    <%= f.text_field :company_number, placeholder: 'Phone number', id: "company_number", class: "form-control", required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label t('company_my_company.add_company_popup.about_us') %><br>
+                    <%= f.text_area :company_about_us, rows: 6,  :'data-minlength' => '150','data-error' => 'invalid', placeholder: t('company_my_company.add_company_popup.placeholder.about_us'), id: 'company_about_us', class: "form-control", required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Member of this Näringslivsorganisation</label>
+                    <%= f.select :category_name, options_for_select(['Almega', 'Arbetsgivaralliansen', 'Arbetsgivarverket', 'Bemanningsföretagen', 'Elektriska Installatörsorganisationen', 'Fastigo', 'Frisörföretagarna', 'Försäkringsbranschens Arbetsgivareorganisation', 'Glasbranschföreningen', 'Grafiska Företagens Förbund', 'Idea arbetsgivarförbundet för ideella organisationer', 'Industri- och Kemigruppen', 'Industriarbetsgivarna', 'Arbetsgivarföreningen KFO', 'Kommunala företagens samorganisation', 'Medieföretagen', 'Måleriföretagen i Sverige', 'Skogs- och lantarbetsgivarförbundet', 'Stål och Metall Arbetsgivareförbundet', 'SVEMEK', 'Svensk Scenkonst', 'Svenska kyrkans arbetsgivarorganisation', 'Svenska Teknik&Designföretagen', 'Svenskt Näringsliv', 'Sveriges Byggindustrier', 'Sveriges Kommuner och Landsting', 'Teknikföretagen', 'Transportgruppen', 'Visita']), {}, class: 'form-control', multiple: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label t('company_my_company.add_company_popup.company_address_address') %><br>
+                    <%= f.text_field :company_address_street, placeholder: t('company_my_company.add_company_popup.placeholder.company_address_address'), id: "company_address_street", class: "form-control", required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label t('company_my_company.add_company_popup.company_address_city') %><br>
+                    <%= f.text_field :company_address_city, placeholder: t('company_my_company.add_company_popup.placeholder.company_address_city'), id: "company_address_city", class: "form-control", required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label t('company_my_company.add_company_popup.company_address_zip_cod') %><br>
+                    <%= f.text_field :company_address_zip, placeholder: t('company_my_company.add_company_popup.placeholder.company_address_zip_cod'), id: "company_address_zip", class: "form-control", required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :company_ftex, checked: true %>Company is registered for F-tax</label>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label 'Company Logo' %><br>
+                    <%= f.file_field :company_logo, id: "company_logo", class: "form-control"%>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label 'Web Adress' %><br>
+                    <%= f.text_field :company_web_address, id: "company_web_address", class: "form-control"%>
+                  </div>
+                </div>
+
+
+                <div class="addjob_subbox">
+                  <div class="subheading_addjob">Where:</div>
+
+                  <div class="form-group">
+                    <%= f.label 'Invoice Person Name *' %><br>
+                    <%= f.text_field :invoice_person_name, placeholder: 'invoice person name', id: "company_address_street", class: "form-control", required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label 'Invoice Person Phone Number *' %><br>
+                    <%= f.text_field :invoice_person_name_phone_number, placeholder: 'invoice person Phone number', id: "company_address_street", class: "form-control", required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label t('company_my_company.add_company_popup.invoice_address_address') %><br>
+                    <%= f.text_field :company_invoice_address_street, placeholder: t('company_my_company.add_company_popup.placeholder.invoice_address_address'), id: "company_address_street", class: "form-control", required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label t('company_my_company.add_company_popup.invoice_address_address') %><br>
+                    <%= f.text_field :company_invoice_address_street2, placeholder: t('company_my_company.add_company_popup.placeholder.invoice_address_address'), id: "company_address_street", class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label t('company_my_company.add_company_popup.invoice_address_city') %><br>
+                    <%= f.text_field :company_invoice_address_city, placeholder: t('company_my_company.add_company_popup.placeholder.invoice_address_city'), id: "company_invoice_address_city", class: "form-control", required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label t('company_my_company.add_company_popup.invoice_address_zip_cod') %><br>
+                    <%= f.text_field :company_invoice_address_zip, placeholder: t('company_my_company.add_company_popup.placeholder.invoice_address_zip_cod'), id: "company_invoice_address_zip", class: "form-control", required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+
+            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+                <%= f.submit t('company_my_company.add_company_popup.save_company'), class: 'btn btn-warning' %>
+              </div>
+        <%end%>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+-->

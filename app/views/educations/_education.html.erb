@@ -1,0 +1,44 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.edit_education') %></h4>
+    </div>
+    <%= form_for(@education, html: {id: "editEducationForm", "data-toggle" => "validator", role: "form"},format: :js, remote: true ) do |f| %>
+      <div class="modal-body">
+        <div class="form-group">
+          <%= f.label t('page_profile.add_education_popup.education') %>
+          <%= f.text_field :education_title, placeholder: t('page_profile.add_education_popup.placeholder.education'), id: "education_title", class: 'form-control', required: true %>
+          <div class="help-block with-errors"></div>
+        </div>
+        <div class="form-group">
+          <%= f.label t('page_profile.add_education_popup.school') %>
+          <%= f.text_field :education_school_name, placeholder: t('page_profile.add_education_popup.placeholder.school'), id: "education_school_name", class: 'form-control', required: true %>
+          <div class="help-block with-errors"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <%= f.label t('page_profile.add_education_popup.from_date') %>
+              <%= f.text_field :education_date_from, placeholder: "23-10-2016", id: "education_date_from", class: 'form-control', 'data-behaviour' => 'datepicker', required: true %>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <%= f.label t('page_profile.add_education_popup.to_date') %>
+              <%= f.text_field :education_date_to, placeholder: "23-10-2016", id: "education_date_to", class: 'form-control', 'data-behaviour' => 'datepicker', required: true %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label t('page_profile.add_education_popup.description') %>
+          <%= f.text_area :education_description, rows: 6,  placeholder: t('page_profile.add_education_popup.placeholder.description'), id: 'education_description', class: "form-control", required: true %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+        <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+      </div>
+    <%end%>
+  </div>
+</div>

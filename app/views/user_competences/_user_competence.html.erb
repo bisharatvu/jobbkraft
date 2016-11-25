@@ -1,0 +1,23 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type='button' class='close' data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.add_competences') %></h4>
+    </div>
+    <%= form_for(:user_competence, url: user_competences_path, html: {id: 'addCompetenceForm', "data-toggle" => "validator", role: "form"},format: :js, remote: true) do |f| %>
+      <div class='modal-body'>
+        <div class='form-group'>
+          <label for="exampleInputEmail1"><%=t('page_profile.add_competence_popup.competence_name') %></label>
+          <%= f.autocomplete_field :competence_name, autocomplete_competence_competence_name_competences_path, update_elements: {}, class: 'form-control', required: true, id: 'competence_text'%>
+        </div>
+        <div class='form-group'>
+          <label for="exampleInputEmail1"><%=t('page_profile.add_competence_popup.competence_level') %></label>
+          <%= f.select(:competence_level,([['1', '10'],['2', '20'],['3', '30'],['4', '40'],['5', '50'],['6', '60'],['7', '70'],['8', '80'],['9', '90'],['10', '100']]), {prompt: t('page_profile.add_competence_popup.placeholder.competence_level')}, class: 'form-control', id: "competence_level" , required: true) %>
+        </div>
+      </div>
+      <div class='modal-footer'>
+        <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+    <% end %>
+    </div>
+  </div>
+</div>

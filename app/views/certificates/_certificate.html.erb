@@ -1,0 +1,38 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.edit_certificate') %></h4>
+    </div>
+    <%= form_for(@certificate, html: {id: "add_certificate_form", "data-toggle" => "validator", role: "form"},format: :js, remote: true ) do |f| %>
+    <div class="modal-body">
+      <div class="form-group">
+        <%= f.label t('page_profile.add_certificat_popup.certificat_name') %>
+        <%= f.text_field :certificate_name, placeholder: t('page_profile.add_certificat_popup.placeholder.certificat_name'), id: 'certificate_name', class: 'form-control', required: true %>
+        <div class="help-block with-errors"></div>
+      </div>
+      <div class="form-group">
+        <%= f.label t('page_profile.add_certificat_popup.certificat_publisher') %>
+        <%= f.text_field :certificate_publisher, placeholder: t('page_profile.add_certificat_popup.placeholder.certificat_publisher'), id: 'certificate_publisher', class: 'form-control', required: true %>
+        <div class="help-block with-errors"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label t('page_profile.add_certificat_popup.certificat_publish_date') %>
+            <%= f.text_field :certificate_publish_date, placeholder: '23-10-2016', id: 'certificate_publish_date', class: 'form-control', 'data-behaviour' => 'datepicker', required: true %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label t('page_profile.add_certificat_popup.certificat_description') %>
+        <%= f.text_area :certificate_description, rows: 6,  placeholder: t('page_profile.add_certificat_popup.placeholder.certificat_description'), id: 'certificate_description', class: "form-control", required: true %>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+      <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+    </div>
+    <%end%>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="static_header">
+  <div class="dbheader_wrap">
+    <div class="dbheader_con">
+      <button class="navbar-toggle navbar_toggle" id="show_left_menu" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span> <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="db_logo"><%= image_tag("beta_logo.png", alt: "logo")%></div>
+      <div class="profile_menu">
+        <div class="notification_box">
+          <div class="notification_menu">
+            <span><i class="fa fa-bolt" ></i> <em><%= t('navbar.notifications')%></em> </span>
+            <ul>
+              <li><a href="#">No Notification</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!--
+<div class="dbheader_wrap ">
+  <div class="container">
+    <div class="dbheader_con ">
+      <div class="db_logo"><%= image_tag("db_logo.png", alt: "logo")%></div>
+      <div class="profile_menu">
+        <div class="user_box ">
+          <% if user_signed_in? %>
+          <div class="userbox_img ">
+          <%if @user.image_url.url%>
+              <%= link_to image_tag(@user.image_url, alt: "logo"), "#" %>
+            <%else%>
+              <%= link_to image_tag("default_profile_image.png", alt: "logo"), "#" %>
+            <%end%>
+          </div>
+          <div class="userbox_name"><%= @user.name%>
+            &lt;!&ndash;<i class="fa fa-sort-down"></i>
+            <ul>
+              <li><%= link_to t('header.profile'), profile_path, method: :get %></li>
+              <li><%= link_to t('header.account'), "#", method: :get %></li>
+              <li><%= link_to t('header.logout'), destroy_user_session_path, method: :delete %></a></li>
+            </ul>&ndash;&gt;
+          </div>
+          <% end %>
+        </div>
+        &lt;!&ndash;<div class="notification_box">
+          <strong>1</strong>
+          <span><i aria-hidden="true" class="fa fa-comment"></i></span>
+        </div>
+        <div class="profilemenu_box">
+          <ul>
+            <li>
+              <a href="#"><%= t('header.help')%></a> </li>
+          </ul>
+        </div>&ndash;&gt;
+      </div>
+    </div>
+  </div>
+</div>-->

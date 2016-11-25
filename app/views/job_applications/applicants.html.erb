@@ -1,0 +1,164 @@
+<div class="dbbody_wrap">
+  <div class="addnew_job_con">
+    <h1><%= t('comany_home.pagecontent.my_job_applications')%></h1>
+
+    <form class="form-inline">
+    <div class="team_heading">
+      <button type="submit" class="btn btn-warning pull-lefy"><%= t('company_my_company.add_company_popup.add_to_team') %></button>
+      <button type="submit" class="btn btn-warning pull-lefy"><%= t('company_my_company.add_company_popup.send_message') %></button>
+      <%= form_tag jobs_path, method: :get do %>
+
+        <div class="search_top">
+
+         <div class="input-group">
+           <%= text_field_tag :query,  params[:query],  class: "form-control", placeholder: t('page_job.keyword') %>
+           <div  class="input-group-btn" >
+              <%= submit_tag t('company_my_jobs.search.search_btn'), name: nil, id: '', class: 'input-group-addon btn-warning search_btn', style: 'height: 35px' %>
+                </div>
+          </div>
+
+         <!-- <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <%#= submit_tag "GO!"%>
+              &lt;!&ndash;<button class="btn btn-default" type="button">Search</button>&ndash;&gt;
+            </span>
+          </div>-->
+        </div>
+          <% end %>
+    </div>
+      </form>
+    <div class="team_con">
+      <div class="team_box">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th width="20"><input type="checkbox"></th>
+            <th><%=t('page_job.job_name')%></th>
+            <th><%=t('company_my_company.add_company_popup.age')%></th>
+            <th><%=t('company_my_company.add_company_popup.gender')%></th>
+            <th><%=t('company_my_company.add_company_popup.apply_date')%></th>
+            <th width="100"><%=t('company_my_company.add_company_popup.action')%></th>
+          </tr>
+          </thead>
+          <tbody>
+          <%if @job_applications%>
+            <% @job_applications.each do |job_application| %>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>
+              <%if job_application.user.image_url.url%>
+                <%= image_tag(job_application.user.image_url, alt: 'Profile Picture',  class: 'img-circle', width: '30') %>
+              <%else %>
+                <%= image_tag("280x280.png",  class: 'img-circle', width: '30', alt: 'Profile image') %>
+              <%end %>
+            <%= link_to job_application.user.name, applicant_profile_path(job_application.user.id) %>
+            </td>
+            <td>34</td>
+            <td><%= job_application.user.user_gender %></td>
+            <td><%= job_application.created_at %></td>
+            <td>
+              <%= link_to job_application do %><i aria-hidden="true" class="fa fa-list"></i><%end%>
+              <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
+            </td>
+          </tr>
+            <%end%>
+          <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div class="dbbody_wrap">
+  <div>
+    <div class="dbbody_con">
+
+      <div class="company_con">
+        <div class="company_heading">
+          <h1><%= t('comany_home.pagecontent.my_job_applications')%></h1>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="cfilter_box">
+              <h4><%= t('header.filter')%></h4>
+              <div class="row">
+                <%= form_tag jobs_path, method: :get do %>
+                  <div class="col-lg-6">
+                    <div class="input-group">
+                      <%= text_field_tag :query,  params[:query],  class: "form-control", placeholder: t('company_my_jobs.search.search_job') %>
+                      <span class="input-group-btn">
+                      <%= submit_tag t('company_my_jobs.search.search_btn'), name: nil, id: '', class: "btn btn-primary"%>
+                    </span>
+                    </div>&lt;!&ndash; /input-group &ndash;&gt;
+                  </div>&lt;!&ndash; /.col-lg-6 &ndash;&gt;
+                <% end %>
+              </div>
+            </div>
+            <div class="all_companies push">
+              <%if @job_applications%>
+                <% @job_applications.each do |job_application| %>
+                  <div class="allcompanies_box">
+                    <div class="allcompanies_img">
+                      <%if job_application.user.image_url.url%>
+                      <%= image_tag(job_application.user.image_url, alt: 'Profile Picture', width: "140", class: "img-circle img-thumbnail img-responsive") %>
+                      <%else %>
+                      <%= image_tag("280x280.png",  class: "img-circle img-thumbnail img-responsive",  width: "140", alt: "Media Object") %>
+                      <%end %>
+                    </div>
+                    <div class="allcompanies_msg">
+                      <h4><%= link_to job_application.user.name, job_application, "data-toggle" => "modal", 'data-target' => '#showJobApplication' %></h4>
+
+                      <%= truncate(strip_tags(job_application.apply_job_info), length: 500) %>
+                      <div class="allcompanies_locationtime">
+                        <ul>
+                          <li><i class="fa fa-map-marker"></i><%#= job.job_place_city %>,<%#= job.job_place_town %></li>
+                          <li><i aria-hidden="true" class="fa fa-clock-o"></i> <%#= job.job_hire_type %></li>
+                          <li class="pull-right"></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
+              <%end%>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+&lt;!&ndash;-------------------------------------------- Modal Show Job Application Start --------------------------------------------------&ndash;&gt;
+
+
+<div class="modal fade bs-example-modal-lg" id="showJobApplication" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+    </div>
+  </div>
+</div>
+&lt;!&ndash;-------------------------------------------- Modal Show Job End --------------------------------------------------&ndash;&gt;
+-->

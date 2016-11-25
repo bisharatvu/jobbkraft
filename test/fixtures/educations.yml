@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  education_title: MyString
+  education_school_name: MyString
+  education_date_from: MyString
+  education_date_to: MyString
+  education_description: MyText
+  user_id: 
+
+two:
+  education_title: MyString
+  education_school_name: MyString
+  education_date_from: MyString
+  education_date_to: MyString
+  education_description: MyText
+  user_id: 

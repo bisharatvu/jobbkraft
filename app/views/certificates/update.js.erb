@@ -1,0 +1,4 @@
+$("#certificate_<%=@certificate.id%>").replaceWith("<%= j render partial: 'update_certificate', locals: {certificate: @certificate} %>");
+$('#editModel').modal('hide');
+toastr.success('<%=t('certificates_controller.certificates_update_success')%>');
+

@@ -1,0 +1,27 @@
+<footer class="footer_wrap_static">
+  <div class="signout_menu">
+    <% if user_signed_in? %>
+      <div class="userbox_img ">
+        <%if @user.image_url.url%>
+          <%= link_to image_tag(@user.image_url, alt: "logo"), "#" %>
+        <%else%>
+          <%= link_to image_tag("default_profile_image.png", alt: "logo"), "#" %>
+        <%end%>
+      </div>
+    <div class="userboxf_name">
+      <ul>
+        <li><%= @user.name%></li>
+        <li><%= link_to t('header.logout'), destroy_user_session_path, method: :delete %></a></li>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+  <div class="footers_menu">
+    <ul>
+      <!--<li><a href="#">Get $300!</a></li>
+      <li><a href="#">Support </a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Feedback</a></li>-->
+    </ul>
+  </div>
+</footer>

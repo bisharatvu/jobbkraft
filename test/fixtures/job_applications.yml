@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  apply_job_info: MyText
+  price_per_hour: 9.99
+  job_id: 
+  user_id: 
+
+two:
+  apply_job_info: MyText
+  price_per_hour: 9.99
+  job_id: 
+  user_id: 

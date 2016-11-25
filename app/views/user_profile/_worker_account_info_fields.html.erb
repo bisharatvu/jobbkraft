@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <%= f.label t('page_profile.personal_info.gender')%><br>
+      <%= f.select(:user_gender,([t('page_account_setting.male'), t('page_account_setting.female')] ), {prompt: t('page_account_setting.please_choose_a_gender')}, class: 'form-control', id: "competence_level" , required: true) %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group">
+      <%= f.label t('page_profile.personal_info.personal_number')%><br>
+      <%= f.text_field :user_personal_number, placeholder: t('page_profile.personal_info.personal_number'), id: 'user_address_zip', class: 'form-control' %>
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label t('company_my_company.add_company_popup.company_address_address') %><br>
+  <%= f.text_field :user_address_street, placeholder: t('company_my_company.add_company_popup.placeholder.company_address_address'), id: 'user_address_street', class: 'form-control', required: true%>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <%= f.label t('company_my_company.add_company_popup.company_address_zip_cod') %><br>
+      <%= f.text_field :user_address_zip, placeholder: t('company_my_company.add_company_popup.placeholder.company_address_zip_cod'), id: 'user_address_zip', class: 'form-control', required: true %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group">
+      <%= f.label t('company_my_company.add_company_popup.company_address_city') %><br>
+      <%= f.text_field :user_address_city, placeholder: t('company_my_company.add_company_popup.placeholder.company_address_city'), id: 'user_address_city', class: 'form-control', required: true %>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="addjob_subbox">
+  <div class="subheading_addjob"><%= t('page_account_setting.bank_account_no')%></div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.text_field :user_bank_account_no, placeholder: t('page_account_setting.bank_account_no'), id: 'user_bank_account_no', class: 'form-control', required: true %>
+      </div>
+    </div>
+  </div>
+</div>

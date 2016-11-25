@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render "shared/head" %>
+</head>
+
+<body>
+  <div class="main_wrapper">
+    <div style="background-color: #888888">
+      <% if notice %>
+        <script>toastr.success("<%= notice %>")</script>
+      <% end %>
+      <% if alert %>
+        <script>toastr.error("<%= alert %>")</script>
+      <% end %>
+    </div>
+    <%= render "shared/header" unless @skip_header %>
+    <%= render "shared/sidebar" unless @skip_sidebar %>
+
+    <div class="bodys_wrap full_width" id="full_width">
+
+    <%= yield %>
+
+   </div>
+  </div>
+<%= render "shared/static_footer" unless @skip_static_footer %>
+</body>
+</html>

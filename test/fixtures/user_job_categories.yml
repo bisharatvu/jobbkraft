@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  administrative: false
+  brand_ambassador: false
+  customer_service: false
+  data_entry: false
+  delivery: false
+  event_staff: false
+  warehousing: false
+  general_labor: false
+  market_research: false
+  marketing: false
+  merchandising: false
+  sales: false
+  software_testing: false
+  volunteer: false
+  washing: false
+  other: false
+  user_id: 
+
+two:
+  administrative: false
+  brand_ambassador: false
+  customer_service: false
+  data_entry: false
+  delivery: false
+  event_staff: false
+  warehousing: false
+  general_labor: false
+  market_research: false
+  marketing: false
+  merchandising: false
+  sales: false
+  software_testing: false
+  volunteer: false
+  washing: false
+  other: false
+  user_id: 

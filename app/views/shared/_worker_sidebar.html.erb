@@ -1,0 +1,23 @@
+<div class="col-sm-3">
+  <div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+      <!-- <li class="active"><a href="#"> <i aria-hidden="true" class="fa fa-home"></i> Home  </a></li>
+       <li><a href="#"><i aria-hidden="true" class="fa fa-plus-square-o"></i> New Job</a></li>
+       <li><a href="#"><i class="fa fa-briefcase"></i> Job</a></li>
+       <li><a href="#"><i class="fa fa-comment"></i> Message</a></li>
+       <li><a href="#"><i class="fa fa-credit-card"></i> Step Payment</a></li>
+       <li><a href="#"><i class="fa fa-users"></i> Work Force</a></li>
+       <li><a href="#"><i class="fa fa-line-chart"></i>  Reports</a></li>
+       <li><a href="#"><i class="fa fa-cogs"></i> Setting</a></li>-->
+      <li class="active"><a href="#"> <i aria-hidden="true" class=""></i>  </a></li>
+      <li class=""><%= link_to t('worker_home.pagecontent.overview'), worker_home_path %></li>
+      <li><%= link_to t('worker_home.pagecontent.all_jobs'), worker_all_jobs_path %></li>
+      <li><%= link_to t('worker_home.pagecontent.my_saved_jobs'), saved_jobs_path %></li>
+      <li><%= link_to t('worker_home.pagecontent.my_applied_jobs'), job_applications_path %></li>
+      <li><%= link_to t('worker_home.pagecontent.my_agreements'), "#" %></li>
+      <li><%= link_to t('header.profile_setting'), profile_path, method: :get %></li>
+      <li><%= link_to t('header.account_setting'), "#", method: :get %></li>
+      <li><%= link_to t('header.logout'), destroy_user_session_path, method: :delete %></a></li>
+    </ul>
+  </div>
+</div>

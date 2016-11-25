@@ -1,0 +1,3 @@
+$('#showPersonalInfo').replaceWith("<%= j render partial: 'user_profile/partials/update_account_info', locals: {user: @user} %>");
+$('#editaccountInfo').modal('hide');
+toastr.success('<%= t('user_profile_controller.user_profile_account_information_success') %>');

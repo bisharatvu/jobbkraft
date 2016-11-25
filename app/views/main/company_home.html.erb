@@ -1,0 +1,84 @@
+<div class="dbbody_wrap" >
+  <div>
+    <div class="dbbody_con" style="height:90% !important;">
+      <div class="overview_con">
+        <h1><%= t('comany_home.pagecontent.overview')%></h1>
+        <div class="row">
+          <div class="col-sm-12">
+            <%= render "shared/overview_profile" %>
+            <div class="progress_con">
+              <div class="row ">
+                <div class="col-sm-6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><%= t('page_overview.find_workers_for_job')%></h3>
+                      <p><%= t('page_overview.create_job')%></p>
+                    </div>
+                    <div class="panel-body panel-height">
+                      <%= link_to t('page_overview.new_job'), new_job_path, class: 'btn btn-warning pull-right'%>
+                      <%= t('page_overview.workers_waiting')%>
+                    </div>
+                  </div>
+                </div>
+
+                <%if @user.user_account_progress < 100 %>
+                  <div class="col-sm-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title"><%= t('page_overview.complete_account_info')%></h3>
+                        <p><%= t('page_overview.account_info_needed')%></p>
+                      </div>
+                      <div class="panel-body panel-height">
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow=<%= @user.user_account_progress %> aria-valuemin="0" aria-valuemax="100" style="width:<%= @user.user_account_progress %>%"></div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6 text-right">
+                            <%= link_to t('page_overview.add_contact_first_name'), account_path%>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
+
+                <div class="col-sm-6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><%= t('page_overview.complete_your_company_info')%></h3>
+                      <p><%= t('page_overview.help_workers_learn_about_your_company')%></p>
+                    </div>
+                    <div class="panel-body panel-height">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%"></div>
+                          </div>                        </div>
+                        <div class="col-sm-6 text-right"><%= t('page_overview.add_contact_first_name')%></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><%= t('page_overview.Need_some_help')%></h3>
+                      <p><%= t('page_overview.we_are_here')%></p>
+                    </div>
+                    <div class="panel-body panel-height">
+                      <%= link_to t('page_overview.get_support'), '#', class: 'btn btn-warning pull-right'%>
+                      <%= t('page_overview.we_can_help')%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=""></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

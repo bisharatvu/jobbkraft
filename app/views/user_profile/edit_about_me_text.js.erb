@@ -1,0 +1,3 @@
+$('#aboutMeShowDiv').replaceWith("<%= j render partial: 'edit_about_me_text', locals: {user: @user} %>");
+$('#editAboutMe').modal('hide');
+toastr.success('<%=t('user_profile_controller.user_profile_edit_about_me_text_success')%>');

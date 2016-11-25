@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hire: false
+  consultant: false
+  user_id: 
+
+two:
+  hire: false
+  consultant: false
+  user_id: 

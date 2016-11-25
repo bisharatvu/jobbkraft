@@ -1,0 +1,4 @@
+$("<%= j render partial: 'update_language', locals: {language: @language} %>").appendTo("#languagesShowDiv");
+$('#addLanguageForm')[0].reset();
+$('#addlanguage').modal('hide');
+toastr.success('<%=t('languages_controller.languages_create_success')%>');

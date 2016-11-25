@@ -1,0 +1,1 @@
+json.partial! "user_competences/user_competence", user_competence: @user_competence

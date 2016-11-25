@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <button type="button" class="close popup_close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <div class="popup_banner">
+    <%= image_tag('popup_img.jpg', alt: "popup images") %>
+  </div>
+</div>
+<div class="modal-body">
+  <div class="jobpopaplly_con">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="jobpopaplly_boxl">
+          <h1><%= @job_application.user.name %></h1>
+          <p><%= strip_tags(@job_application.apply_job_info) %></p>
+          <%if @job_application.job.extra_questions%>
+            <h3><%=t('show_job_application.question_answer')%></h3>
+            <% @job_application.job.extra_questions.each do |extra_question| %>
+              <h4><%= extra_question.job_question %></h4>
+              <p><%= extra_question.answer.job_question_answer %></p>
+            <%end%>
+          <%end%>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="jobpopaplly_aside">
+          <div class="jobpopaplly_asidelogo">
+            <%if @job_application.user.image_url.url%>
+              <%= image_tag(@job_application.user.image_url, alt: "logo") %>
+            <%else %>
+              <%= image_tag('company_logo.jpg', alt: "logo") %>
+            <%end %>
+          </div>
+          <div class="jobaside_ontetnt">
+            <ul>
+              <li><label><%=t('show_job_application.price_per_hour')%></label><span><%= @job_application.price_per_hour %> kr/hour</span></li>
+              <li><label><%=t('show_job_application.applicant_email')%></label><span><%= @job_application.user.email %></span></li>
+              <li><label><%=t('show_job_application.application_time')%></label><span><%= @job_application.created_at %></span></li>
+            </ul>
+          </div>
+
+            <!--<div class="jobaside_btncon">
+              <button class="btn btn-primary lsu_btn"  data-target="#apply" data-toggle="modal" type="button"><%=t('company_my_jobs.show_job_popup.apply_btn')%></button>
+            </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

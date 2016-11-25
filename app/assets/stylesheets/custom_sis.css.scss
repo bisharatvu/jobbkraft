@@ -1,0 +1,2926 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');
+/*
+font-family: 'Lato', sans-serif;
+thin 100
+thin 100 Italic
+light 300
+light 300 Italic
+regular 400
+regular 400 Italic
+bold 700
+bold 700 Italic
+black 900
+black 900 Italic*/
+
+
+@font-face {
+  font-family: 'Futura PT Bold';
+  src: asset-url('FuturaPT-Bold.eot');
+  src: asset-url('FuturaPT-Bold.eot?#iefix') format('embedded-opentype'),
+  asset-url('FuturaPT-Bold.woff2') format('woff2'),
+  asset-url('FuturaPT-Bold.woff') format('woff'),
+  asset-url('FuturaPT-Bold.ttf') format('truetype'),
+  asset-url('FuturaPT-Bold.svg#FuturaPT-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura ExtraBlackCondItalic';
+  src: asset-url('FuturaBT-ExtraBlackCondItalic.eot');
+  src: asset-url('FuturaBT-ExtraBlackCondItalic.eot?#iefix') format('embedded-opentype'),
+  asset-url('FuturaBT-ExtraBlackCondItalic.woff2') format('woff2'),
+  asset-url('FuturaBT-ExtraBlackCondItalic.woff') format('woff'),
+  asset-url('FuturaBT-ExtraBlackCondItalic.ttf') format('truetype'),
+  asset-url('FuturaBT-ExtraBlackCondItalic.svg#FuturaBT-ExtraBlackCondItalic') format('svg');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Futura LtCn BT';
+  src: asset-url('FuturaBT-LightCondensed.eot');
+  src: asset-url('FuturaBT-LightCondensed.eot?#iefix') format('embedded-opentype'),
+  asset-url('FuturaBT-LightCondensed.woff2') format('woff2'),
+  asset-url('FuturaBT-LightCondensed.woff') format('woff'),
+  asset-url('FuturaBT-LightCondensed.ttf') format('truetype'),
+  asset-url('FuturaBT-LightCondensed.svg#FuturaBT-LightCondensed') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura Md BT';
+  src: asset-url('FuturaBT-Medium.eot');
+  src: asset-url('FuturaBT-Medium.eot?#iefix') format('embedded-opentype'),
+  asset-url('FuturaBT-Medium.woff2') format('woff2'),
+  asset-url('FuturaBT-Medium.woff') format('woff'),
+  asset-url('FuturaBT-Medium.ttf') format('truetype'),
+  asset-url('fonts/FuturaBT-Medium.svg#FuturaBT-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura MdCn BT';
+  src: asset-url('FuturaBT-MediumCondensed.eot');
+  src: asset-url('FuturaBT-MediumCondensed.eot?#iefix') format('embedded-opentype'),
+  asset-url('FuturaBT-MediumCondensed.woff2') format('woff2'),
+  asset-url('FuturaBT-MediumCondensed.woff') format('woff'),
+  asset-url('FuturaBT-MediumCondensed.ttf') format('truetype'),
+  asset-url('FuturaBT-MediumCondensed.svg#FuturaBT-MediumCondensed') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  font-family: 'Lato', sans-serif;
+  padding-bottom: 40px;
+  font-weight:400;
+  color: #5a5a5a;
+}
+
+img{
+  max-width:100%;
+}
+
+.client_wrap{
+  background:#f9f9fa;
+  float:left;
+  width:100%;
+}
+
+.client_con{
+  padding:35px 0;
+  float:left;
+  width:100%;
+  color:#c0c6cc;
+}
+
+.clientlogo_box{
+  float:left;
+  width:100%;
+  margin-bottom:35px;
+}
+
+.clientlogo_box ul{
+  margin:0;
+  padding:0;
+}
+
+.clientlogo_box ul li{
+  list-style:none;
+  float:left;
+  text-align:center;
+  width:16.6%;
+}
+
+.clientlogo_box ul li a{
+  display:block;
+}
+
+.clientlogo_box ul li a img{
+  display:inline-block;
+}
+
+.findjob_wrap{
+  float:left;
+  width:100%;
+}
+
+.findjob_con{
+  float:left;
+  width:100%;
+  padding:35px 0;
+}
+
+.testimonial_wrap{
+  background:url(asset-path('client_bg.jpg')) no-repeat left top; /*-----------------changed----------------- */
+  float:left;
+  width:100%;
+}
+
+.testimonial_con {
+  float: left;
+  padding: 0;
+  width: 100%;
+}
+
+.howitswork_wrap{
+  float:left;
+  width:100%;
+}
+
+.howitswork_con{
+  float:left;
+  width:100%;
+  padding:80px 0 0;
+  color: #000;
+}
+
+.howitswork_con h3 {
+  font-family: 'Futura PT Bold';
+  color: #000;
+  font-size: 50px;
+  font-weight: normal;
+  margin: 0 0 40px;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.howitswork_box p{             /*-----------------changed------------------*/
+  font-family: 'Futura Md BT';
+  float: left;
+  font-size: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.howitswork_box h5 {
+  font-family: 'Futura PT Bold';
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 5px;
+  padding: 0;
+}
+
+.howitswork_con h4{
+  margin-bottom:40px;
+}
+
+.footer_wrap{
+  color:#FFF;
+  background:#1e1e1e; /*-----------------changed------------------*/
+  float:left;
+  width:100%;
+}
+
+.footer_con{
+  padding:35px 0 0;
+  float:left;
+  width:100%;
+}
+
+.footerinfo_box{
+  float:left;
+  width:100%;
+}
+
+.footerinfo_box img{
+  margin-bottom:20px;
+}
+
+.social_box{
+  text-align:right;
+  float:left;
+  width:100%;
+  margin-top:34%;
+}
+
+.social_box ul{
+  margin:0;
+  padding:0;
+}
+
+.social_box ul li{
+  display:inline-block;
+}
+
+.social_box ul li a{
+  background:#393939;
+  display:inline-block;
+  border:1px solid #fff;
+  border-radius:4px;
+  width:34px;
+  height:34px;
+  line-height:34px;
+  color:#FFF;
+  text-align:center;
+}
+
+.carousel-caption .btn {
+  background: #ffffff;
+  border: medium none;
+  border-radius: 30px;
+  color: #2a2626;
+  margin-top: 10%;
+  padding: 10px 35px;
+  margin-right: 2%;  /*-----------------changed------------------*/
+}
+
+.client_quotes {
+  background: rgba(255, 255, 255, 0.8) none repeat scroll 0 0;
+  margin: 24% 0;
+  padding: 50px;
+}
+
+/*************$i$*********** company page css start here *************$i$**************/
+
+.copmany_wrap{
+  float:left;
+  width:100%;
+}
+
+.copmany_con{
+  padding:35px 0;
+  float:left;
+  width:100%;
+}
+
+.copmany_con h1{
+  margin-bottom:20px;
+}
+
+
+/*************$i$*********** company page css ended here *************$i$**************/
+/*************$i$*********** login/signup css start here *************$i$**************/
+
+.lsu_detail{
+  padding: 30px 0;
+  text-align: center;
+  border-bottom:1px solid #eeeeee;
+}
+
+.lsu_detail h3{
+  margin:0 0 20px;
+}
+
+.lsu_form_box{
+}
+
+.lsu_lsuoption{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.lsu_fb,.lsu_linkedin{
+  padding:10px 20px;
+  border-radius:20px;
+  display:inline-block;
+  color:#fff;
+  margin:0 5px;
+}
+
+.lsu_fb{
+  background:#3c5a96;
+  border:1px solid #1b3e85;
+}
+
+.lsu_linkedin{
+  background:#4a76b2;
+  border:1px solid #285da4;
+}
+
+.lsu_fb:hover,.lsu_linkedin:hover{
+  opacity:0.8;
+  color:#FFF;
+  text-decoration:none;
+}
+
+.or_option{
+  text-align:center;
+  margin:10px 0;
+}
+
+.or_option span{
+  text-align:center;
+  display:inline-block;
+  margin:0 5px;
+}
+
+.lsu_btn {
+  background:#269452;
+  border:1px solid #1d8446;
+  border-radius: 20px;
+  color: #fff;
+  display: inline-block;
+  margin: 0 5px;
+  padding: 10px 20px;
+  text-transform:uppercase;
+  font-weight:700;
+}
+
+.lsu_btn:hover {
+  background:#269452;
+  opacity:0.8;
+}
+
+.signup_info{
+  color:#3ab38d;
+}
+
+.signup_info:hover{
+  color:#3ab38d;
+}
+
+/*************$i$*********** login/signup css ended here *************$i$**************/
+
+/*************$i$*********** loggedin start css start here *************$i$**************/
+
+.dbheader_wrap{
+  background:#b7b7b7;
+  float:left;
+  width:100%
+}
+
+.dbheader_con{
+  padding:20px 0;
+  float:left;
+  width:100%
+}
+
+.db_logo{
+  float:left;
+}
+
+
+
+.profile_menu{
+  float:right;
+}
+
+.user_box{
+  float:right;
+}
+
+.userbox_img{
+  background: #ebebeb none repeat scroll 0 0;
+  border: 1px solid #929292;
+  border-radius: 60px;
+  float: left;
+  height: 60px;
+  overflow: hidden;
+  text-align: center;
+  width: 60px;
+}
+
+.userbox_name {
+  color: #dffbee;
+  float: left;
+  margin: 20px 0 0 10px;
+  position: relative;
+}
+
+.userbox_name i{
+  margin-left:5px;
+}
+
+.userbox_name > ul {
+  display:none;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  left: 0;
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  top: 20px;
+}
+
+.userbox_name:hover > ul {
+  display:block;
+}
+
+
+.userbox_name > ul >li{
+  list-style:none;
+  display:block;
+  border-bottom:1px solid #000;
+}
+
+.userbox_name > ul >li >a{
+  padding:10px;
+  display:block;
+  color: #dffbee;
+}
+
+.userbox_name > ul > li > a:hover{
+  background: rgba(0, 0, 0, 0.8);
+  text-decoration:none;
+  color: #dffbee;
+}
+
+.notification_box {
+  float: right;
+  font-size:40px;
+  color:#ffffff;
+  position:relative;
+  margin-right:50px;
+}
+
+.notification_box strong{
+  background: #f4d140;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 12px;
+  height: 20px;
+  line-height: 17px;
+  position: absolute;
+  right: -3px;
+  text-align: center;
+  top: 8px;
+  width: 20px;
+  z-index: 9;
+}
+
+.profilemenu_box {
+  float: right;
+  margin: 14px 20px 0 0;
+  padding: 0;
+}
+
+.profilemenu_box > ul {
+  margin: 0;
+  padding: 0;
+}
+
+.profilemenu_box ul li {
+  display: inline-block;
+  list-style: outside none none;
+}
+
+.profilemenu_box ul li a {
+  color: #fff;
+  font-size: 20px;
+}
+
+.dbmenu_wrap{
+  background:#ffffff;
+  float:left;
+  width:100%
+}
+
+
+.dbmenu_con{
+  float:left;
+  width:100%
+}
+
+.dbbody_wrap{
+  background:#e1e1e1;
+  float:left;
+  width:100%;
+  padding-bottom:20px;
+}
+
+.dbbody_con{
+  float:left;
+  width:100%
+}
+
+.dbmain_menu{
+  padding:5px 0;
+  float:left;
+}
+
+.dbmain_menu ul{
+  margin:0;
+  padding:0;
+}
+
+.dbmain_menu ul li{
+  list-style:none;
+  display:inline-block;
+}
+
+.dbmain_menu ul li a{
+  color:#4c4c4c;
+  display:block;
+  padding:10px 15px;
+}
+
+.dbmain_menu ul li a:hover,.dbmain_menu ul li a.active{
+  color:#4c4c4c;
+  background:#f4d140 ;
+  text-decoration:none;
+}
+
+.dbmain_menudd{
+  position:relative;
+  float:right;
+  margin:10px 0 0;
+}
+
+
+.dbmain_menudd > a{
+  background: #b7b7b7;
+  color: #fff;
+  display: block;
+  line-height: normal;
+  padding: 1px 10px 6px;
+}
+
+.dbmain_menudd > ul {
+  display:none;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  right: 0;
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  top: 20px;
+}
+
+.dbmain_menudd:hover > ul {
+  display:block;
+}
+
+
+.dbmain_menudd > ul >li{
+  list-style:none;
+  display:block;
+  border-bottom:1px solid #000;
+}
+
+.dbmain_menudd > ul >li >a{
+  padding:10px;
+  display:block;
+  color: #dffbee;
+  white-space:nowrap;
+}
+
+.dbmain_menudd > ul > li > a:hover{
+  background: rgba(0, 0, 0, 0.8);
+  text-decoration:none;
+  color: #dffbee;
+}
+
+.overview_con{
+  float:left;
+  width:100%;
+}
+
+.overview_profile{
+  float: left;
+  padding: 10px 0 15px; /*-----------------changed------------------*/
+  width: 100%;
+}
+
+.overviewprofile_box{
+  background:#fff;
+  border-radius:4px;
+  padding:25px 20px;
+  float:left;
+  width:100%;
+}
+
+.todos_con{
+  background:#f7f7f7;
+  float:left;
+  width:100%;
+  padding:10px;
+  margin-bottom:30px;
+}
+
+.tabpanel_modify{
+  float:left;
+  width:100%;
+}
+
+.notificatio_box{
+  background:#fff;
+  border:1px solid #e4e4e4;
+  float:left;
+  width:100%;
+  text-align:center;
+  margin:20px 0;
+  padding:30px;
+}
+
+.todos_box{
+  background: #fff 0;
+  border: 1px solid #e4e4e4;
+  float: left;
+  margin: 20px 0;
+  padding: 30px;
+  width: 100%;
+}
+
+.todos_box ul{
+  margin:0;
+  padding:0;
+}
+
+.todos_box ul li{
+  float:left;
+  width:100%;
+  position:relative;
+  padding:20px 0 20px 100px;
+  list-style:none;
+  border-bottom:1px solid #e4e4e4;
+}
+
+.todos_box ul li p{
+  margin:0;
+}
+
+.todos_icon{
+  color: #77cbd3;
+  font-size: 30px;
+  left: 0;
+  line-height: 30px;
+  margin-top: -17px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 80px
+}
+
+.tabpanel_modify .nav-tabs {
+  border-bottom: 2px solid #ddd;
+}
+
+.tabpanel_modify .nav-tabs > li {
+  float: left;
+  margin-bottom: -2px !important;
+}
+
+.tabpanel_modify .nav > li > a {
+  color: #888888;
+  display: block;
+  line-height: 30px;
+  padding: 20px;
+  position: relative;
+}
+
+.tabpanel_modify .nav-tabs > li.active > a,.tabpanel_modify .nav-tabs > li.active > a:hover,.tabpanel_modify .nav-tabs > li.active > a:focus{
+  border:none;
+  background:none;
+  color:#000;
+}
+
+.tabpanel_modify .nav-tabs > li  > a,.tabpanel_modify .nav-tabs > li  > a:hover,.tabpanel_modify .nav-tabs > li  > a:focus{
+  border:none;
+  background:none;
+}
+
+.tabpanel_modify .nav-tabs > li.active ,.tabpanel_modify .nav-tabs > li:hover  ,.tabpanel_modify .nav-tabs > li:focus {
+  background:url(asset-path('arrow_top.png')) no-repeat center bottom; /*-----------------changed------------------*/
+}
+
+.tabpanel_modify .nav-tabs > li.active > a .todo_noti,.tabpanel_modify .nav-tabs > li.active > a:hover .todo_noti,.tabpanel_modify .nav-tabs > li.active > a:focus .todo_noti{
+  background: #01b22e none repeat scroll 0 0
+}
+
+.todo_noti{
+  background: #c2c2c2 none repeat scroll 0 0;
+  border-radius: 30px;
+  color: #fff;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  width: 30px;
+}
+
+
+
+/*************$i$*********** loggedin css ended here *************$i$**************/
+
+/*************$i$*********** Page Company_Logged_in_Inbox css start here *************$i$**************/
+
+.inbox_con{
+  background:#f7f7f7;
+  float:left;
+  width:100%;
+  padding:10px;
+  margin-bottom:30px;
+}
+
+.tabpanel_inbox {
+  float: left;
+  min-height: 143px;
+  padding-left: 190px;
+  position: relative;
+  width: 100%;
+}
+
+.tabpanel_inbox .nav-tabs {
+  left: 0;
+  max-width: 180px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  border-bottom:none;
+}
+
+.tabpanel_inbox .nav-tabs > li {
+  float: left;
+  width:100%;
+}
+
+.tabpanel_inbox .nav > li > a {
+  color: #888888;
+  display: block;
+  line-height: 18px;
+  padding: 10px;
+  position: relative;
+}
+
+.tabpanel_inbox .nav-tabs > li.active > a,.tabpanel_inbox .nav-tabs > li.active > a:hover,.tabpanel_inbox .nav-tabs > li.active > a:focus{
+  border:none;
+  background:none;
+  color:#000;
+}
+
+.tabpanel_inbox .nav-tabs > li  > a,.tabpanel_inbox .nav-tabs > li  > a:hover,.tabpanel_inbox .nav-tabs > li  > a:focus{
+  border:none;
+  background:none;
+}
+
+.tabpanel_inbox .nav-tabs > li.active ,.tabpanel_inbox .nav-tabs > li:hover  ,.tabpanel_inbox .nav-tabs > li:focus {
+  background:#fff;
+  color:#000;
+}
+
+.tabpanel_inbox .nav-tabs > li.active > a .todo_noti,.tabpanel_inbox .nav-tabs > li.active > a:hover .todo_noti,.tabpanel_inbox .nav-tabs > li.active > a:focus .todo_noti{
+  background: #01b22e none repeat scroll 0 0
+}
+
+.inbox_all{
+  background:#fff;
+  padding:20px;
+  float:left;
+  width:100%;
+}
+
+.username_inbox{
+  white-space:normal;
+}
+
+.table_border{
+  border:1px solid #ddd;
+}
+
+.inbox_all .table-hover > tbody > tr:hover > td,.inbox_all .table-hover > tbody > tr:hover > th {
+  background-color: #ebf2f5;
+}
+
+/*************$i$*********** Page Company_Logged_in_Inbox css ended here *************$i$**************/
+/*************$i$*********** Page Company_Logged_in_Inbox_Open a message css start here *************$i$**************/
+
+.openmessage_con{
+  width:100%;
+  float:left;
+}
+
+.openmessage_box{
+  width:100%;
+  float:left;
+}
+
+.openmessage_heading{
+  width:100%;
+  float:left;
+}
+
+.openmessage_heading h1{
+  color:#00567d;
+  font-size:20px;
+}
+
+.conrversion_box {
+  background: #ffffff;
+  border:1px solid #e5e6e9;
+  float: left;
+  margin-bottom: -1px;
+  min-height: 130px;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.conrversion_img{
+  position: absolute;
+  top: 20px;
+}
+
+.conrversion_msg {
+  float: left;
+  padding-left: 90px;
+  width: 100%;
+}
+
+.conrversion_msg h4{
+  color:#005b80;
+  font-size:16px;
+  font-weight:700;
+  margin:0 0 10px;
+  padding:0;
+}
+
+.timestamp {
+  float: left;
+  font-size: 11px;
+  margin: 20px 0 0;
+  width: 100%;
+  text-align:right;
+}
+
+.timestamp ul {
+  margin: 0;
+  padding: 0;
+}
+
+.timestamp ul li {
+  color: #6b6b6b;
+  display: inline;
+  list-style:  none;
+  margin-left: 25px;
+}
+
+.openmessage_reply{
+  background:#f7f7f7;
+}
+
+.replymsg_con {
+  background: #f4f4f4;
+  border: 1px solid #e5e6e9;
+  float: left;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.replymsg_detail {
+  float: left;
+  margin-bottom: 10px;
+  text-align: right;
+  width: 100%;
+}
+
+.replymsg_detail ul {
+  margin: 0;
+  padding: 0;
+}
+
+.replymsg_detail ul li {
+  color: #b7b7b7;
+  display: inline;
+  list-style:  none;
+  border-right:1px solid #b7b7b7;
+  padding:0 10px;
+  line-height:14px;
+}
+
+.replymsg_detail ul li:last-child{
+  border-right:none;
+  padding-right:0;
+}
+
+.replymsg_detail ul li strong{
+  margin:0 0 0 5px;
+  color: #141414;
+}
+
+.replymsg_detail ul li .daynight {
+  color: #ffb600;
+  margin: 0 0 0 4px;
+}
+
+.replymsg_con textarea {
+  border: 1px solid #ccc;
+  font-size: 14px;
+  margin: 0;
+  padding: 10px 10px 50px;
+  width: 100%
+}
+
+.editor_box{
+  float:left;
+  width:100%;
+  position:relative;
+  margin-bottom:10px;
+}
+
+.editor_emotion{
+  border-top: 1px solid #e2e2e2;
+  bottom: 0;
+  left: 0;
+  margin: 0 2%;
+  padding: 10px 0;
+  position: absolute;
+  width: 96%;
+}
+
+/*************$i$*********** Page Company_Logged_in_Inbox_Open a message css ended here *************$i$**************/
+
+/*************$i$***********My Agrements css start here *************$i$**************/
+
+.agrements_con{
+  float:left;
+  width:100%;
+}
+
+.agrements_heading{
+  padding:20px 0;
+  width:100%;
+  float:left;
+}
+
+.agrements_heading h1{
+  float: left;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.filter_box {
+  float: left;
+  margin: 0 0 20px;
+  width: 100%;
+}
+
+.filter_box input[type="text"],.filter_box select{
+  border:1px solid #d8d8d8;
+  padding:10px;
+  float: left;
+  width: 100%;
+}
+
+.all_agreements{
+  float:left;
+  width:100%;
+  margin-bottom:20px;
+}
+
+.allagreements_box {
+  background: #ffffff;
+  border:1px solid #e5e6e9;
+  float: left;
+  margin-bottom: -1px;
+  min-height: 130px;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+  margin-bottom:20px;
+}
+
+.allagreements_img{
+  position: absolute;
+  top: 20px;
+}
+
+.allagreements_msg {
+  float: left;
+  min-height: 140px;
+  padding-left: 160px;
+  width: 100%;
+}
+
+.allagreements_msg h4{
+  color:#005b80;
+  font-size:16px;
+  font-weight:700;
+  margin:0 0 10px;
+  padding:0;
+}
+
+.allagreements_locationtime {
+  float: left;
+  font-size: 11px;
+  margin: 20px 0 0;
+  width: 100%;
+  text-align:left;
+}
+
+.allagreements_locationtime ul {
+  margin: 0;
+  padding: 0;
+}
+
+.allagreements_locationtime ul li {
+  color: #6b6b6b;
+  display: inline;
+  list-style:  none;
+  margin-right: 25px;
+}
+
+.allagreements_locationtime ul li i{
+  margin-right: 2px;
+}
+
+.allagreements_locationtime ul li a{
+  color:#27b042;
+}
+
+
+/*************$i$*********** My Agrements css ended here *************$i$**************/
+/*************$i$*********** company css start here *************$i$**************/
+
+.company_con{
+  float:left;
+  width:100%;
+}
+
+.company_heading{
+  padding:20px 0;
+  width:100%;
+  float:left;
+}
+
+.company_heading h1{
+  float: left;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.cfilter_box {
+  float: left;
+  margin: 0 0 20px;
+  width: 100%;
+}
+
+.cfilter_box input[type="text"],.filter_box select{
+  border:1px solid #d8d8d8;
+  padding:10px;
+  float: left;
+  width: 100%;
+}
+
+.all_companies{
+  float:left;
+  width:100%;
+  margin-bottom:20px;
+}
+
+.allcompanies_box {
+  background: #ffffff;
+  border:1px solid #e5e6e9;
+  float: left;
+  margin-bottom: -1px;
+  min-height: 130px;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+  margin-bottom:20px;
+}
+
+.allcompanies_img{
+  position: absolute;
+  top: 20px;
+}
+
+.allcompanies_msg {
+  float: left;
+  min-height: 140px;
+  padding-left: 160px;
+  width: 100%;
+}
+
+.allcompanies_msg h4{
+  color:#005b80;
+  font-size:16px;
+  font-weight:700;
+  margin:0 0 10px;
+  padding:0;
+}
+
+.allcompanies_locationtime {
+  float: left;
+  font-size: 11px;
+  margin: 20px 0 0;
+  width: 100%;
+  text-align:left;
+}
+
+.allcompanies_locationtime ul {
+  margin: 0;
+  padding: 0;
+}
+
+.allcompanies_locationtime ul li {
+  color: #6b6b6b;
+  display: inline;
+  list-style:  none;
+  margin-right: 25px;
+}
+
+.allcompanies_locationtime ul li i{
+  margin-right: 2px;
+}
+
+.allcompanies_locationtime ul li a{
+  color:#27b042;
+}
+
+.company_no{
+  background:#eeeeee;
+  padding:10px;
+  margin-bottom:10px;
+}
+
+.companypu_con{
+  background:#eeeeee;
+}
+
+.companypu_box{
+  padding:20px 20px 0;
+}
+
+.companypu_heading{
+  border-top:1px solid #cfcfcf;
+  border-bottom:1px solid #cfcfcf;
+  background:#dddddd;
+  padding:15px;
+}
+
+.companypu_heading .btn{
+  margin-top:-7px;
+}
+
+.companypubox_sprater{
+  border-bottom:1px solid #d7d7d7;
+  margin-bottom:15px;
+}
+
+.companypu_note{
+  margin-bottom:20px;
+}
+
+/*************$i$*********** company css ended here *************$i$**************/
+
+/*************$i$*********** Page_Company_Logged_in_Open_a_job css start here *************$i$**************/
+
+.openjob_con{
+  float:left;
+  width:100%;
+}
+
+.openjob_heading{
+  padding:20px 0;
+  width:100%;
+  float:left;
+}
+
+.openjob_heading h1{
+  float: left;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.jobsactions_box {
+  float: left;
+  margin: 0 0 20px;
+  width: 100%;
+}
+
+.jobsactions_box input[type="button"],.jobsactions_box button{
+  float: left;
+  width: 100%;
+}
+
+.all_companies{
+  float:left;
+  width:100%;
+  margin-bottom:20px;
+}
+
+.openjob_box {
+  background: #ffffff;
+  border:1px solid #e5e6e9;
+  float: left;
+  margin-bottom: -1px;
+  min-height: 130px;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+  margin-bottom:20px;
+}
+
+.openjob_img{
+  position: absolute;
+  top: 20px;
+}
+
+.openjob_msg {
+  float: left;
+  min-height: 140px;
+  padding-left: 160px;
+  width: 100%;
+}
+
+.openjob_msg h4{
+  color:#005b80;
+  font-size:16px;
+  font-weight:700;
+  margin:0 0 10px;
+  padding:0;
+}
+
+.openjob_locationtime {
+  float: left;
+  font-size: 11px;
+  margin: 20px 0 0;
+  width: 100%;
+  text-align:left;
+}
+
+.openjob_locationtime ul {
+  margin: 0;
+  padding: 0;
+}
+
+.openjob_locationtime ul li {
+  color: #6b6b6b;
+  display: inline;
+  list-style:  none;
+  margin-right: 25px;
+}
+
+.openjob_locationtime ul li i{
+  margin-right: 2px;
+}
+
+.openjob_locationtime ul li a{
+  color:#27b042;
+}
+
+.applicants_heading{
+  float: left;
+  padding: 0 0 10px;
+  width: 100%;
+}
+
+.applicants_heading h1{
+  float: left;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.jobgroup_con{
+  float:left;
+  width:100%;
+}
+
+.jobgroup_filter {
+  background: #fff;
+  float: left;
+  padding: 20px;
+  width: 100%;
+}
+
+.jobgroup_filter ul {
+  margin: 0;
+  padding: 0;
+}
+
+.jobgroup_filter ul li {
+  color: #6b6b6b;
+  display: block;
+  list-style:  none;
+}
+
+.jobgroup_filter ul li a{
+  color: #6b6b6b;
+  display: block;
+  padding:10px;
+}
+
+.jobgroupmember_con{
+  float:left;
+  width:100%;
+}
+
+.jobgroupmember_head{
+  background:#4d4d4d;
+  color:#fff;
+  float:left;
+  width:100%;
+  padding:10px;
+}
+
+.jobgroupmember_head a{
+  color:#fff;
+  float:right;
+  margin-left:10px;
+}
+
+.jobgroupmember_box {
+  background: #ffffff;
+  border:1px solid #e5e6e9;
+  float: left;
+  margin-bottom: -1px;
+  min-height: 130px;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+  margin-bottom:20px;
+}
+
+.jobgroupmember_box input[type="checkbox"]{
+  position: absolute;
+  top: 10px;
+  left:10px;
+  z-index:9;
+}
+
+.jobgroupmember_img{
+  position: absolute;
+  top: 20px;
+}
+
+.jobgroupmember_msg {
+  float: left;
+  min-height: 140px;
+  padding-left: 160px;
+  width: 100%;
+}
+
+.jobgroupmember_msg h4{
+  color:#005b80;
+  font-size:16px;
+  font-weight:700;
+  margin:0 0 10px;
+  padding:0;
+}
+
+.jobgroupmember_locationtime {
+  float: left;
+  font-size: 11px;
+  margin: 20px 0 0;
+  width: 100%;
+  text-align:left;
+}
+
+.jobgroupmember_locationtime ul {
+  margin: 0;
+  padding: 0;
+}
+
+.jobgroupmember_locationtime ul li {
+  color: #6b6b6b;
+  display: inline;
+  list-style:  none;
+  margin-right: 25px;
+}
+
+.jobgroupmember_locationtime ul li i{
+  margin-right: 2px;
+}
+
+.jobgroupmember_locationtime ul li a{
+  color:#27b042;
+}
+
+
+
+/*************$i$*********** Page_Company_Logged_in_Open_a_job css ended here *************$i$**************/
+
+/*************$i$*********** Profile Setting css Start here *************$i$**************/
+
+.profilesettting_con{
+  float:left;
+  width:100%;
+}
+
+.profilesettting_heading{
+  padding:20px 0;
+  width:100%;
+  float:left;
+}
+
+.profilesettting_heading h1{
+  float: left;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.profileS_con{
+  background:#f5f5f5;
+  padding:40px 20px 20px;
+  float:left;
+  width:100%;
+}
+
+.profileS_box{
+  background:#ffffff;
+  border:1px solid #dddddd;
+  float:left;
+  width:100%;
+}
+
+.profileS_boxes {
+  border-bottom: 1px solid #dddddd;
+  float: left;
+  padding: 20px;
+  width: 100%;
+}
+
+.profileS_boxesprofile{
+  float: left;
+  margin-left: 11px;
+  position: relative;
+}
+
+.profileS_boxesprofile .btn{
+  background: #28aacc;
+  border: 4px solid #fff;
+  border-radius: 100%;
+  color: #fff;
+  height: 50px;
+  left: -17px;
+  line-height: 14px;
+  position: absolute;
+  top: -13px;
+  width: 50px;
+}
+
+.profileS_info{
+  float:left;
+  width:100%;
+}
+
+.profileS_info h3,.profileS_info h4{
+  margin:0 0 10px;
+  padding:0;
+}
+
+.profileS_video{
+  float:left;
+  width:100%;
+}
+
+.profileS_video h3{
+  margin:0 0 10px;
+  padding:0;
+}
+
+.profileSvideo_box{
+  float:left;
+  width:100%;
+  text-align:center;
+}
+
+.profileaddinfo_box{
+  float:left;
+  width:100%;
+}
+
+/*************$i$*********** Profile Setting css ended here *************$i$**************/
+
+/*************$i$*********** Page User_Logged_in_All jobs css start here *************$i$**************/
+
+.alljobs_con{
+  float:left;
+  width:100%;
+}
+
+.alljobs_heading{
+  padding:20px 0;
+  width:100%;
+  float:left;
+}
+
+.alljobs_heading h1{
+  float: left;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.alljobsfilter_box {
+  float: left;
+  margin: 0 0 20px;
+  width: 100%;
+}
+
+.alljobsfilter_box input[type="text"],.filter_box select{
+  border:1px solid #d8d8d8;
+  padding:10px;
+  float: left;
+  width: 100%;
+}
+
+.alljobs_cotent{
+  float:left;
+  width:100%;
+  margin-bottom:20px;
+}
+
+.alljobs_box {
+  background: #ffffff;
+  border:1px solid #e5e6e9;
+  float: left;
+  margin-bottom: -1px;
+  min-height: 130px;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+  margin-bottom:20px;
+}
+
+.alljobs_img{
+  position: absolute;
+  top: 20px;
+}
+
+.alljobs_msg {
+  float: left;
+  min-height: 140px;
+  padding-left: 160px;
+  width: 100%;
+}
+
+.alljobs_msg h4{
+  color:#005b80;
+  font-size:16px;
+  font-weight:700;
+  margin:0 0 10px;
+  padding:0;
+}
+
+.alljobs_locationtime {
+  float: left;
+  font-size: 11px;
+  margin: 20px 0 0;
+  width: 100%;
+  text-align:left;
+}
+
+.alljobs_locationtime ul {
+  margin: 0;
+  padding: 0;
+}
+
+.alljobs_locationtime ul li {
+  color: #6b6b6b;
+  display: inline;
+  list-style:  none;
+  margin-right: 25px;
+}
+
+.alljobs_locationtime ul li i{
+  margin-right: 2px;
+}
+
+.alljobs_locationtime ul li a{
+  color:#27b042;
+}
+
+.popup_banner {
+  margin: -15px;
+}
+
+.popup_close {
+  color: #fff;
+  opacity: 0.9;
+}
+
+.jobpopaplly_con{
+  width:100%;
+}
+
+.jobpopaplly_boxl{
+  float:left;
+  width:100%;
+}
+
+.jobpopaplly_boxl h1{
+  margin:0;
+  float:left;
+  width:100%;
+}
+
+.jobpopaplly_aside{
+  float:left;
+  width:100%;
+}
+
+.jobpopaplly_asidelogo{
+  text-align:center;
+  padding:30px 0;
+  float:left;
+  width:100%;
+}
+
+.jobaside_ontetnt{
+  float:left;
+  width:100%;
+}
+
+.jobaside_ontetnt ul{
+  margin:0;
+  padding:0;
+}
+
+.jobaside_ontetnt ul li{
+  list-style:none;
+  margin-bottom: 20px;
+}
+
+.jobaside_ontetnt ul li label{
+  display: block;
+  margin: 0;
+}
+
+.jobaside_ontetnt ul li span{
+  display:block;
+}
+
+
+.jobaside_btncon{
+  float:left;
+  width:100%;
+}
+
+.jobaside_btncon button{
+  width:100%;
+  margin-bottom:10px;
+}
+
+
+.jobaside_btncon .save{
+  background:none;
+  border: 2px solid #1d8446;
+  color: #000;
+  padding: 8px 20px;
+  float:left;           /*-----------------changed------------------*/
+  width:100%;          /*-----------------changed------------------*/
+  margin-bottom:10px; /*-----------------changed------------------*/
+}
+
+
+/*************$i$*********** Page User_Logged_in_All jobs css ended here *************$i$**************/
+
+/*************$i$*********** Page Company_Logged_in_My companies_add_job css start here *************$i$**************/
+
+.addjobpopup_box{
+  width:100%;
+}
+
+.jobdiscription_editor{
+  float:left;
+  width:100%;
+  margin-bottom:10px;
+}
+
+.addjob_dateformate{
+  float:left;
+  width:100%;
+}
+
+/*************$i$*********** Page Company_Logged_in_My companies_add_job css ended here *************$i$**************/
+
+
+/*************$i$*********** Page User_Logged_in_Profile_add_competence css Statr here *************$i$**************/
+
+.competences_box{
+  float:left;
+  width:100%;
+}
+
+.competences_box .dropdown-toggle {
+  text-align: left;
+  width: 100%;
+}
+
+.competences_box .dropdown-menu{
+  width:100%;
+}
+
+
+
+/*************$i$*********** Page User_Logged_in_Profile_add_competence css ended here *************$i$**************/
+
+/*************$i$*********** footer stick on bottom css start here *************$i$**************/
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding-bottom:0;
+}
+
+.main_wrapper {
+  min-height: 100%;
+  margin-bottom: -240px;
+}
+
+.footer_wrap,
+.push {
+  height: 240px;
+}
+
+.addCompetences_box{
+  float:left;
+  width:100%;
+}
+
+.competences_alerts{
+  float:left;
+  margin-right:8px;
+  padding: 7px 30px 7px 10px;
+}
+
+.seach_job_view{
+  float:left;
+  width:100%;
+}
+
+.seach_job_view input[type="text"] {
+  max-width: 100px;
+}
+
+/*************$i$*********** footer stick on bottom  css ended here *************$i$**************/
+/*************$i$*********** left menu css start here *************$i$**************/
+
+/* Hide for mobile, show later */
+
+@media (min-width: 768px) {
+  .sidebar {
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+    float: left;
+    padding: 20px;
+    width: 100%;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+/*************$i$*********** left menu css ended here *************$i$**************/
+
+
+.dropdown_multi {
+  float: left;
+  position: relative;
+  width: 100%;
+  z-index: 99;
+}
+
+
+.dropdown_multi dd,
+.dropdown_multi dt {
+  margin: 0px;
+  padding: 0px;
+}
+
+.dropdown_multi ul {
+  margin: -1px 0 0 0;
+}
+
+.dropdown_multi dd {
+  position: relative;
+}
+
+.dropdown_multi a,
+.dropdown_multi a:visited {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+
+.dropdown_multi dt a {
+  display: inline-block;
+  min-height: 25px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.dropdown_multi dt a p{
+  margin:0;
+}
+
+.dropdown_multi dt a span,
+.multiSel span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 3px 2px 0;
+}
+
+.dropdown_multi dd ul {
+  background-color: #eb9316 ;
+  border: 0;
+  color: #fff;
+  display: none;
+  left: 0px;
+  padding: 2px 15px 2px 5px;
+  position: absolute;
+  top: 2px;
+  width: 280px;
+  list-style: none;
+  height: 100px;
+  overflow: auto;
+}
+
+.dropdown_multi span.value {
+  display: none;
+}
+
+.dropdown_multi dd ul li a {
+  padding: 5px;
+  display: block;
+}
+
+.dropdown_multi dd ul li a:hover {
+  background-color: #fff;
+}
+
+/*************$i$*********** left menu css ended here *************$i$**************/
+
+.static_header{
+  position:fixed;
+  left:0;
+  top:0;
+  width:100%;
+}
+
+.static_menu {
+  background: #fff none repeat scroll 0 0;
+  bottom: 78px;
+  left: 0;
+  overflow-y: auto;
+  position: fixed;
+  top: 52px;
+  max-width: 215px;
+  width: 100%;
+}
+
+.static_menu .nav-sidebar {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.footer_wrap_static{
+  background: #1e1e1e; /*-----------------changed------------------*/
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  color: #fff;
+}
+
+.footers_menu{
+  padding:5px 0;
+  float:right;
+  margin: 15px 0 0;
+}
+
+.footers_menu ul{
+  margin:0;
+  padding:0;
+}
+
+.footers_menu ul li{
+  list-style:none;
+  display:inline-block;
+}
+
+.footers_menu ul li a{
+  color:#fff;
+  display:block;
+  padding:10px 15px;
+}
+
+.footers_menu ul li a:hover,.footers_menu ul li a.active{
+  color:#4c5c68;
+  background:#f4d140 ;
+  text-decoration:none;
+}
+
+.body{
+  padding:52px 0 80px 215px;
+}
+
+.bodys_wrap{
+  bottom: 50px;
+  left: 215px;
+  overflow-y: scroll;
+  position: fixed;
+  top: 52px;
+  width: calc(100% - 215px);
+}
+
+.bodys_wrap .dbbody_wrap {
+  padding: 0 20px;
+}
+
+.navbar_toggle{
+  background:#000;
+}
+
+.navbar_toggle .icon-bar {
+  background: #fff none repeat scroll 0 0;
+  border-radius: 1px;
+  display: block;
+  height: 2px;
+  width: 22px;
+}
+
+.left_space {
+  left: 210px !important;
+}
+
+.user_box{
+  float:right;
+}
+
+.signout_menu {
+  float: left;
+  padding: 10px;
+}
+
+.userbox_img{
+  background: #ebebeb none repeat scroll 0 0;
+  border: 1px solid #929292;
+  border-radius: 60px;
+  float: left;
+  height: 60px;
+  overflow: hidden;
+  text-align: center;
+  width: 60px;
+}
+
+.userboxf_name {
+  color: #dffbee;
+  float: left;
+  margin: 10px 0 0;
+  position: relative;
+}
+
+.userboxf_name i{
+  margin-left:5px;
+}
+
+.userboxf_name > ul {
+  display: inline-block;
+  margin: 0 0 0 10px;
+  padding: 0;
+}
+
+.userboxf_name > ul >li{
+  list-style:none;
+  display:block;
+}
+
+.userboxf_name > ul >li >a{
+  display:block;
+  color: #dffbee;
+}
+
+.userboxf_name > ul > li > a:hover{ text-decoration:underline}
+
+.static_header .db_logo {
+  max-width: 210px;
+}
+
+.static_header .dbheader_con {
+  float: left;
+  padding: 10px;
+  width: 100%;
+}
+
+.static_header .notification_box {
+  color: #000;
+  float: right;
+  font-size: 20px;
+  margin-right: 0;
+  position: relative;
+}
+
+
+.notification_menu{
+  position:relative;
+  float:right;
+  margin:0;
+}
+
+.notification_menu em{
+  font-style:normal;
+}
+
+.notification_menu > a{
+  background: #b7b7b7;
+  color: #fff;
+  display: block;
+  line-height: normal;
+  padding: 1px 10px 6px;
+}
+
+.notification_menu > ul {
+  display:none;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  right: 0;
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  top: 28px;
+  width:100%;
+  z-index:9;
+  min-width:120px;
+}
+
+.notification_menu:hover > ul {
+  display:block;
+}
+
+
+.notification_menu > ul >li{
+  list-style:none;
+  display:block;
+  border-bottom:1px solid #000;
+}
+
+.notification_menu > ul >li >a{
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  line-height: normal;
+  padding: 10px;
+}
+
+.notification_menu > ul > li > a:hover{
+  background: rgba(0, 0, 0, 0.8);
+  text-decoration:none;
+  color: #dffbee;
+}
+
+.static_menu  .nav > li:hover .subleft_menu,.static_menu  .nav > li.active .subleft_menu{
+  display:block;
+  height: 120px;
+}
+
+.subleft_menu{
+  font-size: 13px;
+  height: 0;
+  list-style-type: none;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+  padding: 0;
+  transition: height 1.3s ease 0s
+}
+
+.subleft_menu li{
+  margin-bottom:10px;
+  padding-left:30px;
+}
+
+.static_header .dbheader_wrap {
+  background:#ffc20e;        /*-----------------changed------------------*/
+}
+
+.static_menu .nav > li > a {
+  color: #6d6d6d;
+}
+
+.subleft_menu > li > a {
+  color: #6d6d6d;
+  display:block;
+  text-decoration:none;
+}
+
+.static_menu  .nav-sidebar > .active > a,.static_menu  .nav-sidebar > .active > a:hover,.static_menu  .nav-sidebar > .active > a:focus {
+  background-color: #eee;
+  border-left:3px solid #6d6d6d;
+  padding-left:17px;
+}
+
+.static_menu  .nav > li > a:hover,.static_menu  .nav > li > a:focus {
+  background-color: #eee;
+  text-decoration: none;
+  border-left:3px solid #6d6d6d;
+  padding-left:17px;
+}
+
+.subleft_menu > li  {
+  padding-left: 47px;
+  line-height:35px;
+}
+
+.subleft_menu > li:hover  {
+  background-color: #eee;
+  border-left: 3px solid #6d6d6d;
+  font-weight: 600;
+  padding-left: 44px;
+
+}
+
+.progress_con{
+  float:left;
+  width:100%;
+}
+
+.full_width .footer_con{
+  padding:30px;
+}
+
+.extrajobs_wrap {
+  float: left;
+  padding: 60px 0;
+  width: 100%;
+}
+
+.extrajobs_con > h3 {
+  font-family: "Futura PT Bold";
+  font-size: 40px;
+  margin: 0 0 50px;
+  padding: 0;
+  text-align: center;
+}
+
+.extrajobs_box p {             /*-----------------changed------------------*/
+  float: left;
+  font-family: "Futura Md BT";
+  margin: 0 0 20px;
+  width: 100%;
+}
+
+.extrajobs_box > h5 {
+  font-family: "Futura Md BT";
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.findjob_con .col-sm-4 > h2 {
+  font-size: 24px;
+}
+
+.main_wrapper .navbar-inverse .navbar-nav > li:hover > a {
+  background-color: #fff;
+  border: 3px solid #fff ;
+  color: #9e9083;
+}
+
+.main_wrapper .navbar-nav > li {
+  margin-left: 5px;
+}
+
+.main_wrapper .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+  margin-left: 0;
+  max-width: 210px;
+  margin-top: 8px;
+}
+
+.main_header.fixed {
+  background: rgba(0, 0, 0, 0.7) none repeat scroll 0 0;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
+  padding:10px;
+}
+
+.main_header.fixed .navbar-wrapper {
+  margin-top: 0;
+  position: relative;
+}
+
+.main_header.fixed  .navbar {
+  margin-bottom: 0;
+}
+
+.consultant_con{
+  background: #fff none repeat scroll 0 0;
+  border:1px solid #ccc;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+.mainheading_addjob {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.subheading_addjob {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.addjob_subbox {
+  background: #fafafa none repeat scroll 0 0;
+  margin: 10px 0 0;
+  padding: 20px;
+}
+
+.step_wrap{
+  float:left;
+  width:100%;
+}
+
+.step_con{
+  padding:30px 0;
+  float:left;
+  width:100%;
+}
+
+.step_con  h2 {
+  font-family: "Futura PT Bold";
+  font-size: 40px;
+  margin: 20px 0;
+  text-align:center;
+  padding: 0;
+}
+
+.step_con  h5{
+  font-family: "Futura PT Bold";
+  font-size: 20px;
+  margin: 20px 0;
+  text-align:center;
+  padding: 0;
+}
+
+.step_box {
+  float: left;
+  margin-top: 40px;
+  padding:0 50px;
+  width: 100%;
+}
+
+.step_box ul{
+  margin:0 0 0 -2%;
+  padding:0;
+  float:left;
+  width:102%;
+}
+
+.step_box ul li{
+  list-style:none;
+  float:left;
+  width:31.3%;
+  margin-left:2%;
+  padding-left:60px;
+  position:relative;
+}
+
+.step_box ul li span{
+  font-family: "Futura PT Bold";
+  line-height:44px;
+  position:absolute;
+  left:0;
+  top:0;
+  font-size:50px;
+}
+
+.step_box ul li strong{
+  font-family: "Futura PT Bold";
+  font-size:18px;
+}
+
+.responsive_wrap{
+  width:100%;
+  float:left;
+}
+
+.responsive_con{
+  padding:30px 0;
+  width:100%;
+  float:left;
+}
+
+/*************$i$*********** new profiel css start here *************$i$**************/
+
+.profile_imgbtns{
+  background:#ffffff;
+  margin-top:30px;
+  padding:30px;
+  float:left;
+  width:100%;
+}
+
+.profile_btns{
+  background:#f7f7f7;
+  padding:20px;
+  text-align:right;
+  float:left;
+  width:100%;
+}
+
+.mb10{margin-bottom:10px;}
+
+.profile_boxn{
+  padding:30px;
+  float:left;
+  width:100%;
+}
+
+.profileboxn_heading{
+  text-transform:uppercase;
+  font-size:16px;
+  font-weight:700;
+  border-bottom:1px solid #dddddd;
+  float:left;
+  width:100%;
+  padding-bottom:10px;
+  margin-bottom:10px;
+  position:relative;
+}
+
+.profileboxn_heading a{
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  display: inline-block;
+  float: right;
+  font-size: 14px;
+  height: 30px;
+  line-height: 26px;
+  text-align: center;
+  width: 30px;
+  margin-left:5px;
+}
+
+.profileboxn_con{
+  float:left;
+  width:100%;
+}
+
+.personal_info{
+  float:left;
+  width:100%;
+}
+
+.personal_info ul{
+  margin:0;
+  padding:0;
+}
+
+.personal_info ul li{
+  list-style:none;
+}
+
+.personal_info ul li label{
+  display:inline-block;
+  min-width:120px;
+}
+
+.personal_info ul li span{
+  display:inline-block;
+}
+
+.profileboxn_subheading{
+  float: left;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 38px;
+  position: relative;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.profileboxn_subheading strong {
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  display: inline-block;
+  float: right;
+  font-size: 14px;
+  line-height: 26px;
+  margin-left: 5px;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.skills{
+  float:left;
+  width:100%;
+}
+
+.skills ul{
+  margin:0;
+  padding:0;
+}
+
+.skills ul li{
+  list-style:none;
+}
+
+.skills ul li label{
+  display: inline-block;
+  line-height: 17px;
+  margin-bottom: 0;
+  min-width: 25%;
+  vertical-align: top;
+}
+
+.skills ul li span{
+  display: inline-block;
+  width: 75%;
+}
+
+
+.hobbies{
+  float:left;
+  width:100%;
+  text-align:left;    /*-----------------changed------------------*/
+}
+
+.hobbies ul{
+  margin:0;
+  padding:0;
+  float:left;  /*-----------------changed------------------*/
+}
+
+.hobbies ul li{
+  list-style:none;
+  text-align:center;
+  display: inline-block;
+  padding:0 10px;
+}
+
+.hobbies ul li label{
+  display: block;
+}
+
+.hobbies ul li span{
+  font-size:30px;
+  display: block;
+}
+
+
+.addnew_job_con{
+  float:left;
+  width:100%;
+}
+
+.addnew_job_con h1{
+  font-size:36px;
+  margin:20px 0;
+  float:left;
+  width:100%;
+}
+
+.addnew_job_box{
+  float:left;
+  width:100%;
+}
+
+.team_con{
+  background: #fff;
+  float: left;
+  padding: 0 20px;
+  width: 100%;
+  margin-bottom:50px;
+}
+
+.team_heading{
+  padding:20px 0;
+  width:100%;
+  float:left;
+}
+
+.team_box{
+  float:left;
+  width:100%;
+}
+
+.team_box table tr td a{
+  margin:0 5px;
+}
+
+.search_top{
+  float:right;
+  width:25%;  /*-----------------changed------------------*/
+}
+
+.job_view_app{
+  background: #fff;
+  float: left;
+  padding: 0 20px;
+  width: 100%;
+  margin-bottom:50px;
+}
+
+.job_viewinaap_heading{
+  background: #fff;
+  float: left;
+  padding: 0 20px;
+  width: 100%;
+  margin-bottom:50px;
+  border-bottom:10px solid #565656;
+}
+
+.search_btn{
+  color:#fff;
+}
+
+/*************$i$*********** new profiel css ended here *************$i$**************/
+
+
+@media (min-width: 768px){}
+@media (min-width: 992px){}
+
+@media (max-width: 992px){
+  .carousel-caption h1 {
+    font-size: 35px;
+  }
+
+  .carousel-caption .btn {
+    margin-top: 5%;
+  }
+
+  .navbar-brand {
+    margin-top: 10px;
+  }
+
+  .client_quotes{
+    margin:10px 0;
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 992px) {}
+@media (max-width: 767px){
+
+  .carousel-caption {
+    top: 10%;  /*-----------------changed------------------*/
+  }
+
+  .navbar-nav {
+    width: 100%;
+  }
+
+  .nav > li {
+    margin-bottom: 10px;
+  }
+
+  .nav > li:last-child {
+    margin-bottom: 0;
+  }
+
+  .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+    border-color: #101010;
+    padding: 15px;
+  }
+
+  .social_box {
+    float: left;
+    margin-top: 15px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .db_logo {
+    float: left;
+    max-width: 250px;
+  }
+
+  .filter_box input[type="text"],.filter_box select{
+    margin-bottom:10px;
+  }
+
+  .tabpanel_inbox .nav-tabs {
+    margin:0 0 20px;
+    max-width: 100%;;
+    position: relative;
+
+  }
+  .tabpanel_inbox {
+    padding-left: 0;
+  }
+
+  .jobgroup_filter {
+    margin-bottom: 20px;
+  }
+
+  .jobsactions_box {
+    margin: 0;
+  }
+
+  .jobsactions_box input[type="button"], .jobsactions_box button {
+    margin-bottom: 20px;
+  }
+
+  .static_menu {
+    display:none;
+  }
+
+  .navbar_toggle {
+    display: block;
+    margin-left: 10px;
+    margin-top: 16px;
+  }
+
+  .bodys_wrap {
+    left: 0;
+    overflow-y: scroll;
+    position: fixed;
+    top: 330px;
+
+  }
+  .body {
+    padding: 54px 0 80px;
+  }
+
+  .bodys_wrap {
+    top: 54px;
+  }
+
+
+  .static_header .db_logo {
+    width: 58%;
+  }
+
+  .navbar_toggle {
+    display: block;
+    float: left;
+    margin: 0 10px 0 0;
+  }
+
+  .static_menu {
+    bottom: 0;
+    max-width: 100%;
+    top: 54px;
+    z-index: 1;
+  }
+
+  .static_header .dbheader_con {
+    text-align: center;
+  }
+
+  .static_header .db_logo {
+    display: inline-block;
+    float: none;
+    width: 58%;
+  }
+
+  .step_box {
+    padding: 0;
+  }
+
+  .notification_menu em{
+    display:none;
+  }
+
+  .bodys_wrap {
+    width: 100%;
+  }
+
+  .carousel-caption .btn {
+    padding: 10px 0;   /*-----------------changed------------------*/
+    width: 100%;
+    margin-bottom: 1%; /*-----------------changed------------------*/
+  }
+
+}
+@media (max-width: 639px){
+  .carousel-caption h1 {
+    font-size: 24px;
+  }
+
+  .carousel-caption h3 {
+    font-size: 20px;
+  }
+
+  .carousel-caption .btn {
+    margin-top: 1%;
+  }
+
+
+
+  .db_logo {
+    float: left;
+    max-width: 100%;
+    text-align: center;
+    width: 100%;
+  }
+
+  .profile_menu {
+    float: right;
+    width: 100%;
+  }
+
+  .static_header .profile_menu {
+    float: right;
+    width: auto;
+  }
+
+
+  .dbmain_menudd {
+    margin: 10px 0;
+  }
+
+  .overviewprofile_box .media > .pull-left {
+    margin-right: 0;
+    width:100%;
+    text-align:center;
+    margin-bottom:20px;
+  }
+
+  .overviewprofile_box .media > .pull-left .media-object {
+    display:inline-block;
+  }
+
+
+  .overviewprofile_box .media,.overviewprofile_box .media-body {
+    float: left;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .footers_menu ul li a {
+    padding:5px;
+  }
+  .footers_menu {
+    padding: 0;
+  }
+
+  .body {
+    padding: 54px 0 125px;
+  }
+
+  .skills ul li label {
+    min-width: 100%;
+  }
+
+  .skills ul li span {
+    width: 100%;
+  }
+
+  .step_box ul li {
+    width: 48%;
+  }
+
+  .step_box {
+    float: left;
+    margin-top: 20px;
+  }
+
+}
+@media (max-width: 479px){
+  .navbar-brand {
+    max-width: 200px;
+  }
+
+  .carousel-caption h1 {
+    font-size: 18px;
+  }
+
+  .carousel-caption h1 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+  }
+
+  .carousel-caption h3 {
+    font-size: 17px;
+    margin: 0 0 10px;
+  }
+
+  .carousel-indicators{
+    display:none;
+  }
+
+  .lsu_fb {
+    margin-bottom: 20px;
+  }
+
+  .notification_box {
+    margin-right: 10px;
+  }
+
+  .allagreements_img,.allcompanies_img,.openjob_img,.jobgroupmember_img {
+    float: left;
+    margin-bottom: 20px;
+    position: relative;
+    text-align: center;
+    top: 0;
+    width: 100%;
+  }
+
+  .allagreements_msg,.allcompanies_msg,.openjob_msg,.jobgroupmember_msg {
+    min-height: 0;
+    padding-left: 0;
+  }
+
+  .body {
+    padding: 330px 0 137px;
+  }
+
+  .static_header .profile_menu {
+    width:auto;
+    margin: 6px 0 0;
+  }
+
+  .static_header .notification_box {
+    font-size: 16px;
+  }
+
+  .static_header .db_logo {
+    margin: 6px 0 0;
+    width: 41%;
+  }
+
+  .notification_menu > ul {
+    top: 24px;
+  }
+
+  .personal_info ul li label {
+    display: block;
+    min-width: 100%;
+  }
+
+  .step_box ul li {
+    width: 100%;
+    margin-bottom:20px;
+  }
+
+
+}
+@media (max-width: 320px){}

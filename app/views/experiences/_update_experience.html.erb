@@ -1,0 +1,11 @@
+<div class='show_icon' id='experience_<%=experience.id%>'>
+  <div class='ed_icon'>
+    <div class="profileboxn_subheading"><%= experience.experience_title %>
+      <%= link_to edit_experience_path(experience), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+      <%= link_to experience, method: :delete, data: {confirm: "You are deleting '#{experience.experience_title}'", commit: 'Sure!'} , remote: true do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+      <strong><%= experience.experience_date_from %> to <%= experience.experience_date_to %></strong>
+    </div>
+  </div>
+  <p><%= experience.experience_company_name %></p>
+  <p><%= experience.experience_description %></p>
+</div>

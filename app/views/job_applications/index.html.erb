@@ -1,0 +1,91 @@
+<div class="dbbody_wrap">
+  <div class="addnew_job_con">
+    <h1><%= t('comany_home.pagecontent.my_jobs')%></h1>
+    <div class="team_con">
+      <div class="team_heading">
+        <div class="row"></div>
+        <div class="seach_job_view">
+          <form class="form-inline">
+            <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default"><i class="fa fa-list" aria-hidden="true"></i><%= t('page_job.list')%></button>
+            <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i><%= t('page_job.calendar')%></button>
+            <button type="button" class="btn btn-default"><i class="fa fa-map-marker" aria-hidden="true"></i><%= t('page_job.map')%></button>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" id="exampleInputAmount" placeholder="Select date">
+                <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+              </div>
+            </div>
+            <%= form_tag job_applications_path, method: :get do %>
+              <div class="form-group">
+                <%= text_field_tag :query,  params[:query],  class: "form-control", placeholder: t('page_job.keyword') %>
+              </div>
+              <div class="form-group">
+                <%= text_field_tag :town,  params[:town],  class: "form-control", placeholder: t('page_job.town') %>
+              </div>
+              <div class="form-group">
+                <%= text_field_tag :status,  params[:status],  class: "form-control", placeholder: 'Status' %>
+              </div>
+              <%= submit_tag t('company_my_jobs.search.search_btn'), name: nil, id: '', class: 'btn btn-default'%>
+            <% end %>
+          </form>
+        </div>
+
+      </div>
+      <div class="team_box">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th><input type="checkbox"> </th>
+            <th><%=t('page_job.company')%></th>
+            <th><%=t('page_job.job_name')%></th>
+            <th><%=t('page_job.town')%></th>
+            <th><%=t('page_job.type')%></th>
+            <th><%=t('page_job.start_time')%></th>
+            <th><%=t('page_job.last_apply_date')%></th>
+            <th><%=t('page_job.status')%></th>
+            <th width="100"><%=t('page_job.action')%></th>
+          </tr>
+          </thead>
+          <tbody>
+          <%if @job_applications%>
+            <% @job_applications.each do |job| %>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>
+                  <%if job.company.company_logo.url%>
+                    <%= image_tag(job.company.company_logo.url,  width: '32', alt: 'Media') %>
+                  <%else%>
+                    <%= image_tag("280x280.png",  width: "32", alt: "Media Object") %>
+
+                  <%end%>
+                  <%= job.company.company_name%>
+                </td>
+                <td><%= link_to job.job_name, job %></td>
+                <td><%= job.job_company_address_city%></td>
+                <td><%= job.job_type%></td>
+                <td><%= job.job_start_time%></td>
+                <td><%= job.job_last_date_to_apply%></td>
+                <td><%= job.job_status%></td>
+                <td><a href=""><i class="fa fa-list" aria-hidden="true"></i></a><a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a><a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i> </a></td>
+              </tr>
+            <%end%>
+          <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------------------- Modal Show Job Start ---------------------------------------------------->
+
+<div class="modal fade bs-example-modal-lg" id="showjob" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+    </div>
+  </div>
+</div>
+<!---------------------------------------------- Modal Show Job End ---------------------------------------------------->

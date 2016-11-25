@@ -1,0 +1,7 @@
+$("<%= j render partial: 'update_hobby', locals: {hobby: @hobby} %>").appendTo("#hobbiesShowDiv");
+/*
+$("#hobbiesShowDiv%>").replaceWith("<%#= j render partial: 'hobbies/create_hobby' , collection: @user_hobbies%>");
+*/
+$('#addHobby').modal('hide');
+/*toastr.success('<%#=t('languages_controller.languages_create_success')%>');*/
+toastr.success('Hobby Created Successfully');

@@ -1,0 +1,91 @@
+<div class="dbbody_wrap" >
+  <div>
+    <div class="dbbody_con" style="height:90% !important;">
+      <div class="overview_con">
+        <h1><%= t('comany_home.pagecontent.overview')%></h1>
+        <div class="row">
+          <div class="col-sm-12">
+            <%= render "shared/overview_profile" %>
+            <div class="progress_con">
+              <div class="row ">
+                <div class="col-sm-6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><%= t('worker_home.pagecontent.lot_of_interesting_jobs')%></h3>
+                      <p><%= t('worker_home.pagecontent.apply_today')%></p>
+                    </div>
+                    <div class="panel-body panel-height">
+                      <%= link_to t('worker_home.pagecontent.show_jobs'), worker_all_jobs_path, class: 'btn btn-warning pull-right'%>
+                      <%= t('worker_home.pagecontent.check_out_all_jobs_today')%>
+                    </div>
+                  </div>
+                </div>
+
+                <%if @user.user_account_progress < 100 %>
+                <div class="col-sm-6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><%= t('page_overview.complete_account_info')%></h3>
+                      <p><%= t('page_overview.account_info_needed')%></p>
+                    </div>
+                    <div class="panel-body panel-height">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow=<%= @user.user_account_progress %> aria-valuemin="0" aria-valuemax="100" style="width:<%= @user.user_account_progress %>%"></div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                          <%= link_to t('page_overview.add_contact_first_name'), account_path%>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <%end%>
+
+
+                <%if @user.user_profile_progress < 100 %>
+                <div class="col-sm-6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><%= t('worker_home.pagecontent.complete_your_profile')%></h3>
+                      <p><%= t('page_overview.account_info_needed')%></p>
+                    </div>
+                    <div class="panel-body panel-height">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow=<%= @user.user_profile_progress %> aria-valuemin="0" aria-valuemax="100" style="width:<%= @user.user_profile_progress %>%"></div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                          <%= link_to t('worker_home.pagecontent.add_title'), profile_path%>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <%end%>
+                <div class="col-sm-6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><%= t('page_overview.Need_some_help')%></h3>
+                      <p><%= t('page_overview.we_are_here')%></p>
+                    </div>
+                    <div class="panel-body panel-height">
+                      <%= link_to t('page_overview.get_support'), '#', class: 'btn btn-warning pull-right'%>
+                      <%= t('page_overview.we_can_help')%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class=""></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

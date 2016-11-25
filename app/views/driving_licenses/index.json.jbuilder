@@ -1,0 +1,1 @@
+json.array! @driving_licenses, partial: 'driving_licenses/driving_license', as: :driving_license

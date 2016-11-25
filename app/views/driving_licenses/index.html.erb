@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Driving Licenses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dl am</th>
+      <th>Dl aa</th>
+      <th>Dl a2</th>
+      <th>Dl a</th>
+      <th>Dl b</th>
+      <th>Dl be</th>
+      <th>Dl c</th>
+      <th>Dl c1</th>
+      <th>Dl ce</th>
+      <th>Dl c1e</th>
+      <th>Dl d</th>
+      <th>Dl d1</th>
+      <th>Dl de</th>
+      <th>Dl d1e</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @driving_licenses.each do |driving_license| %>
+      <tr>
+        <td><%= driving_license.dl_am %></td>
+        <td><%= driving_license.dl_aa %></td>
+        <td><%= driving_license.dl_a2 %></td>
+        <td><%= driving_license.dl_a %></td>
+        <td><%= driving_license.dl_b %></td>
+        <td><%= driving_license.dl_be %></td>
+        <td><%= driving_license.dl_c %></td>
+        <td><%= driving_license.dl_c1 %></td>
+        <td><%= driving_license.dl_ce %></td>
+        <td><%= driving_license.dl_c1e %></td>
+        <td><%= driving_license.dl_d %></td>
+        <td><%= driving_license.dl_d1 %></td>
+        <td><%= driving_license.dl_de %></td>
+        <td><%= driving_license.dl_d1e %></td>
+        <td><%= driving_license.user %></td>
+        <td><%= link_to 'Show', driving_license %></td>
+        <td><%= link_to 'Edit', edit_driving_license_path(driving_license) %></td>
+        <td><%= link_to 'Destroy', driving_license, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Driving license', new_driving_license_path %>

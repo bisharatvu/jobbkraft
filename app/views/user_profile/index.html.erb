@@ -1,0 +1,1043 @@
+<div class="dbbody_wrap">
+  <div>
+    <div class="dbbody_con">
+      <div class="profilesettting_con">
+        <div class="profile_imgbtns">
+          <div class="row">
+<!-==================================== Image Show START ====================================>
+            <div class="col-sm-3">
+              <div class="profileS_boxesprofile">
+                <%if @user.image_url.url%>
+                  <h4>
+                    <%= image_tag(@user.image_url.url, alt: 'logo', id: 'my_image',  class: 'img-thumbnail img-responsive profileImVi') %>
+                  </h4>
+                <%else%>
+                  <%= image_tag('212x244.png', alt: 'logo', id: 'my_image',  class: 'img-thumbnail img-responsive profileImVi') %>
+                <%end%>
+                <%= form_for(:image_uploading_form, url: :add_profile_image, remote: true, html: {method: :post, id: 'upload_form', multipart: true}) do |f| %>
+                  <div id='imgdiv'>
+                    <div class='wrapper'>
+                      <%= f.file_field :image_url%>
+                    </div>
+                    <button class="btn fa fa-camera">  </button>
+
+                  </div>
+                <% end %>
+              </div>
+            </div>
+<!-==================================== Image Show START ====================================>
+
+<!-==================================== Video Show START ====================================>
+<!-============================ Video Show Display video in LightBox =============================>
+
+            <div class="col-sm-3">
+              <div class="profileS_boxesprofile">
+                <%if @user.video_url.url%>
+                  <h4>
+                    <a href= <%= @user.video_url.to_s.html_safe %> class="html5lightbox" data-width="480" data-height="320" title="">
+                    <%=  image_tag("video.png", class: 'img-thumbnail img-responsive profileImVi' )%></a>
+                  </h4>
+                <%else%>
+                  <%= image_tag('212x244.png', alt: 'Video', id: 'my_image',  class: 'img-thumbnail img-responsive profileImVi') %>
+                <%end%>
+                <%= form_for(:video_uploading_form, url: :add_profile_video, remote: true, html: {method: :post, id: 'video_upload_form', multipart: true}) do |f| %>
+                  <div id="videodiv">
+                    <div class="wrapper">
+                      <%= f.file_field :video_url%>
+                    </div>
+                    <button class="btn"><i class="fa fa-video-camera"></i></button>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+
+
+<!-==================================== Video Show END ====================================>
+
+            <div class="col-sm-6">
+              <div class="profile_btns">
+                <button class="btn btn-default btn-primary mb10"><i class="fa fa-comment-o"></i><%=t('page_profile.personal_info.contact_me')%></button><br>
+                <button class="btn btn-default btn-primary"><%=t('page_profile.personal_info.send_job_agreement')%></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="profilesettting_heading">
+          <h1>
+            <%= @user.user_first_name%> <%= @user.user_last_name%>
+          </h1>
+          <%= link_to '/linkedin/auth', class: 'btn btn-default btn-primary pull-right' do %><i class="fa fa-linkedin-square" aria-hidden="true"></i><%=t('page_profile.import_linkedin_profile')%><%end%>
+        </div>
+
+        <div class="profileS_con">
+          <div class="profileS_box">
+<!-==================================== About Me Show START ====================================>
+            <div class="profile_boxn">
+              <div class="profileboxn_heading"><%=t('page_profile.personal_info.profile')%>
+                <a data-target="#editAboutMe" data-toggle="modal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <!--<a onclick= "editAboutMe();"><i class="fa fa-pencil" aria-hidden="true"></i></a>-->
+              </div>
+              <div class="profileboxn_con">
+                <%if @user.about_me%>
+                  <div id='aboutMeShowDiv'>
+                  <%= @user.about_me%>
+                  </div>
+                <%else%>
+                  <p id="about_me_text88">
+                    <%=t('page_profile.no_about_me')%>
+                  </p>
+                <%end%>
+              </div>
+            </div>
+<!-==================================== About Me Show END ====================================>
+            <div class="row">
+<!-==================================== PERSONAL INFO Show START ====================================>
+              <div class="col-sm-6">
+                <div class="profile_boxn">
+                  <div class="profileboxn_heading"><%=t('page_profile.personal_info.personal')%>
+                    <a data-target="#editaccountInfo" data-toggle="modal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                  </div>
+                  <div class="profileboxn_con">
+                    <div id="showPersonalInfo" class="personal_info">
+                      <ul>
+                        <li><label><%=t('page_profile.personal_info.first_name')%></label><span><%= @user.user_first_name%></span></li>
+                        <li><label><%=t('page_profile.personal_info.last_name')%></label><span><%= @user.user_last_name%></span></li>
+                        <li><label><%=t('page_profile.personal_info.mobile_phone')%></label><span><%= @user.user_cell_phone%></span></li>
+                        <li><label><%=t('page_profile.personal_info.email_address')%></label><span><%= @user.email%></span></li>
+                        <li><label><%=t('page_profile.personal_info.address')%></label><span><%= @user.user_address_street%></span></li>
+                        <li><label><%=t('page_profile.personal_info.zip')%></label><span><%= @user.user_address_zip%></span></li>
+                        <li><label><%=t('page_profile.personal_info.town')%></label><span><%= @user.user_address_city%></span></li>
+                        <li><label><%=t('page_profile.personal_info.personal_number')%></label><span><%= @user.user_personal_number%></span></li>
+                        <li><label><%=t('page_profile.personal_info.gender')%></label><span><%= @user.user_gender%></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+<!-==================================== PERSONAL INFO Show END ====================================>
+
+<!-==================================== Experience Show START ====================================>
+
+                <div class="profile_boxn">
+                  <div class="profileboxn_heading"><%=t('page_profile.experience')%><a data-target="#addExperiences" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></div>
+                  <div class="profileboxn_con">
+                    <div id='experiencesShowDiv'>
+                      <% if @user_experiences.count > 0 %>
+                        <% @user_experiences.each do |experience| %>
+                          <div class='show_icon' id='experience_<%=experience.id%>'>
+                            <div class="edit_delete_icon">
+                              <%= link_to edit_experience_path(experience), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+                              <%= link_to experience, method: :delete, data: {title: t('page_profile.delete_title'), confirm: "#{t('page_profile.delete_confirm')} '#{experience.experience_title}'", commit: 'Sure!'} , remote: true do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+                            </div>
+                            <div class="profileboxn_subheading"><%= experience.experience_title %>
+                              <strong>
+                                <%= experience.experience_date_from %>
+                                <% if experience.experience_date_to %>
+                                  to
+                                <%end%>
+                                <%= experience.experience_date_to %>
+                              </strong>
+                            </div>
+                            <p><%= experience.experience_company_name %></p>
+                            <p><%= experience.experience_description %></p>
+                          </div>
+                        <%end%>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+<!-==================================== Experience Show END ====================================>
+
+<!-==================================== Education Show START ====================================>
+              <div class="col-sm-6">
+                <div class="profile_boxn">
+                  <div class="profileboxn_heading"><%=t('page_profile.education')%><a data-target="#addEducations" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></div>
+                  <div class="profileboxn_con">
+                    <div id='educationsShowDiv'>
+                      <% if @user_educations.count > 0 %>
+                        <% @user_educations.each do |education| %>
+                          <div class='show_icon' id='education_<%=education.id%>'>
+                            <div class="edit_delete_icon">
+                              <%= link_to edit_education_path(education), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+                              <%= link_to education, method: :delete, data: {title: t('page_profile.delete_title'), confirm: "#{t('page_profile.delete_confirm')} '#{education.education_title}'", commit: 'Sure!'} , remote: true do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+                            </div>
+                            <div class="profileboxn_subheading"><%= education.education_title %>
+                              <strong><%= education.education_date_from %> to <%= education.education_date_to %></strong>
+                            </div>
+                            <p><%= education.education_school_name %></p>
+                            <p><%= education.education_description %></p>
+                          </div>
+                        <%end%>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+   <!-==================================== SKILLS DIV START ====================================>
+        <div class="profileS_con">
+          <div class="profileS_box">
+            <div class="row">
+              <div class="profile_boxn">
+                <div class="profileboxn_heading"><%=t('page_profile.skills')%></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <!-==================================== Competence Show START ====================================>
+                  <div class="profile_boxn">
+                    <div class="profileboxn_heading"><%=t('page_profile.competences') %><a data-target="#addCompetence" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></div>
+                    <div class="profileboxn_con">
+                      <div class="skills">
+                        <div id='competenceShowDiv'>
+                          <ul>
+                            <% if @user_competences.count > 0 %>
+                              <% @user_competences.each do |user_competence| %>
+                                <div class='show_icon' id='user_competence_<%= user_competence.id %>'>
+                                  <div class="edit_delete_icon">
+                                    <%= link_to edit_user_competence_path(user_competence), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+                                    <%= link_to user_competence, method: :delete, data: {title: t('page_profile.delete_title'), confirm: "#{t('page_profile.delete_confirm')} '#{user_competence.competence.competence_name}'", commit: 'Sure!'} , remote: true do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+                                  </div>
+                                  <li><label><%= user_competence.competence.competence_name %></label><span> <!--Don't change indentation-->
+                                <div class="progress" style="width: 50% !important;">
+                                  <div class="progress-bar progress-bar-black"  role="progressbar" aria-valuenow="#{<%= user_competence.competence_level %>}" aria-valuemin="0" aria-valuemax="100" style="width: <%= user_competence.competence_level %>%;">
+                                  </div>
+                                </div>
+                              </span>
+                                  </li>
+                                </div>
+                              <%end%>
+                            <%end%>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-==================================== Competence Show END ====================================>
+
+                  <!-==================================== Language Show START ====================================>
+                  <h id='addMoreLanguages'></h>
+                  <div class="profile_boxn">
+                    <div class="profileboxn_heading"><%=t('page_profile.language')%><a data-target="#addlanguage" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></div>
+                    <div class="profileboxn_con">
+                      <div id='languagesShowDiv'>
+                        <% if @user_languages.count > 0 %>
+                          <% @user_languages.each do |language| %>
+                            <div class='show_icon' id='language_<%=language.id%>'>
+                              <div class="profileboxn_subheading">
+                                <div class="edit_delete_icon">
+                                  <%= link_to edit_language_path(language), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+                                  <%= link_to language, method: :delete, data: {title: t('page_profile.delete_title'), confirm: "#{t('page_profile.delete_confirm')} '#{language.language_name}'", commit: 'Sure!'} , remote: true do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+                                </div>
+                                <%= language.language_name %>
+                              </div>
+                              <p><%= language.language_skill %></p>
+                            </div>
+                          <%end%>
+                        <%end%>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-==================================== Language Show END ====================================>
+
+                <!-==================================== Certificate Show START ====================================>
+                <h id='addMoreCertificates'></h>
+                <div class="col-sm-6">
+                  <div class="profile_boxn">
+                    <div class="profileboxn_heading"><%=t('page_profile.certificate')%><a data-target="#addCertificate" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></div>
+                    <div class="profileboxn_con">
+                      <div id='certificatesShowDiv'>
+                        <% if @user_certificates.count > 0 %>
+                          <% @user_certificates.each do |certificate| %>
+                            <div class='show_icon' id='certificate_<%=certificate.id%>'>
+                              <div class="edit_delete_icon">
+                                <%= link_to edit_certificate_path(certificate), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+                                <%= link_to certificate, method: :delete, data: {title: t('page_profile.delete_title'), confirm: "#{t('page_profile.delete_confirm')} '#{certificate.certificate_name}'", commit: 'Sure!'} , remote: true do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+                              </div>
+                              <div class="profileboxn_subheading"><%= certificate.certificate_name %>
+                                <strong><%= certificate.certificate_publish_date %></strong>
+                              </div>
+                              <p><%= certificate.certificate_publisher %></p>
+                              <p><%= certificate.certificate_description %></p>
+                            </div>
+                          <%end%>
+                        <%end%>
+                      </div>
+                    </div>
+                  </div>
+                  <!-==================================== Certificate Show END ====================================>
+
+                  <!-==================================== Driving License Show START ====================================>
+                  <h id='addMoreDrivingLicenses'></h>
+                  <div class="profile_boxn">
+                    <div class="profileboxn_heading"><%=t('page_profile.driving_license')%>
+                      <% if @driving_license %>
+                        <%= link_to edit_driving_license_path(@driving_license), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+                      <%end%>
+                    </div>
+                    <div class="profileboxn_con">
+                      <div class="hobbies">
+                        <div id='drivingLicenseShowDiv'>
+                          <% if @driving_license %>
+                            <div class='show_icon' id='driving_license_<%=@driving_license.id%>'>
+                              <ul>
+                                <% if @driving_license.dl_a %>
+                                  <li><span><i class="fa fa-motorcycle" aria-hidden="true"></i></span><label>A</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_a2 %>
+                                  <li><span><i class="fa fa-motorcycle" aria-hidden="true"></i></span><label>A2</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_aa %>
+                                  <li><span><i class="fa fa-motorcycle" aria-hidden="true"></i></span><label>AA</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_am %>
+                                  <li><span><i class="fa fa-motorcycle" aria-hidden="true"></i></span><label>AM</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_b %>
+                                  <li><span><i class="fa fa-car" aria-hidden="true"></i></span><label>B</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_be %>
+                                  <li><span><i class="fa fa-car" aria-hidden="true"></i></span><label>BE</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_c %>
+                                  <li><span><i class="fa fa-bus" aria-hidden="true"></i></span><label>C</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_ce %>
+                                  <li><span><i class="fa fa-bus" aria-hidden="true"></i></span><label>CE</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_c1 %>
+                                  <li><span><i class="fa fa-bus" aria-hidden="true"></i></span><label>C1</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_c1e %>
+                                  <li><span><i class="fa fa-bus" aria-hidden="true"></i></span><label>C1E</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_d %>
+                                  <li><span><i class="fa fa-truck" aria-hidden="true"></i></span><label>D</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_de %>
+                                  <li><span><i class="fa fa-truck" aria-hidden="true"></i></span><label>DE</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_d1 %>
+                                  <li><span><i class="fa fa-truck" aria-hidden="true"></i></span><label>D1</label></li>
+                                <%end%>
+                                <% if @driving_license.dl_d1e %>
+                                  <li><span><i class="fa fa-truck" aria-hidden="true"></i></span><label>D1E</label></li>
+                                <%end%>
+                              </ul>
+                            </div>
+                          <%end%>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-==================================== Driving Licences Show END ====================================>
+
+                  <!-==================================== HOBBIES Show START ====================================>
+                  <h id='addMoreHobbies'></h>
+                  <div class="profile_boxn">
+                    <div class="profileboxn_heading"><%=t('page_profile.add_hobby_popup.hobbies') %>
+                      <%= link_to new_hobby_path, remote: true do %><i class="fa fa-plus-circle" aria-hidden="true"></i> <%end%>
+                    </div>
+                    <div class="profileboxn_con">
+                      <div class="hobbies">
+                        <div id='hobbiesShowDiv'>
+                          <ul>
+                            <% if @user_hobbies.count > 0 %>
+                              <% @user_hobbies.each do |hobby| %>
+                                <div class="ed_hobby_inline">
+                                  <div class='show_icon' id='hobby_<%=hobby.id%>'>
+                                    <div class="ed_hobby_icon">
+                                      <%= link_to edit_hobby_path(hobby), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+                                      <%= link_to hobby, method: :delete, data: {title: t('page_profile.delete_title'), confirm: "#{t('page_profile.delete_confirm')} '#{hobby.hobby_name}'", commit: 'Sure!'} , remote: true do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+                                    </div>
+                                    <li><span><i class="fa <%= hobby.hobby_icon %>" aria-hidden="true"></i></span><label><%= hobby.hobby_name %></label></li>
+                                  </div>
+                                </div>
+                              <%end%>
+                            <%end%>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <!-==================================== HOBBIES Show END ====================================>
+            </div>
+          </div>
+        </div>
+        <!-==================================== SKILLS DIV END ====================================>
+
+        <%= render "shared/static_footer" %>
+
+        <!-==================================== Other Profile Info START ====================================>
+        <div class="profileS_con">
+          <div class="profileS_box">
+            <div class="row">
+              <div class="profile_boxn">
+                <div class="profileboxn_heading"><%=t('page_profile.other_info_about_you') %>
+                  <a onclick="openOtherProfileInfoModel();"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                </div>
+                <div id='userJobCategoriesDiv'>
+                  <%= render partial: 'user_profile/partials/user_job_categories', locals: {user_job_category: @user_job_category} %>
+                </div>
+                <div id='userJobTypeDiv'>
+                  <%= render partial: 'user_profile/partials/user_job_type', locals: {user_job_type: @user_job_type} %>
+                </div>
+                <div id='userFreelancerDiv'>
+                  <%= render partial: 'user_profile/partials/user_freelancer', locals: {user: @user} %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-==================================== SKILLS DIV END ====================================>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!------------------------------------------- Page Content END ---------------------------------------->
+
+<!-------------------------------------------- EDIT Modal START ----------------------------------------->
+<div class="modal fade" id="editModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+</div>
+<!-------------------------------------------- Edit Modal END ----------------------------------------->
+
+<!------------------------------------------- Modal For Add About Me Start ---------------------------------------->
+<div class="modal fade" id="editAboutMe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.add_about_me_popup.add_about_me') %></h4>
+      </div>
+      <%= form_for(@user, url: :edit_about_me_text, html: {method: :post, id: 'edit_about_me_form'}, format: :js,remote: true) do |f| %>
+        <div class="modal-body">
+          <%= f.text_area :about_me, class: 'form-control', id: 'aboutMeTextArea', required: true%>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+          <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<!-------------------------------------------- Modal For Add About Me End ----------------------------------------->
+
+<!-------------------------------------------- Modal Add Education Modal START ----------------------------------------->
+<div class="modal fade" id="addEducations" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.add_education') %></h4>
+      </div>
+      <%= form_for(:education, url: educations_path, html: {id: "addEducationForm", "data-toggle" => "validator", role: "form"},format: :json, remote: true ) do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label t('page_profile.add_education_popup.education') %>
+            <%= f.text_field :education_title, placeholder: t('page_profile.add_education_popup.placeholder.education'), id: "education_title", class: 'form-control', required: true %>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group">
+            <%= f.label t('page_profile.add_education_popup.school') %>
+            <%= f.text_field :education_school_name, placeholder: t('page_profile.add_education_popup.placeholder.school'), id: "education_school_name", class: 'form-control', required: true %>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.label t('page_profile.add_education_popup.from_date') %>
+                <div class='input-group' id='datetimepicker5' onclick='datepicker2(datetimepicker5);'>
+                  <%= f.text_field :education_date_from, placeholder: '2016-09-29', id: "education_date_from", class: 'form-control', required: true %>
+                  <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true" ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.label t('page_profile.add_education_popup.to_date') %>
+                <div class="input-group" id='datetimepicker6' onclick='datepicker2(datetimepicker6);'>
+                  <%= f.text_field :education_date_to, placeholder: "2016-09-29", id: "education_date_to", class: 'form-control', required: true %>
+                  <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true" ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label t('page_profile.add_education_popup.description') %>
+            <%= f.text_area :education_description, rows: 6,  placeholder: t('page_profile.add_education_popup.placeholder.description'), id: 'education_description', class: "form-control", required: true %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+          <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+<!-------------------------------------------- Modal Add Education END ----------------------------------------->
+
+<!-------------------------------------------- Modal Add Experience Start ----------------------------------------->
+<div class="modal fade" id="addExperiences" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.add_experience') %></h4>
+      </div>
+      <%= form_for(:experience, url: experiences_path, html: {id: "addExperiencesForm", "data-toggle" => "validator", role: "form"},format: :js, remote: true ) do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label t('page_profile.add_experience_popup.company') %>
+            <%= f.text_field :experience_company_name, placeholder: t('page_profile.add_experience_popup.placeholder.company'), id: "experience_company_name", class: 'form-control', required: true %>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group">
+            <%= f.label t('page_profile.add_experience_popup.job_title') %>
+            <%= f.text_field :experience_title, placeholder: t('page_profile.add_experience_popup.placeholder.job_title'), id: "experience_title", class: 'form-control', required: true %>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.label t('page_profile.add_experience_popup.from_date') %>
+                <div class="input-group" id='datetimepicker5' onclick='datepicker2(datetimepicker5);'>
+                  <%= f.text_field :experience_date_from, placeholder: '2016-09-29', id: "experience_date_from", class: 'form-control', required: true %>
+                  <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true" ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id='experienceDateToDive'>
+              <div class="col-sm-6" id='experienceDateToChildDive'>
+                <div class="form-group">
+                  <%= f.label t('page_profile.add_experience_popup.to_date') %>
+                  <div class="input-group" id='datetimepicker6' onclick='datepicker2(datetimepicker6);'>
+                    <%= f.text_field :experience_date_to, placeholder: '2016-09-29', id: 'experience_date_to', class: 'form-control', required: true %>
+                    <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true" ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :experience_i_am_work_here, id: 'experience_i_am_work_here'  %><%= t('page_profile.add_experience_popup.i_am_work_here') %></label>
+          </div>
+          <div class="form-group">
+            <%= f.label t('page_profile.add_experience_popup.branch') %>
+            <%= f.text_field :experience_branch,  placeholder: t('page_profile.add_experience_popup.placeholder.branch'), id: 'experience_branch', class: "form-control", required: true %>
+          </div>
+          <div class="form-group">
+            <%= f.label t('page_profile.add_experience_popup.description') %>
+            <%= f.text_area :experience_description, rows: 6,  placeholder: t('page_profile.add_experience_popup.placeholder.description'), id: 'experience_description', class: "form-control", required: true %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+          <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+        </div>
+      <%end%>
+      <div class="push_popup"></div>
+    </div>
+  </div>
+</div>
+<!-------------------------------------------- Modal Add Experience END ----------------------------------------->
+
+<!-------------------------------------------- Edit Experience Modal START ----------------------------------------->
+<div class="modal fade" id="editExperiences" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+</div>
+<!-------------------------------------------- Edit Experience  Modal END ----------------------------------------->
+
+<!------------------------------------------- Add Competence Modal START ---------------------------------------->
+<div class="modal fade" id="addCompetence" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type='button' class='close' data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.add_competences') %></h4>
+      </div>
+      <%= form_for(:user_competence, url: user_competences_path, html: {id: 'addCompetenceForm', "data-toggle" => "validator", role: "form"},format: :js, remote: true) do |f| %>
+        <div class='modal-body'>
+          <div class='form-group'>
+            <label for="exampleInputEmail1"><%=t('page_profile.add_competence_popup.competence_name') %></label>
+            <%= f.autocomplete_field :competence_name, autocomplete_competence_competence_name_competences_path, update_elements: {}, class: 'form-control', required: true, id: 'competence_text'%>
+          </div>
+          <div class='form-group'>
+            <label for="exampleInputEmail1"><%=t('page_profile.add_competence_popup.competence_level') %></label>
+            <%= f.select(:competence_level,([['1', '10'],['2', '20'],['3', '30'],['4', '40'],['5', '50'],['6', '60'],['7', '70'],['8', '80'],['9', '90'],['10', '100']]), {prompt: t('page_profile.add_competence_popup.placeholder.competence_level')}, class: 'form-control', id: "competence_level" , required: true) %>
+          </div>
+        </div>
+        <div class='modal-footer'>
+          <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-------------------------------------------- Add Competence Modal END ----------------------------------------->
+
+<!-------------------------------------------- Add Certificate ModalStart ----------------------------------------->
+<div class="modal fade" id="addCertificate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.add_certificate') %></h4>
+      </div>
+      <%= form_for(:certificate, url: certificates_path, html: {id: "addCertificateForm", "data-toggle" => "validator", role: "form"},format: :js, remote: true ) do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label t('page_profile.add_certificat_popup.certificat_name') %>
+            <%= f.text_field :certificate_name, placeholder: t('page_profile.add_certificat_popup.placeholder.certificat_name'), id: 'certificate_name', class: 'form-control', required: true %>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group">
+            <%= f.label t('page_profile.add_certificat_popup.certificat_publisher') %>
+            <%= f.text_field :certificate_publisher, placeholder: t('page_profile.add_certificat_popup.placeholder.certificat_publisher'), id: 'certificate_publisher', class: 'form-control', required: true %>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.label t('page_profile.add_certificat_popup.certificat_publish_date') %>
+                <div class="input-group" id='datetimepicker1' onclick='datepicker2(datetimepicker1);'>
+                  <%= f.text_field :certificate_publish_date, placeholder: '2016-09-29', id: 'certificate_publish_date', class: 'form-control', required: true %>
+                  <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true" ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label t('page_profile.add_certificat_popup.certificat_description') %>
+            <%= f.text_area :certificate_description, rows: 6,  placeholder: t('page_profile.add_certificat_popup.placeholder.certificat_description'), id: 'certificate_description', class: "form-control", required: true %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+          <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+        </div>
+      <%end%>
+      <div class="push_popup"></div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------------------------- Add Certificate Modal End ----------------------------------------->
+
+<!-------------------------------------------- Edit Certificate Modal START ----------------------------------------->
+<div class="modal fade" id="editCertificate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+</div>
+
+<!-------------------------------------------- Edit Certificate Modal END ----------------------------------------->
+
+<!-------------------------------------------- Add Language Modal Start ----------------------------------------->
+<div class="modal fade" id="addlanguage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.add_language') %></h4>
+      </div>
+      <%= form_for(:language, url: languages_path, html: {id: "addLanguageForm", "data-toggle" => "validator", role: "form"}, remote: true ) do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label t('page_profile.add_language_popup.language') %>
+            <%= f.text_field :language_name, placeholder: t('page_profile.add_language_popup.placeholder.language'), id: 'language_name', class: 'form-control', required: true %>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group">
+            <%= f.label t('page_profile.add_language_popup.skill')%>
+            <%= f.text_field :language_skill, placeholder: t('page_profile.add_language_popup.placeholder.skill'), id: 'language_skill', class: 'form-control', required: true %>
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+          <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+<!-------------------------------------------- Add Language Modal End ----------------------------------------->
+
+<!-------------------------------------------- Edit Language Modal Start ----------------------------------------->
+<div class="modal fade" id="editlanguage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+</div>
+
+<!-------------------------------------------- Edit Language Modal End ----------------------------------------->
+
+<!-------------------------------------------- Add Driving License Modal START ----------------------------------------->
+<div class="modal fade" id="addDrivinglicense" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.add_driving_license') %></h4>
+      </div>
+      <%= form_for(:driving_license, url: driving_licenses_path, mathod: :post, html: {id: 'addDrivingLicenseForm', "data-toggle" => "validator", role: "form"},format: :js, remote: true ) do |f| %>
+        <div class="modal-body">
+          <div class="checkbox">
+            <label><%= f.check_box :dl_am %>AM</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_aa %>Aa</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_a2 %>A2</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_a %>A</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_b %>B</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_be %>BE</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_c1 %>C1</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_c1e %>C1E</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_c %>C</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_ce %>CE</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_d1 %>D1</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_d1e %>D1E</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_d %>D</label>
+          </div>
+          <div class="checkbox">
+            <label><%= f.check_box :dl_de %>DE</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+          <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+<!-------------------------------------------- Add Driving License Modal END ----------------------------------------->
+<!------------------------------------------- Modal For Add Hobby Start ---------------------------------------->
+<div class="modal fade" id="addHobby" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+</div>
+
+<!-------------------------------------------- Modal For Add Hobby End ----------------------------------------->
+
+<!-------------------------------------------- Model Edit Other Profile Info START ----------------------------------------->
+<div class="modal fade" id="editOtherProfileInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Other Profile Info</h4>
+      </div>
+      <%= form_for(:user_profile, url: :update_other_profile_info, html: {method: :post, id: 'editOtherProfileInfoForm'}, format: :js, remote: true) do |f| %>
+        <div class="modal-body">
+          <div class="addjob_subbox">
+            <div class="subheading_addjob">Job Category</div>
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :administrative, id: 'user_administrative'%>
+                  Administrative
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :brand_ambassador, id: 'user_brand_ambassador'%>
+                  Brand Ambassador
+                </label>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :customer_service, id: 'user_customer_service'%>
+                  Customer Service
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :data_entry, id: 'user_data_entry'%>
+                  Data Entry
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :delivery, id: 'user_delivery'%>
+                  Delivery
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :event_staff, id: 'user_event_staff'%>
+                  Event Staff
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :warehousing, id: 'user_warehousing'%>
+                  Fulfillment / Warehousing
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :general_labor, id: 'user_general_labor'%>
+                  General Labor
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :market_research, id: 'user_market_research'%>
+                  Market Research
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :marketing, id: 'user_marketing'%>
+                  Marketing
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :merchandising, id: 'user_merchandising'%>
+                  Merchandising
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :sales, id: 'user_sales'%>
+                  Sales
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :software_testing, id: 'user_software_testing'%>
+                  Software Testing
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :volunteer, id: 'user_volunteer'%>
+                  Volunteer
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :washing, id: 'user_washing'%>
+                  Washing & Cleaning
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :other, id: 'user_other'%>
+                  Other
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="addjob_subbox">
+            <div class="subheading_addjob">Job Type</div>
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :consultant, id: 'user_consultant'%>
+                  Consultant
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :hire, id: 'user_hire'%>
+                  Hire
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="addjob_subbox">
+            <div class="subheading_addjob"></div>
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :user_freelancer_company, id: 'user_freelancer_company'%><%= t('page_profile.i_am_freelancer')%>
+                </label>
+              </div>
+            </div>
+            <div class="hidden" id="userCompanyInfoFields">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <%= f.label t('company_my_company.add_company_popup.company_name')%><br>
+                    <%= f.text_field :user_company_name, placeholder: t('company_my_company.add_company_popup.company_name'), id: 'user_company_name', class: 'form-control' %>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <%= f.label t('page_account_setting.company_number') %><br>
+                    <%= f.telephone_field :user_company_number, placeholder: t('page_account_setting.company_number'), id: 'user_company_number', class: 'form-control' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+          <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+        </div>
+      <%end%>
+      <div class="push_popup"></div>
+    </div>
+  </div>
+</div>
+
+<!--------------------------------------------  Model Edit Other Profile Info END ----------------------------------------->
+
+<!-------------------------------------------- Model Update Account Info START ----------------------------------------->
+<div class="modal fade" id="editaccountInfo" tabindex="-9" role="dialog" aria-labelledby="myModalLabel" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Account Info</h4>
+      </div>
+      <%= form_for(@update_account, url: update_account_info_path, html: {id: 'add_account_info_form', 'data-toggle' => 'validator', role: 'form', multipart: true}, format: :js,remote: true ) do |f| %>
+        <div class="modal-body">
+          <div class="consultant_con">
+            <div class="addjob_subbox">
+              <div class="subheading_addjob"><%= t('page_account_setting.personal_info')%></div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <%= f.label t('page_profile.personal_info.first_name') %><br>
+                    <%= f.text_field :user_first_name, placeholder: 'First Name', id: 'user_address_zip', class: 'form-control' %>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <%= f.label t('page_profile.personal_info.last_name')%><br>
+                    <%= f.text_field :user_last_name, placeholder: 'Last Name', id: 'user_address_city', class: 'form-control' %>
+                  </div>
+                </div>
+              </div>
+              <%= render partial: 'worker_account_info_fields', locals: {f: f} %>
+              <div class="addjob_subbox">
+                <div class="subheading_addjob"><%= t('page_account_setting.contact_info')%></div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <%= f.label t('page_account_setting.phone_no')%><br>
+                      <%= f.telephone_field :user_cell_phone, placeholder: t('page_account_setting.phone_no'), id: 'user_cell_phone', class: 'form-control' %>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <%= f.label t('page_profile.personal_info.mobile_phone') %><br>
+                      <%= f.telephone_field :user_phone_no, placeholder: t('page_profile.personal_info.mobile_phone'), id: 'user_phone_no', class: 'form-control' %>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <%= f.label t('page_profile.personal_info.email_address')%><br>
+                      <%= f.email_field :email, placeholder: t('page_profile.personal_info.email_address'), id: 'user_email', class: 'form-control', required: true %>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+            <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+          </div>
+      <%end%>
+      <div class="push_popup"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--------------------------------------------  Model Update Account Info END ----------------------------------------->

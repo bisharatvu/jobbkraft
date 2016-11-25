@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  certificate_name: MyString
+  certificate_publisher: MyString
+  certificate_publish_date: MyString
+  certificate_description: MyText
+  user_id: 
+
+two:
+  certificate_name: MyString
+  certificate_publisher: MyString
+  certificate_publish_date: MyString
+  certificate_description: MyText
+  user_id: 

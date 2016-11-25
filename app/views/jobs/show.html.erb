@@ -1,0 +1,115 @@
+<div class="dbbody_wrap">
+  <div class="job_view_app">
+    <div class="job_viewinaap_heading">
+      <%if @job.company.company_logo.url%>
+        <%= image_tag(@job.company.company_logo.url, alt: "Company Logo", class: 'company_logo') %>
+      <%else%>
+        <%= image_tag("280x280.png", alt: "Company Logo", class: 'company_logo') %>
+      <%end%>
+    </div>
+    <div class="jobpopaplly_con">
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="jobpopaplly_boxl">
+            <h1><%= @job.job_name %></h1>
+            <h4><%=t('page_job.about_us')%></h4>
+            <p><%= strip_tags(@job.job_company_description) %></p>
+            <h4><%=t('page_job.about_job')%></h4>
+            <p><%= strip_tags(@job.job_discription) %></p>
+            <%if @job.job_requirements%>
+              <h4><%=t('page_job.job_requirements')%></h4>
+              <% @job.job_requirements.each do |job_requirement| %>
+                <p><%= job_requirement.requirement_name %></p>
+              <%end%>
+            <%end%>
+            <%if @job.extra_questions%>
+              <h4><%=t('company_my_jobs.show_job_popup.extra_question')%></h4>
+              <% @job.extra_questions.each do |extra_question| %>
+                <p><%= extra_question.job_question %></p>
+              <%end%>
+            <%end%>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="jobaside_ontetnt">
+            <ul>
+              <li><label><%=t('company_my_jobs.show_job_popup.employer')%></label><span><%= @job.company.company_name %></span></li>
+              <li><label><%=t('company_my_jobs.show_job_popup.contact_person')%></label><span><%= @job.company.company_contact_person_first_name %> <%= @job.company.company_contact_person_last_name %></span></li>
+              <li><label><%=t('company_my_jobs.show_job_popup.job_type')%></label><span><%= @job.job_type %></span></li>
+              <li><label><%=t('company_my_jobs.show_job_popup.last_day')%></label><span><%= @job.job_last_date_to_apply %></span></li>
+            </ul>
+          </div>
+          <div class="jobaside_btncon">
+            <%if @user.is_company%>
+            <%else%>
+              <div class="jobaside_btncon push_popup">
+                <%= form_for(:saved_job, url: saved_jobs_path, html: {id: "saved_job_form", "data-toggle" => "validator", role: "form"} ) do |f| %>
+                  <div class="hidden">
+                    <%= f.text_field :job_id, value: @job.id %>
+                  </div>
+                  <%= f.submit t('company_my_jobs.show_job_popup.save_btn'), class: "btn btn-primary lsu_btn save" %>
+                <%end%>
+                <button class="btn btn-primary lsu_btn"  data-target="#apply" data-toggle="modal" type="button"><%=t('company_my_jobs.show_job_popup.apply_btn')%></button>
+              </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--------------------------------------------- Modal Apply Start --------------------------------------------------->
+
+<div class="modal fade bs-example-modal-lg" id="apply" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%=t('company_my_jobs.apply_job_popup.apply')%></h4>
+      </div>
+      <%= form_for(:job_application, url: job_applications_path, html: {id: "job_application_form", "data-toggle" => "validator", role: "form"} ) do |f| %>
+        <div class="modal-body">
+          <div class="jobpopaplly_con">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="jobpopaplly_boxl">
+                  <div class="form-group">
+                    <div class="hidden">
+                      <%= f.text_field :job_id, value: @job.id %>
+                    </div>
+                    <%if @job.extra_questions%>
+                      <h4><%=t('company_my_jobs.show_job_popup.extra_question')%></h4>
+                      <% @job_questions.zip(@answer).each do |question, answer| %>
+
+                        <%= fields_for 'answers[]', answer do |p| %>
+                          <div class="form-group">
+                            <%= p.label question.job_question %>
+                            <%= p.text_field :job_question_answer , placeholder: t('company_my_jobs.apply_job_popup.placeholder.answer_question'), class: 'form-control', required: true  %>
+                          </div>
+                          <div class="hidden">
+                            <%= p.text_field :extra_question_id, value: question.id %>
+                          </div>
+                        <% end %>
+
+                      <%end%>
+                    <%end%>
+                    <%= f.label t('company_my_jobs.apply_job_popup.job_apply_info_why_good') %>
+                    <%= f.text_area :apply_job_info, rows: 4, placeholder: t('company_my_jobs.apply_job_popup.placeholder.job_apply_info'), id: 'apply_job_info', class: 'form-control', required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit t('company_my_jobs.apply_job_popup.apply'), class: "btn btn-primary lsu_btn" %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+<!----------------------------------------------- Modal Apply End ----------------------------------------------------->

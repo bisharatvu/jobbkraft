@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Certificate name:</strong>
+  <%= @certificate.certificate_name %>
+</p>
+
+<p>
+  <strong>Certificate publisher:</strong>
+  <%= @certificate.certificate_publisher %>
+</p>
+
+<p>
+  <strong>Certificate publish date:</strong>
+  <%= @certificate.certificate_publish_date %>
+</p>
+
+<p>
+  <strong>Certificate description:</strong>
+  <%= @certificate.certificate_description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @certificate.user %>
+</p>
+
+<%= link_to 'Edit', edit_certificate_path(@certificate) %> |
+<%= link_to 'Back', certificates_path %>

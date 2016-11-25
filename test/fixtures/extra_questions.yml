@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job_question: MyText
+  job_id: 
+
+two:
+  job_question: MyText
+  job_id: 

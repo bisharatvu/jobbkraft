@@ -1,0 +1,3 @@
+$("#driving_license_<%=@driving_license.id%>").replaceWith("<%= j render partial: 'update_driving_license', locals: {driving_license: @driving_license} %>");
+$('#editModel').modal('hide');
+toastr.success('<%=t('driving_licenses_controller.driving_licenses_update_success')%>');

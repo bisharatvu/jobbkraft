@@ -1,0 +1,171 @@
+<% if user_signed_in? %>
+  <%if @user.is_company %>
+    <div class="static_menu ">
+      <ul class="nav nav-sidebar">
+        <%if $lmc_left_menu == "lmc_overview"%>
+        <li class="active"><%= link_to company_home_path do %><i aria-hidden="true" class="fa fa-home"></i> <%= t('comany_home.pagecontent.overview')%> <%end%></li>
+        <%else%>
+        <li><%= link_to company_home_path do %><i aria-hidden="true" class="fa fa-home"></i> <%= t('comany_home.pagecontent.overview')%> <%end%></li>
+        <%end%>
+
+        <%if $lmc_left_menu == "lmc_new_job"%>
+          <li class="active"><%= link_to new_job_path do %><i aria-hidden="true" class="fa fa-plus-square-o"></i> <%= t('page_sidebar.new_job')%> <%end%></li>
+        <%else%>
+          <li><%= link_to new_job_path do %><i aria-hidden="true" class="fa fa-plus-square-o"></i> <%= t('page_sidebar.new_job')%> <%end%></li>
+        <%end%>
+
+        <%if  $lmc_left_menu == "lmc_my_jobs" %>
+          <li class= "active"><%= link_to jobs_path do %><i aria-hidden="true" class="fa fa-briefcase"></i> <%= t('comany_home.pagecontent.my_jobs')%> <%end%>
+        <%else%>
+          <li><%= link_to jobs_path do %><i aria-hidden="true" class="fa fa-briefcase"></i> <%= t('comany_home.pagecontent.my_jobs')%> <%end%>
+        <%end%>
+          <ul class="subleft_menu_company_job">
+            <%if  $lmc_subleft_menu == "lmc_all_jobs" %>
+              <li class="active"><%= link_to  t('page_sidebar.all'), jobs_path %></li>
+            <%else%>
+              <li><%= link_to t('page_sidebar.all'), jobs_path %></li>
+            <%end%>
+            <li class=""><%= link_to t('page_sidebar.draft'), "#" %></li>
+            <%if  $lmc_subleft_menu == "lmc_my_review_jobs" %>
+              <li class="active"><%= link_to t('page_sidebar.review'), my_review_jobs_path %></li>
+            <%else%>
+              <li class=""><%= link_to t('page_sidebar.review'), my_review_jobs_path %></li>
+            <%end%>
+            <li class=""><%= link_to t('page_sidebar.open'), "#" %></li>
+            <li class=""><%= link_to t('page_sidebar.agreement_sent'), "#" %></li>
+            <li class=""><%= link_to t('page_sidebar.active'), "#" %></li>
+            <li class=""><%= link_to t('page_sidebar.done_and_to_rate'), "#" %></li>
+            <li class=""><%= link_to t('page_sidebar.finished'), "#" %></li>
+            <li class=""><%= link_to t('page_sidebar.archived'), "#" %></li>
+          </ul>
+        </li>
+        <li class=""><%= link_to "#" do %><i aria-hidden="true" class="fa fa-comment"></i> <%= t('page_sidebar.messages')%> <%end%></li>
+        <%if  $lmc_left_menu == "lmc_my_companies" %>
+          <li class="active"><%= link_to companies_path do %><i aria-hidden="true" class="fa fa-cubes"></i> <%= t('comany_home.pagecontent.my_companies')%> <%end%></li>
+        <%else%>
+          <li class=""><%= link_to companies_path do %><i aria-hidden="true" class="fa fa-cubes"></i> <%= t('comany_home.pagecontent.my_companies')%> <%end%></li>
+        <%end%>
+        <li class=""><%= link_to "#" do %><i aria-hidden="true" class="fa fa-users"></i> <%= t('page_sidebar.work_pool')%> <%end%>
+          <ul class="subleft_menu_workpool" >
+            <li class=""><%= link_to  t('page_sidebar.all_applicants'), "#" %></li>
+            <li class=""><%= link_to  t('page_sidebar.work_pool'), "#" %></li>
+            <li class=""><%= link_to  t('page_sidebar.teams'), "#" %></li>
+      </ul>
+        </li>
+        <%if  $lmc_left_menu == 'settings' %>
+          <li class='active'><%= link_to account_path do %><i aria-hidden="true" class="fa fa-cogs"></i> <%= t('page_sidebar.setting')%> <%end%>
+        <%else%>
+          <li class=""><%= link_to account_path do %><i aria-hidden="true" class="fa fa-cogs"></i> <%= t('page_sidebar.setting')%> <%end%>
+        <%end%>
+          <ul class='subleft_menu_setting' >
+            <%if  $lmc_subleft_menu == "account_setting" %>
+              <li class='active'><%= link_to 'Account', account_path %></li>
+            <%else%>
+              <li class=""><%= link_to 'Account', account_path %></li>
+            <%end%>
+            <%if $lmc_subleft_menu == 'change_password'%>
+              <li class="active"><%= link_to t('page_change_password.change_password'), edit_user_registration_path %></li>
+            <%else%>
+              <li class=""><%= link_to t('page_change_password.change_password'), edit_user_registration_path %></li>
+            <%end%>
+          </ul>
+        </li>
+        <li class=""><%= link_to destroy_user_session_path, method: :delete do %><i aria-hidden="true" class="fa fa-power-off"></i> <%= t('header.logout')%> <%end%></li>
+      </ul>
+    </div>
+  <%else%>
+    <div class="static_menu ">
+      <ul class="nav nav-sidebar">
+        <%if $lmc_left_menu == 'lmw_overview'%>
+          <li class="active"><%= link_to worker_home_path do %><i aria-hidden="true" class="fa fa-home"></i> <%= t('comany_home.pagecontent.overview')%> <%end%></li>
+        <%else%>
+          <li><%= link_to worker_home_path do %><i aria-hidden="true" class="fa fa-home"></i> <%= t('comany_home.pagecontent.overview')%> <%end%></li>
+        <%end%>
+
+        <%if $lmc_left_menu == "lmw_all_jobs"%>
+          <li class="active"><%= link_to "#" do %><i aria-hidden="true" class="fa fa-briefcase"></i> <%= t('comany_home.pagecontent.my_jobs')%> <%end%>
+        <%else%>
+          <li><%= link_to "#" do %><i aria-hidden="true" class="fa fa-briefcase"></i> <%= t('comany_home.pagecontent.my_jobs')%> <%end%>
+        <%end%>
+          <ul class="subleft_menu_worker_job">
+            <%if $lmc_subleft_menu == 'lmw_all_jobs'%>
+              <li class='active'><%= link_to t('worker_home.pagecontent.all_jobs'), worker_all_jobs_path %></li>
+            <%else%>
+              <li><%= link_to t('worker_home.pagecontent.all_jobs'), worker_all_jobs_path %></li>
+            <%end%>
+            <%if $lmc_subleft_menu == 'lmw_job_nearby'%>
+              <li class='active'><%= link_to t('page_sidebar.nearby'), '#' %></li>
+            <%else%>
+              <li><%= link_to t('page_sidebar.nearby'), '#' %></li>
+            <%end%>
+            <%if $lmc_subleft_menu == 'lmw_job_match'%>
+              <li class='active'><%= link_to t('page_sidebar.match'), '#' %></li>
+            <%else%>
+              <li><%= link_to t('page_sidebar.match'), '#' %></li>
+            <%end%>
+            <%if $lmc_subleft_menu == 'lmw_saved_jobs'%>
+              <li class='active'><%= link_to t('worker_home.pagecontent.my_saved_jobs'), saved_jobs_path %></li>
+          <%else%>
+              <li><%= link_to t('worker_home.pagecontent.my_saved_jobs'), saved_jobs_path %></li>
+            <%end%>
+            <%if $lmc_subleft_menu == 'lmw_job_applications'%>
+              <li class='active'><%= link_to t('worker_home.pagecontent.my_applied_jobs'), job_applications_path %></li>
+            <%else%>
+              <li><%= link_to t('worker_home.pagecontent.my_applied_jobs'), job_applications_path %></li>
+            <%end%>
+            <%if $lmc_subleft_menu == 'lmw_job_agreement_received'%>
+              <li class='active'><%= link_to t('page_sidebar.agreement_received'), '#' %></li>
+            <%else%>
+              <li><%= link_to t('page_sidebar.agreement_received'), '#' %></li>
+            <%end%>
+            <%if $lmc_subleft_menu == 'lmw_job_active'%>
+              <li class='active'><%= link_to t('page_sidebar.active'), '#' %></li>
+            <%else%>
+              <li><%= link_to t('page_sidebar.active'), '#' %></li>
+            <%end%>
+            <%if $lmc_subleft_menu == 'lmw_job_done'%>
+              <li class='active'><%= link_to t('page_sidebar.done'), '#' %></li>
+            <%else%>
+              <li><%= link_to t('page_sidebar.done'), '#' %></li>
+            <%end%>
+            <%if $lmc_subleft_menu == 'lmw_job_finished'%>
+              <li class='active'><%= link_to t('page_sidebar.finished'), '#' %></li>
+            <%else%>
+              <li><%= link_to t('page_sidebar.finished'), '#' %></li>
+            <%end%>
+            <%if $lmc_subleft_menu == 'lmw_job_archived'%>
+              <li class='active'><%= link_to t('page_sidebar.archived'), '#' %></li>
+            <%else%>
+              <li><%= link_to t('page_sidebar.archived'), '#' %></li>
+            <%end%>
+          </ul>
+        </li>
+        <li class=""><%= link_to "#" do %><i aria-hidden="true" class="fa fa-comment"></i> <%= t('page_sidebar.messages')%> <%end%></li>
+        <li class=""><%= link_to "#" do %><i aria-hidden="true" class="fa fa-file-text-o"></i> <%= t('page_sidebar.tods')%> <%end%></li>
+        <%if $lmc_left_menu == 'settings'%>
+          <li class="active"><%= link_to "#" do %><i aria-hidden="true" class="fa fa-cogs"></i> <%= t('page_sidebar.setting')%> <%end%>
+        <%else%>
+          <li class=""><%= link_to "#" do %><i aria-hidden="true" class="fa fa-cogs"></i> <%= t('page_sidebar.setting')%> <%end%>
+        <%end%>
+          <ul class='subleft_menu_setting_worker' >
+            <%if  $lmc_subleft_menu == "account_setting" %>
+              <li class='active'><%= link_to 'Account', account_path %></li>
+            <%else%>
+              <li class=""><%= link_to 'Account', account_path %></li>
+            <%end%>
+            <%if  $lmc_subleft_menu == "profile_setting" %>
+              <li class='active'><%= link_to t('header.profile_setting'), profile_path, method: :get %></li>
+            <%else%>
+              <li><%= link_to t('header.profile_setting'), profile_path, method: :get %></li>
+            <%end%>
+            <%if $lmc_subleft_menu == 'change_password'%>
+              <li class="active"><%= link_to t('page_change_password.change_password'), edit_user_registration_path %></li>
+            <%else%>
+              <li class=""><%= link_to t('page_change_password.change_password'), edit_user_registration_path %></li>
+            <%end%>
+          </ul>
+        <li class=""><%= link_to destroy_user_session_path, method: :delete do %><i aria-hidden="true" class="fa fa-power-off"></i> <%= t('header.logout')%> <%end%></li>
+      </ul>
+    </div>
+  <%end%>
+<%end%>

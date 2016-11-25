@@ -1,0 +1,11 @@
+<div class='show_icon' id='education_<%=education.id%>'>
+  <div class='ed_icon'>
+    <div class="profileboxn_subheading"><%= education.education_title %>
+      <%= link_to edit_education_path(education), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+      <%= link_to education, method: :delete, data: {confirm: "You are deleting '#{education.education_title}'", commit: 'Sure!'} , remote: true do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+      <strong><%= education.education_date_from %> to <%= education.education_date_to %></strong>
+    </div>
+  </div>
+  <p><%= education.education_school_name %></p>
+  <p><%= education.education_description %></p>
+</div>

@@ -1,0 +1,3 @@
+$("#user_competence_<%=@user_competence.id%>").replaceWith("<%= j render partial: 'update_competence', locals: {user_competence: @user_competence} %>");
+$('#editModel').modal('hide');
+toastr.success('<%=t('competences_controller.competences_update_success')%>');

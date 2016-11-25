@@ -1,0 +1,405 @@
+<!-- =============================================== NAVBAR ================================================== -->
+
+<div class="main_header" id="main_header">
+  <div class="navbar-wrapper">
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%= link_to image_tag("logo.png", class: 'navbar-brand', alt: "logo"), root_path, method: :get %>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><%= link_to t('navbar.company'), company_user_path, method: :get %></li>
+              <li><a data-toggle="modal" data-target="#login"><%= t('navbar.login')%></a></li>
+              <li  class="active"><a data-toggle="modal" data-target="#signup"><%= t('navbar.signup')%></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================Carousel================================================== -->
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag("banner_01.jpg", alt: "First slide") %>
+      <div class="container">
+        <div class="carousel-caption">
+          <h1><%= t('root.carousel.caption1')%></h1>
+          <h3><%= t('root.carousel.caption2')%></h3>
+          <p>
+          <%= link_to t('root.carousel.showjobs'), '#', "data-toggle" => "modal",  "data-target" => "#signup", class: "btn btn-lg btn-primary", role:"button" %>
+          <%= link_to t('comany_home.carousel.find_workers'), company_user_path, method: :get, class: "btn btn-lg btn-primary bbtn_find_worker", role:"button" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /.carousel -->
+
+<div class="client_wrap">
+  <div class="container">
+    <div class="client_con">
+      <!--<div class="clientlogo_box">
+        <ul>
+          <li><%= link_to image_tag("logo_1.png", class: 'navbar-brand', alt: "company logo"), "#" %></li>
+          <li><%= link_to image_tag("logo_2.png", class: 'navbar-brand', alt: "company logo"), "#" %></li>
+          <li><%= link_to image_tag("logo_3.png", class: 'navbar-brand', alt: "company logo"), "#" %></li>
+          <li><%= link_to image_tag("logo_4.png", class: 'navbar-brand', alt: "company logo"), "#" %></li>
+          <li><%= link_to image_tag("logo_5.png", class: 'navbar-brand', alt: "company logo"), "#" %></li>
+          <li><%= link_to image_tag("logo_6.png", class: 'navbar-brand', alt: "company logo"), "#" %></li>
+        </ul>
+      </div>
+      <div class="text-center"><p>Tusentals talanger har redan matchats med hundratals foretag. Las mer om Cruitway 2.0 for foretag har.</p></div>-->
+    </div>
+  </div>
+</div>
+
+<div class="findjob_wrap">
+  <div class="container">
+    <div class="findjob_con text-center">
+      <h1><%= t('root.pagecontent.findjob1')%></h1>
+      <div class="row">
+        <div class="col-sm-4">
+          <%= image_tag("job_04.jpg") %>
+
+          <h2 class="sans-pro"><%= t('root.pagecontent.preference')%></h2>
+          <p class="sans-pro"><%= t('root.pagecontent.preference_p')%></p>
+        </div>
+        <div class="col-sm-4">
+          <%= image_tag("job_05.png") %>
+          <h2><%= t('root.pagecontent.find_interesting_jobs')%></h2>
+          <p><%= t('root.pagecontent.find_interesting_jobs_p')%></p>
+        </div>
+        <div class="col-sm-4">
+          <%= image_tag("job_06.png") %>
+          <h2><%= t('root.pagecontent.fast_and_easy')%></h2>
+          <p><%= t('root.pagecontent.fast_and_easy_p')%></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="testimonial_wrap">
+  <div class="testimonial_con">
+    <%= image_tag("banner_02.jpg") %>
+  </div>
+</div>
+<div class="step_wrap">
+  <div class="container">
+    <div class="step_con">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2><%= t('comany_home.pagecontent.step_wrap_h2')%></h2>
+          <h5><%= t('comany_home.pagecontent.step_wrap_h5_1')%>
+            <br> <%= t('comany_home.pagecontent.step_wrap_h5_2')%>
+          </h5>
+          <div class="step_box">
+            <ul>
+              <li><span>1.</span><strong><%= t('comany_home.pagecontent.step_wrap_li1')%></strong><p><%= t('comany_home.pagecontent.step_wrap_li1_p')%></p></li>
+              <li><span>2.</span><strong><%= t('comany_home.pagecontent.step_wrap_li2')%></strong><p><%= t('comany_home.pagecontent.step_wrap_li2_p')%></p></li>
+              <li><span>3.</span><strong><%= t('comany_home.pagecontent.step_wrap_li3')%></strong><p><%= t('comany_home.pagecontent.step_wrap_li3_p')%></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<div class="extrajobs_wrap">
+  <div class="container">
+    <div class="extrajobs_con">
+      <h3><%= t('root.pagecontent.extrajobs_wrap_div.header')%></h3>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="extrajobs_box">
+            <h5><%= t('root.pagecontent.extrajobs_wrap_div.text_block1_h5')%></h5>
+            <p><%= t('root.pagecontent.extrajobs_wrap_div.text_block1_p')%></p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="extrajobs_box">
+            <h5><%= t('root.pagecontent.extrajobs_wrap_div.text_block2_h5')%></h5>
+            <p><%= t('root.pagecontent.extrajobs_wrap_div.text_block2_p')%></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="extrajobs_box">
+            <h5><%= t('root.pagecontent.extrajobs_wrap_div.text_block3_h5')%></h5>
+            <p><%= t('root.pagecontent.extrajobs_wrap_div.text_block3_p')%></p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="extrajobs_box">
+            <h5><%= t('root.pagecontent.extrajobs_wrap_div.text_block4_h5')%></h5>
+            <p><%= t('root.pagecontent.extrajobs_wrap_div.text_block4_p')%></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="extrajobs_box">
+            <h5><%= t('root.pagecontent.extrajobs_wrap_div.text_block5_h5')%></h5>
+            <p><%= t('root.pagecontent.extrajobs_wrap_div.text_block5_p')%></p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="extrajobs_box">
+            <h5><%= t('root.pagecontent.extrajobs_wrap_div.text_block6_h5')%></h5>
+            <p><%= t('root.pagecontent.extrajobs_wrap_div.text_block6_p')%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+<!--
+<div class="testimonial_wrap">
+  <div class="container">
+    <div class="testimonial_con">
+      <div class="row">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6 text-right">
+          <div class="client_quotes">
+            &lt;!&ndash;<p>"Jag vill jobba med den leverantor som leder utvecklingen bkle tekniskt och idemJssigt. Det Jr en forutsJttning for att kunna fortsJtta vara konkurrenskraftiga och vJxa v5r affar. D5 blev det naturligt att jobba med Billogram."
+            </p><strong>Peter Ryas, VD Bovision</strong>&ndash;&gt;
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+<div class="testimonial_wrap">
+  <div class="testimonial_con">
+    <%= image_tag("client_bg.jpg") %>
+  </div>
+</div>
+
+<div class="howitswork_wrap">
+  <div class="container">
+    <div class="howitswork_con">
+      <h3 class="text-center"><%= t('comany_home.pagecontent.Jobbkraft_vision')%></h3>
+      <div class="row featurette text-center">
+        <div class="col-sm-12">
+          <div class="howitswork_box">
+            <h5><%= t('comany_home.pagecontent.Jobbkraft_vision_h5')%></h5>
+            <p><%= t('comany_home.pagecontent.Jobbkraft_vision_p1')%></p>
+            <p><%= t('comany_home.pagecontent.Jobbkraft_vision_p2')%></p>
+            <p><%= t('comany_home.pagecontent.Jobbkraft_vision_p3')%></p>
+            <p><%= t('comany_home.pagecontent.Jobbkraft_vision_p4')%></p>
+            <p><%= t('comany_home.pagecontent.Jobbkraft_vision_p5')%></p>
+            <p><%= t('comany_home.pagecontent.Jobbkraft_vision_p6')%></p>
+            <p><%= t('comany_home.pagecontent.Jobbkraft_vision_p7')%></p>
+            <p><%= t('comany_home.pagecontent.Jobbkraft_vision_p8')%></p>
+          </div>
+          <!--<div class="howitswork_box">
+            <h5>Skräddarsydda lösningar</h5>
+            <p>Utifrån din utmaning skräddarsyr vi ett lösningsförslag för dig. Från helhetslösningar till enstaka personer.</p>
+          </div>
+          <div class="howitswork_box">
+            <h5>360° service</h5>
+            <p>Vi förbereder och utbildar din/dina gigstrs för ditt gig och är med från start och löpande.  Vi har även en egen inhouse-byrå som hjälper till med kläder, marknadsmaterial och hela koncept.</p>
+          </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="responsive_wrap">
+  <div class="responsive_con">
+    <%= image_tag("weblayout.jpg") %>
+  </div>
+</div>
+<div class="push"></div>
+</div>
+
+<!-- =============================================Sign in popup================================================== -->
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog vertical-align-center" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">&nbsp;</h4>
+      </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name),html: {id: "login_box", "data-toggle" => "validator", role: "form"},format: :json, remote: true ) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="modal-body">
+          <div class="lsu_detail">
+            <h3>
+              <%= t('sign_in_popup.log_in')%>
+            </h3>
+            <p><%= t('sign_in_popup.log_in_p')%></p>
+          </div>
+          <div class="lsu_form_box">
+            <div class="lsu_lsuoption">
+              <br>
+              <%= link_to t('sign_in_popup.log_in_facebook'), user_facebook_omniauth_authorize_path, class:"lsu_fb", style:"color: #fff; "%>
+              <%= link_to t('sign_in_popup.log_in_linkedin'), user_linkedin_omniauth_authorize_path, class:"lsu_linkedin", style:"color: #fff;" %>
+            </div>
+            <div class="or_option"><span>-</span> or <span>-</span>
+            </div>
+            <div class="lsu_form">
+              <div class="form-horizontal">
+
+                <div class="form-group">
+                  <%= f.label :email, class: "col-sm-2 control-label" %>
+                  <div class="col-sm-10">
+                    <%= f.email_field :email, class: "form-control", id: "inputEmail", placeholder: t('sign_up_popup.placeholder.email'),  required: true %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.label :password, class: "col-sm-2 control-label" %>
+                  <div class="col-sm-10">
+                    <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "inputPassword3", placeholder: t('sign_up_popup.placeholder.password'), :"data-minlength" => "6",  required: true %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <% if devise_mapping.rememberable? -%>
+                      <%= f.check_box :remember_me, :style => "margin-top:20px;margin-bottom:20px;" %>
+                      <%= f.label t('sign_in_popup.remember_me'), :style => "margin-top:20px;margin-bottom:20px;" %>
+                    <% end -%>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <label>
+                      <%#= link_to t('sign_in_popup.forgot_password'), new_user_password_path %>
+                      <a data-toggle="modal" data-target="#forgotPassword"><%= t('sign_in_popup.forgot_password')%></a>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit t('navbar.log_in_with_mail'), class: "btn btn-primary lsu_btn" %>
+          </div>
+      <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =============================================Sign up popup================================================== -->
+
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">&nbsp;</h4>
+      </div>
+      <div class="modal-body">
+        <div class="lsu_detail">
+          <h3><%= t('sign_up_popup.create_profile')%></h3>
+          <p><%= t('sign_up_popup.create_profile_p')%></p>
+        </div>
+        <div class="lsu_form_box">
+          <div class="lsu_lsuoption">
+            <br>
+            <%= link_to "LOG IN WITH FACEBOOK", user_facebook_omniauth_authorize_path, class:"lsu_fb", style:"color: #fff;"  %>
+            <%= link_to "LOG IN WITH LINKEDIN", user_linkedin_omniauth_authorize_path, class:"lsu_linkedin", style:"color: #fff;"  %>
+          </div>
+          <div class="or_option"><span>-</span> or <span>-</span></div>
+          <div class="lsu_form">
+            <div class="form-horizontal">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: "sign_up_box", "data-toggle" => "validator", role: "form"},format: :json, remote: true) do |f| %>
+                <%= devise_error_messages! %>
+                <%= render partial: "shared/registration", locals: {f: f}%>
+                <div class="hidden">
+                  <%= f.text_field :is_company, value: request.query_string.present?%>
+                </div>
+                <div class="form-group">
+                  <div class="text-center col-sm-12">
+                    <p><%= t('sign_up_popup.create_profile_text')%></p>
+                    <a data-toggle="modal" data-target="#createProfilePolicy" class="signup_info"><%= t('sign_up_popup.create_profile_text_a')%></a>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit "Create Profile", class: "btn btn-primary lsu_btn" %>
+      </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= Forgot Password Popup ================================================== -->
+
+<div class="modal fade" id="forgotPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">&nbsp;</h4>
+          </div>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, "data-toggle" => "validator", role: "form" }) do |f| %>
+            <div class="modal-body">
+              <div class="lsu_detail">
+                <h3>
+                  <!--<br><br><br><br><br><br><br>-->
+                  <%= t('sign_in_popup.reset_password')%>
+                </h3>
+                <p><%= t('sign_in_popup.log_in_p')%></p>
+              </div>
+              <div class="lsu_form_box">
+
+                <div class="lsu_form">
+                  <br>
+                  <div class="form-horizontal">
+                    <%= devise_error_messages! %>
+                    <div class="form-group">
+                      <%= f.label :email, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-10" style="width:75%;">
+                        <%= f.email_field :email, class: "form-control", id: "inputEmail", placeholder: t('sign_up_popup.placeholder.email'),  required: true %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <%= f.submit t('sign_in_popup.reset_password'), class: "btn btn-primary lsu_btn" %>
+            </div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-==================================== Create Profile Policy Popup START ====================================>
+<div class="modal fade" id="createProfilePolicy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <%= render 'shared/create_profile_policy' %>
+</div>
+<!-==================================== Create Profile Policy Popup END ====================================>

@@ -1,0 +1,52 @@
+<div class="dbbody_wrap">
+  <div class="addnew_job_con">
+    <h1><%=t('page_profile.edit_language') %></h1>
+    <div class="addnew_job_box">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="addjobpopup_box">
+            <%= form_for(@language, html: {id: 'editLanguageForm', 'data-toggle' => 'validator', role: 'form'} ) do |f| %>
+              <div class="consultant_con">
+                <div class="addjob_subbox">
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label t('page_profile.add_language_popup.language') %>
+                        <%= f.text_field :language_name, placeholder: t('page_profile.add_language_popup.placeholder.language'), id: 'language_name', class: 'form-control', required: true %>
+                        <div class="help-block with-errors"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label t('page_profile.add_language_popup.skill')%>
+                        <%= f.text_field :language_skill, placeholder: t('page_profile.add_language_popup.placeholder.skill'), id: 'language_skill', class: 'form-control', required: true %>
+                        <div class="help-block with-errors"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="modal-footer">
+                <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+              </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--old design-->
+<!--
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @language %> |
+<%= link_to 'Back', languages_path %>
+-->

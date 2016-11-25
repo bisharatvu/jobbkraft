@@ -1,0 +1,2 @@
+json.extract! driving_license, :id, :dl_am, :dl_aa, :dl_a2, :dl_a, :dl_b, :dl_be, :dl_c, :dl_c1, :dl_ce, :dl_c1e, :dl_d, :dl_d1, :dl_de, :dl_d1e, :user_id, :created_at, :updated_at
+json.url driving_license_url(driving_license, format: :json)

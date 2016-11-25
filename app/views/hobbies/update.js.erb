@@ -1,0 +1,5 @@
+$("#hobby_<%=@hobby.id%>").replaceWith("<%= j render partial: 'update_hobby', locals: {hobby: @hobby} %>");
+$('#editModel').modal('hide');
+/*
+toastr.success('<%=t('languages_controller.languages_update_success')%>');*/
+toastr.success('Hobby Updated Successfully');

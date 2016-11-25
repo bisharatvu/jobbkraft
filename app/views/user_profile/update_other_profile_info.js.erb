@@ -1,0 +1,6 @@
+$('#userJobCategoriesDiv').replaceWith("<%= j render partial: 'user_profile/partials/user_job_categories',  locals: {user_job_category: @user_job_category} %>");
+$('#userJobTypeDiv').replaceWith("<%= j render partial: 'user_profile/partials/user_job_type',  locals: {user_job_type: @user_job_type} %>");
+$('#userFreelancerDiv').replaceWith("<%= j render partial: 'user_profile/partials/user_freelancer',  locals: {user: @user} %>");
+$('#editOtherProfileInfoForm')[0].reset();
+$('#editOtherProfileInfo').modal('hide');
+toastr.success('<%= t('user_profile_controller.user_profile_account_information_success') %>');

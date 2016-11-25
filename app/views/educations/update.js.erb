@@ -1,0 +1,3 @@
+$("#education_<%=@education.id%>").replaceWith("<%= j render partial: 'update_education', locals: {education: @education} %>");
+$('#editModel').modal('hide');
+toastr.success('<%=t('educations_controller.educations_update_success')%>');

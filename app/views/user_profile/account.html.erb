@@ -1,0 +1,73 @@
+<div class="dbbody_wrap">
+  <div class="addnew_job_con">
+    <h1><%= t('header.account_setting')%></h1>
+    <div class="addnew_job_box">
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+          <div class="addjobpopup_box">
+            <%= form_for(@update_account, url: update_account_info_path, html: {id: 'add_account_info_form', 'data-toggle' => 'validator', role: 'form', multipart: true} ) do |f| %>
+              <div class="consultant_con">
+                <div class="addjob_subbox">
+                  <div class="subheading_addjob"><%= t('page_account_setting.personal_info')%></div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <%= f.label t('page_profile.personal_info.first_name') %><br>
+                          <%= f.text_field :user_first_name, placeholder:t('page_profile.personal_info.first_name'), id: 'user_address_zip', class: 'form-control', required: true %>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <%= f.label t('page_profile.personal_info.last_name')%><br>
+                          <%= f.text_field :user_last_name, placeholder: t('page_profile.personal_info.last_name'), id: 'user_address_city', class: 'form-control', required: true %>
+                        </div>
+                      </div>
+                    </div>
+                  <%if !@user.is_company%>
+                    <%= render partial: 'worker_account_info_fields', locals: {f: f} %>
+                  <%else%>
+                    </div>
+                <%end%>
+
+                <div class="addjob_subbox">
+                  <div class="subheading_addjob"><%= t('page_account_setting.contact_info')%></div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label t('page_account_setting.phone_no')%><br>
+                        <%= f.telephone_field :user_cell_phone, placeholder: t('page_account_setting.phone_no'), id: 'user_cell_phone', class: 'form-control', required: true %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label t('page_profile.personal_info.mobile_phone') %><br>
+                        <%= f.telephone_field :user_phone_no, placeholder: t('page_profile.personal_info.mobile_phone'), id: 'user_phone_no', class: 'form-control', required: true %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label t('page_profile.personal_info.email_address')%><br>
+                        <%= f.email_field :email, placeholder: t('page_profile.personal_info.email_address'), id: 'user_email', class: 'form-control', required: true %>
+                        <div class="help-block with-errors"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <%= f.submit t('company_my_jobs.show_job_popup.save_btn'), class: 'btn btn-warning' %>
+              </div>
+            <%end%>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

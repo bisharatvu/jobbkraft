@@ -1,0 +1,4 @@
+$("<%= j render partial: 'update_competence', locals: {user_competence: @user_competence} %>").appendTo("#competenceShowDiv");
+$('#addCompetenceForm')[0].reset();
+$('#addCompetence').modal('hide');
+toastr.success('<%=t('competences_controller.competences_create_success')%>');

@@ -1,0 +1,262 @@
+/*# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/*/
+var companyArray;
+var singleDay;
+var multiDay;
+var gflDiv;
+var consultantDiv;
+var hireDiv;
+$(document).on('turbolinks:load', function(){
+
+  $(window).on('load', function() {
+    singleDay = document.getElementById("singleDayFields");
+    multiDay  = document.getElementById("multiDayFields");
+    gflDiv  = document.getElementById("gfl");
+    consultantDiv  = document.getElementById("consultant_fields");
+    hireDiv  = document.getElementById("hire_fields");
+  });
+
+
+  $(document).on({
+    'ready': function () {
+      Attach.run();
+    },
+    'updated': function () {
+      Attach.run();
+    }
+  });
+
+    companyArray = gon.my_companies;
+
+    var consultant_div;
+    var hire_div;
+
+    $('#selectJobType').change(function() {
+        var val = $(this).val();
+        if (val == 'Hire' || val == 'Anställning') {
+
+          $('#showHideConsultantForm').addClass('hidden');
+          $('#showHideHireForm').removeClass('hidden');
+
+
+        }
+        if (val == 'Consultant' || val == 'Bemanning') {
+          $('#showHideConsultantForm').removeClass('hidden');
+          $('#showHideHireForm').addClass('hidden');
+        }
+        else {
+
+        }
+    });
+
+    //Populating data on the base of Selected company START
+
+  $('#selectedCompany, #selectedCompany1').change(function() {
+    var val = $(this).val();
+    if (val !== "") {
+      document.getElementById("job_company_description").value = companyArray[val].company_about_us;
+      document.getElementById("job_company_address").value = companyArray[val].company_address_street;
+      document.getElementById("job_company_address_zip").value = companyArray[val].company_address_zip;
+      document.getElementById("job_company_address_city").value = companyArray[val].company_address_city;
+      document.getElementById("company_id").value = companyArray[val].id;
+
+    }
+  });
+  $('#selectedCompanyHire').change(function() {
+    var val = $(this).val();
+    if (val !== "") {
+      document.getElementById("job_company_description_hire").value = companyArray[val].company_about_us;
+      document.getElementById("job_company_address_hire").value = companyArray[val].company_address_street;
+      document.getElementById("job_company_address_zip_hire").value = companyArray[val].company_address_zip;
+      document.getElementById("job_company_address_city_hire").value = companyArray[val].company_address_city;
+      document.getElementById("company_id_hire").value = companyArray[val].id;
+
+    }
+  });
+
+    //Populating data on the base of Selected company END
+
+
+//Changing consultant When DIVS START
+
+  $('#job_consultant_type').change(function() {
+    var val = $(this).val();
+    if (val == 'Single Day') {
+      $('#multiDayFields').remove();
+      $('#consultantWhen').append($(singleDay));
+
+    }
+    if (val == 'Multi-Day') {
+      $('#singleDayFields').remove();
+      $('#consultantWhen').append($(multiDay));
+
+    }
+    });
+
+
+//Changing consultant When DIVS END
+
+/////////////////////// Date Time Picker START  ///////////////////////
+
+
+
+
+
+/////////////////////// Date Time Picker END  ///////////////////////
+
+});
+
+
+
+//Display Date Picker START
+function datepicker1 () {
+    $('#datetimepicker5').datetimepicker({
+        format: 'YYYY-MM-DD',
+        icons: {
+            time: "fa fa-clock-o fa-lg",
+            date: "fa fa-calendar fa-lg",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down",
+            next: "fa fa-chevron-right",
+            previous: "fa fa-chevron-left"
+        }
+    });
+}
+//Display Date Picker END
+
+//Display Date Time Picker START
+
+function datetimepicker1 () {
+    $('#datetimepicker8, #datetimepicker7, #datetimepicker6').datetimepicker({
+         //inline: true,
+         sideBySide: true,
+        icons: {
+            time: "fa fa-clock-o fa-lg",
+            date: "fa fa-calendar fa-lg",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down",
+            next: "fa fa-chevron-right",
+            previous: "fa fa-chevron-left"
+        }
+    });
+}
+
+//Display Date Time Picker END
+
+//Changing GFL DIVS START
+
+function changeGFLDiv () {
+
+    if(document.getElementById('consultantJobHireInHouse').checked) {
+        $('#addGfl').append($(gflDiv));
+
+    } else {
+        $('#gfl').remove();
+    }
+}
+
+//Changing GFL DIVS END
+
+//Validating Consultant Form START
+
+function checkConsultantForm () {
+  var cJobName = document.getElementById('consultantJobName').value;
+  var cJobDescription = document.getElementById('consultantJobDescription').value;
+  var cJobCategory = document.getElementById('consultantJobCategory').value;
+  var cJobTask = document.getElementById('consultantJobTask').value;
+  var cJobWorkerNeeded = document.getElementById('consultantJobWorkerNeeded').value;
+  var cJobHireInHouse = document.getElementById('consultantJobHireInHouse').checked;
+  var cJobGFL = document.getElementById('consultantJobGFL').value;
+  var selectedCompany = document.getElementById('selectedCompany').value;
+  var job_company_description = document.getElementById('job_company_description').value;
+  var job_company_address = document.getElementById('job_company_address').value;
+  var job_company_address_zip = document.getElementById('job_company_address_zip').value;
+  var job_company_address_city = document.getElementById('job_company_address_city').value;
+  var job_consultant_type = document.getElementById('job_consultant_type').value;
+  var accept_agreement = document.getElementById('accept_agreement').checked;
+
+  if(cJobName == '' || cJobName == null, cJobDescription == ''|| cJobDescription == null,cJobCategory == ''
+          || cJobCategory == null, cJobTask == '' || cJobTask == null, cJobWorkerNeeded == ''
+          || cJobWorkerNeeded == null, selectedCompany == '' || selectedCompany == null, job_company_description == ''
+          || job_company_description == null, job_company_address == '' || job_company_address == null, job_company_address_zip == ''
+          || job_company_address_zip == null, job_company_address_city == '' || job_company_address_city == null
+  ) {
+
+    toastr.error('Please Fill All Required Field');
+  }
+  else if(cJobHireInHouse == true && (cJobGFL == '' || cJobGFL == null)){
+    toastr.error('Please Enter a valid GFL');
+  }
+  else if(accept_agreement == false){
+    toastr.error('Please Accept Agreement');
+  }
+  else if(job_consultant_type === 'Single Day'){
+    var singleDayStartTime = document.getElementById('singleDayStartTime').value;
+    var singleDayDuration = document.getElementById('singleDayDuration').value;
+    if (singleDayStartTime == '' || singleDayStartTime == null, singleDayDuration == '' || singleDayDuration == null){
+      toastr.error('Please Fill All Single Day Field');
+    }
+    else {
+      $("#addJobConsultantForm").submit();
+    }
+
+  }
+  else if(job_consultant_type == 'Multi-Day'){
+    var multiDayStartTime = document.getElementById('multiDayStartTime').value;
+    var multiDayDuration = document.getElementById('multiDayDuration').value;
+    var multiDayRepeatHours = document.getElementById('multiDayRepeatHours').value;
+    var multiDayPerHour = document.getElementById('multiDayPerHour').value;
+    if( multiDayStartTime == '' || multiDayStartTime == null, multiDayDuration == ''
+    || multiDayDuration == null, multiDayRepeatHours == '' || multiDayRepeatHours == null, multiDayPerHour == ''
+    || multiDayPerHour == null){
+      toastr.error('Please Fill All Multi-Day Fields');
+    }
+    else {
+      $("#addJobConsultantForm").submit();
+    }
+  }
+  else {
+  }
+}
+
+//Validating Consultant Form END
+
+//Validating Consultant Form START
+
+function checkHireForm () {
+  var cJobName = document.getElementById('hireJobName').value;
+  var cJobDescription = document.getElementById('hireJobDescription').value;
+  var cJobCategory = document.getElementById('hireJobCategory').value;
+  var cJobTask = document.getElementById('hireJobTask').value;
+  var cJobWorkerNeeded = document.getElementById('hireJobWorkerNeeded').value;
+  var selectedCompany = document.getElementById('selectedCompanyHire').value;
+  var job_company_description = document.getElementById('job_company_description_hire').value;
+  var job_company_address = document.getElementById('job_company_address_hire').value;
+  var job_company_address_zip = document.getElementById('job_company_address_zip_hire').value;
+  var job_company_address_city = document.getElementById('job_company_address_city_hire').value;
+  var accept_agreement = document.getElementById('accept_agreement').checked;
+  var hireStartTime = document.getElementById('hireStartTime').value;
+  var hireApplyDate = document.getElementById('hireApplyDate').value;
+
+
+  if(cJobName == '' || cJobName == null, cJobDescription == ''|| cJobDescription == null,cJobCategory == ''
+          || cJobCategory == null, cJobTask == '' || cJobTask == null, cJobWorkerNeeded == ''
+          || cJobWorkerNeeded == null, selectedCompany == '' || selectedCompany == null, job_company_description == ''
+          || job_company_description == null, job_company_address == '' || job_company_address == null, job_company_address_zip == ''
+          || job_company_address_zip == null, job_company_address_city == ''
+          || job_company_address_city == null, hireStartTime == '' || hireStartTime == null, hireApplyDate == ''
+          || hireApplyDate == null) {
+
+    toastr.error('Please Fill All Required Field');
+  }
+  else if(accept_agreement == false){
+    toastr.error('Please Accept Agreement');
+  }
+  else {
+    $("#AddJobHirForm").submit();
+  }
+}
+
+//Validating Consultant Form END
+

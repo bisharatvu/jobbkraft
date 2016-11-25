@@ -1,0 +1,26 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.edit_language') %></h4>
+    </div>
+    <%= form_for(@language, html: {id: 'editLanguageForm', 'data-toggle' => 'validator', role: 'form'},format: :js, remote: true ) do |f| %>
+      <div class="modal-body">
+        <div class="form-group">
+          <%= f.label t('page_profile.add_language_popup.language') %>
+          <%= f.text_field :language_name, placeholder: t('page_profile.add_language_popup.placeholder.language'), id: 'language_name', class: 'form-control', required: true %>
+          <div class="help-block with-errors"></div>
+        </div>
+        <div class="form-group">
+          <%= f.label t('page_profile.add_language_popup.skill')%>
+          <%= f.text_field :language_skill, placeholder: t('page_profile.add_language_popup.placeholder.skill'), id: 'language_skill', class: 'form-control', required: true %>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+        <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+      </div>
+    <%end%>
+  </div>
+</div>

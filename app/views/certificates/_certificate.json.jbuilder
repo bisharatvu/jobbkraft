@@ -1,0 +1,2 @@
+json.extract! certificate, :id, :certificate_name, :certificate_publisher, :certificate_publish_date, :certificate_description, :user_id, :created_at, :updated_at
+json.url certificate_url(certificate, format: :json)

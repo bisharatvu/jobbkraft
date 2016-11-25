@@ -1,0 +1,45 @@
+<div class="dbheader_wrap ">
+  <div class="container">
+    <div class="dbheader_con ">
+      <div class="db_logo"><%= link_to image_tag("db_logo.png", alt: "logo"), root_path, method: :get%></div>
+    </div>
+  </div>
+</div>
+
+  <div class="lsu_detail">
+    <h3>
+      <br><br><br><br><br>
+      <%= t('sign_up_popup.create_profile')%></h3>
+    <p><%= t('sign_up_popup.create_profile_p')%></p>
+  </div>
+  <div class="lsu_form_box">
+    <div class="lsu_lsuoption"><a href="loggedin.html" class="lsu_fb">LOG IN WITH FACEBOOK</a><a href="loggedin.html" class="lsu_linkedin">LOG IN WITH LINKEDIN</a></div>
+    <div class="or_option"><span>-</span> or <span>-</span></div>
+    <div class="lsu_form">
+      <div class="form-horizontal">
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: "sign_up_box", "data-toggle" => "validator", role: "form"},format: :json, remote: true) do |f| %>
+          <%= devise_error_messages! %>
+          <%= render partial: "shared/registration", locals: {f: f}%>
+          <div class="hidden">
+            <%= f.text_field :is_company, value: request.query_string.present?%>
+          </div>
+          <div class="form-group">
+            <div class="text-center col-sm-12">
+              <p><%= t('sign_up_popup.create_profile_text')%></p>
+              <a data-toggle="modal" data-target="#createProfilePolicy" class="signup_info"><%= t('sign_up_popup.create_profile_text_a')%></a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+<div class="modal-footer">
+  <%= f.submit "Create Profile", class: "btn btn-primary lsu_btn" %>
+</div>
+<%end%>
+
+        <!-==================================== Create Profile Policy Popup START ====================================>
+        <div class="modal fade" id="createProfilePolicy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <%= render 'shared/create_profile_policy' %>
+        </div>
+        <!-==================================== Create Profile Policy Popup END ====================================>

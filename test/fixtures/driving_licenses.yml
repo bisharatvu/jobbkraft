@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dl_am: false
+  dl_aa: false
+  dl_a2: false
+  dl_a: false
+  dl_b: false
+  dl_be: false
+  dl_c: false
+  dl_c1: false
+  dl_ce: false
+  dl_c1e: false
+  dl_d: false
+  dl_d1: false
+  dl_de: false
+  dl_d1e: false
+  user_id: 
+
+two:
+  dl_am: false
+  dl_aa: false
+  dl_a2: false
+  dl_a: false
+  dl_b: false
+  dl_be: false
+  dl_c: false
+  dl_c1: false
+  dl_ce: false
+  dl_c1e: false
+  dl_d: false
+  dl_d1: false
+  dl_de: false
+  dl_d1e: false
+  user_id: 

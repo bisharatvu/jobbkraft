@@ -1,0 +1,33 @@
+<div class="overview_profile">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="overviewprofile_box">
+        <div class="media">
+          <div class='userhomeprofile_img'>
+            <a class="pull-left" >
+              <%if @user.image_url.url%>
+                <%= image_tag(@user.image_url.url, class: 'media-object pull-left', alt: 'Media Object') %>
+              <%else%>
+                <%= image_tag('default_profile_image.png',  class: 'media-object pull-left', alt: 'Media Object') %>
+              <%end%>
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= @user.name%></h4>
+            <%if @user.email%>
+              <h5><%= @user.email%></h5>
+            <%else%>
+              <br><br>
+            <%end%>
+            <%if @user.user_cell_phone%>
+              <h5><%= @user.user_cell_phone%></h5>
+            <%else%>
+              <br><br>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='col-sm-6'></div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<footer class="footer_wrap">
+  <div class="container">
+    <div class="footer_con">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="footerinfo_box">
+            <%= image_tag('footer_logo.png', alt: 'footer logo') %>
+            <p><%= t('footer_p')%></p>
+          </div>
+        </div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+          <div class="social_box">
+            <ul>
+              <li><%= link_to 'https://www.facebook.com/jobbkraft' , :target => '_blank' do %><i aria-hidden="true" class="fa fa-facebook-official"></i><%end%></li>
+              <li><%= link_to 'https://www.instagram.com/jobbkraft' , :target => '_blank' do %><i aria-hidden="true" class="fa fa-instagram"></i><%end%></li>
+              <li><%= link_to 'https://www.linkedin.com/company/jobbkraft' , :target => '_blank' do %><i aria-hidden="true" class="fa fa-linkedin"></i><%end%></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

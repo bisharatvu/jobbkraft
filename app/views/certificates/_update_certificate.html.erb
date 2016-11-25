@@ -1,0 +1,12 @@
+<div class='show_icon' id='certificate_<%=certificate.id%>'>
+  <div class='ed_icon'>
+    <div class="profileboxn_subheading"><%= certificate.certificate_name %>
+      <strong><%= certificate.certificate_publish_date %></strong>
+      <%= link_to edit_certificate_path(certificate), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+      <%= link_to certificate, method: :delete, data: {title: t('page_profile.delete_title'), confirm: "#{t('page_profile.delete_confirm')} '#{certificate.certificate_name}'", commit: 'Sure!'} , remote: true do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+    </div>
+  </div>
+
+  <p><%= certificate.certificate_publisher %></p>
+  <p><%= certificate.certificate_description %></p>
+</div>

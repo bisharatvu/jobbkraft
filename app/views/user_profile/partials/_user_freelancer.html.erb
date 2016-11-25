@@ -1,0 +1,5 @@
+<%if @user.user_freelancer_company%>
+  <b><%=t('page_profile.i_am_freelancer') %></b><br>
+  - <%= t('page_account_setting.company_number')%> <%= @user.user_company_number%> <br>
+  - <%= t('company_my_company.add_company_popup.company_name')%> <%= @user.user_company_name%>
+<%end%>

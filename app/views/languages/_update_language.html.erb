@@ -1,0 +1,10 @@
+<div class='show_icon' id='language_<%=language.id%>'>
+  <div class="profileboxn_subheading">
+    <div class='ed_icon'>
+      <%= language.language_name %>
+      <%= link_to edit_language_path(language), remote: true do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+      <%= link_to language, method: :delete, data: {title: t('page_profile.delete_title'), confirm: "#{t('page_profile.delete_confirm')} '#{language.language_name}'", commit: 'Sure!'} , remote: true do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+    </div>
+  </div>
+  <p><%= language.language_skill %></p>
+</div>

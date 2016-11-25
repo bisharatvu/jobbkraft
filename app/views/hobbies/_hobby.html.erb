@@ -1,0 +1,34 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.add_hobby_popup.add_hobby') %></h4>
+    </div>
+    <%= form_for(@hobby,  html: {id: 'edit_about_me_form'}, format: :js,remote: true) do |f| %>
+      <div class="modal-body">
+        <div class="form-group">
+          <%= f.label 'Hobby Icon'%>
+          <%= f.select(:hobby_icon,([['&#xf015'.html_safe, 'fa-home'],['&#xf1c0'.html_safe, 'fa-database'],
+                                                        ['&#xf0e0'.html_safe, 'fa-envelope'],['&#xf082'.html_safe, 'fa-facebook-square'],
+                                                        ['&#xf206'.html_safe, 'fa-bicycle'],['&#xf1b9'.html_safe, 'fa-car'],
+                                                        ['&#xf030'.html_safe, 'fa-camera'],['&#xf1e3'.html_safe, 'fa-futbol-o'],
+                                                        ['&#xf06b'.html_safe, 'fa-gift'],['&#xf118'.html_safe, 'fa-smile-o']]
+                                  ),{prompt: t('page_profile.add_competence_popup.placeholder.competence_level')}, class: 'form-control fontawesome-select', id: "competence_level" , required: true)%>
+          <div class="help-block with-errors"></div>
+        </div>
+        <div class="form-group">
+          <%= f.label t('page_profile.add_hobby_popup.hobby_name')%>
+          <%= f.text_field :hobby_name, placeholder: t('page_profile.add_hobby_popup.hobby_name'), id: 'language_skill', class: 'form-control', required: true %>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+        <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+ <!--'&#xf118'.html_safe, 'fa-smile-o'
+fa-smile-o [&#xf118;]-->

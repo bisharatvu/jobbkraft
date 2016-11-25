@@ -1,0 +1,167 @@
+<div class="dbbody_wrap">
+  <div class="addnew_job_con">
+    <h1><%= t('comany_home.pagecontent.my_jobs')%></h1>
+    <div class="team_con">
+      <div class="team_heading">
+        <div class="row"></div>
+        <div class="seach_job_view">
+          <form class="form-inline">
+            <div class="btn-group" role="group" aria-label="...">
+              <button type="button" class="btn btn-default"><i class="fa fa-list" aria-hidden="true"></i><%= t('page_job.list')%></button>
+              <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i><%= t('page_job.calendar')%></button>
+              <button type="button" class="btn btn-default"><i class="fa fa-map-marker" aria-hidden="true"></i><%= t('page_job.map')%></button>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" id="exampleInputAmount" placeholder=<%= t('page_job.select_date') %>>
+                <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+              </div>
+            </div>
+            <%= form_tag jobs_path, method: :get do %>
+              <div class="form-group">
+                <%= text_field_tag :query,  params[:query],  class: "form-control", placeholder: t('page_job.keyword') %>
+              </div>
+              <div class="form-group">
+                <%= text_field_tag :town,  params[:town],  class: "form-control", placeholder: t('page_job.town') %>
+              </div>
+              <div class="form-group">
+                <%= text_field_tag :status,  params[:status],  class: "form-control", placeholder: t('page_job.status') %>
+              </div>
+              <%= submit_tag t('company_my_jobs.search.search_btn'), name: nil, id: '', class: 'btn btn-default'%>
+            <% end %>
+          </form>
+        </div>
+      </div>
+
+      <div class='team_box'>
+        <table class='table table-striped'>
+          <thead>
+          <tr>
+            <th><input type="checkbox"> </th>
+            <th><%=t('page_job.job_name')%></th>
+            <th><%=t('page_job.company')%></th>
+            <th><%=t('page_job.town')%></th>
+            <th><%=t('page_job.type')%></th>
+            <th><%=t('page_job.start_time')%></th>
+            <th><%=t('page_job.last_apply_date')%></th>
+            <th><%=t('page_job.status')%></th>
+            <th><%= t('page_job.applications') %></th>
+            <th width="100"><%=t('page_job.action')%></th>
+          </tr>
+          </thead>
+          <tbody>
+            <%if @jobs%>
+              <% @jobs.each do |job| %>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td><%= link_to truncate(job.job_name, length: 15), job %></td>
+                <td><%= truncate(job.company.company_name, length: 15) %></td>
+                <td><%= job.job_company_address_city%></td>
+                <td><%= job.job_type%></td>
+                <td><%= job.job_start_time%></td>
+                <td><%= job.job_last_date_to_apply%></td>
+                <td><%= job.job_status%></td>
+                <td><%= link_to job.job_applications.count, {controller: "job_applications", action: "applicants", :job => job.id } %></td>
+                <td>
+                  <a href=""><i class="fa fa-list" aria-hidden="true"></i></a>
+                  <%= link_to edit_job_path(job) do %><i class="fa fa-pencil" aria-hidden="true"></i> <%end%>
+                  <%= link_to job, method: :delete, data: {title: t('page_profile.delete_title'), confirm: "#{t('page_profile.delete_confirm')} '#{job.job_name}'", commit: 'Sure!' } do %><i class='fa fa-times-circle' aria-hidden="true"></i> <%end%>
+                </td>
+              </tr>
+              <%end%>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--------------------------------------------- Modal Add Job Start --------------------------------------------------->
+<div class="modal fade" id="addjob" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10">
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content">
+      <%= nested_form_for(@job, url: jobs_path, html: {id: "add_job_form", "data-toggle" => "validator", role: "form"},format: :json, remote: true ) do |f| %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"><%= t('company_my_jobs.add_job_popup.post_job') %></h4>
+        </div>
+        <div class="modal-body">
+          <div class="addjobpopup_box">
+            <div class="form-group">
+              <%= f.label t('company_my_jobs.add_job_popup.job_title') %>
+              <%= f.text_field :job_name, placeholder:  t('company_my_jobs.add_job_popup.placeholder.job_title'), id: "job_name", class: 'form-control', required: true %>
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group">
+              <%= f.label t('company_my_jobs.add_job_popup.job_description')  %>
+              <%= f.text_area :job_discription, rows: 6,  :'data-minlength' => '150','data-error' => 'Job Description Should be between 150 to 400 Charecter', placeholder:  t('company_my_jobs.add_job_popup.placeholder.job_description'), id: 'job_discription', class: "form-control", required: true %>
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <%= f.label t('company_my_jobs.add_job_popup.job_type')  %><br>
+                  <%= f.select :job_hire_type, options_for_select(['Hire', 'Consultant']), {}, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1"  class="center-block"><%= t('company_my_jobs.add_job_popup.last_day')  %><span class="pull-right"><i class="fa fa-calendar"></i> (yyyy-mm-dd)</span></label>
+                    <%= f.text_field :job_last_date_to_apply, placeholder: "23-10-2016", id: "job_last_date_to_apply", class: 'form-control', 'data-behaviour' => 'datepicker', required: true %>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <%= f.label t('company_my_jobs.add_job_popup.place') %><br>
+                  <%= f.select :job_place_city, options_for_select([['City 1', 'city 1'], ['City 2', 'city 2']]), {}, class: 'form-control', id: 'sel1' %>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="exampleInputPassword1">&nbsp;</label>
+                  <%= f.select :job_place_town, options_for_select([['Town 1', 'town 1'], ['Town 2', 'town 2']]), {}, class: 'form-control', id: 'sel2' %>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.fields_for :extra_questions do |eq_form| %>
+              <div class="form-group">
+                <%= eq_form.label t('company_my_jobs.add_job_popup.extra_question')  %>
+                <%= eq_form.text_area :job_question, rows: 2,  placeholder: t('company_my_jobs.add_job_popup.placeholder.extra_question') , id: 'job_questions', class: "form-control" %>
+              </div>
+              <%end%>
+              <div class="row">
+                <div class="col-sm-7">
+                  <%= f.link_to_add t('company_my_jobs.add_job_popup.add_extra_question_btn'), :extra_questions, type: 'button', class: 'form-control btn btn-warning'%>
+                </div>
+                <div class="col-sm-5"></div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+            <%= f.submit t('company_my_jobs.add_job_popup.save_job') , class: 'btn btn-primary' %>
+          </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+</div>
+<!---------------------------------------------- Modal Add Job End ---------------------------------------------------->
+
+<!---------------------------------------------- Modal Show Job Start ---------------------------------------------------->
+
+
+<div class="modal fade bs-example-modal-lg" id="showjob" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+    </div>
+  </div>
+</div>
+<!---------------------------------------------- Modal Show Job End ---------------------------------------------------->

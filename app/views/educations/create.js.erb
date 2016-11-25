@@ -1,0 +1,4 @@
+$("<%= j render partial: 'update_education', locals: {education: @education} %>").appendTo("#educationsShowDiv");
+$('#addEducationForm')[0].reset();
+$('#addEducations').modal('hide');
+toastr.success('<%=t('educations_controller.educations_create_success')%>');

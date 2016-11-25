@@ -1,0 +1,13 @@
+<div id="showPersonalInfo" class="personal_info">
+  <ul>
+    <li><label><%=t('page_profile.personal_info.first_name')%></label><span><%= @user.user_first_name%></span></li>
+    <li><label><%=t('page_profile.personal_info.last_name')%></label><span><%= @user.user_last_name%></span></li>
+    <li><label><%=t('page_profile.personal_info.mobile_phone')%></label><span><%= @user.user_cell_phone%></span></li>
+    <li><label><%=t('page_profile.personal_info.email_address')%></label><span><%= @user.email%></span></li>
+    <li><label><%=t('page_profile.personal_info.address')%></label><span><%= @user.user_address_street%></span></li>
+    <li><label><%=t('page_profile.personal_info.zip')%></label><span><%= @user.user_address_zip%></span></li>
+    <li><label><%=t('page_profile.personal_info.town')%></label><span><%= @user.user_address_city%></span></li>
+    <li><label><%=t('page_profile.personal_info.personal_number')%></label><span><%= @user.user_personal_number%></span></li>
+    <li><label><%=t('page_profile.personal_info.gender')%></label><span><%= @user.user_gender%></span></li>
+  </ul>
+</div>

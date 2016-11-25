@@ -1,0 +1,4 @@
+$("<%= j render partial: 'update_experience', locals: {experience: @experience} %>").appendTo("#experiencesShowDiv");
+$('#addExperiencesForm')[0].reset();
+$('#addExperiences').modal('hide');
+toastr.success('<%=t('experiences_controller.experiences_create_success')%>');

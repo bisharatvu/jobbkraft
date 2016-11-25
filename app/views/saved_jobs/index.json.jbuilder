@@ -1,0 +1,1 @@
+json.array! @saved_jobs, partial: 'saved_jobs/saved_job', as: :saved_job

@@ -1,0 +1,77 @@
+<%= form_for(@driving_license) do |f| %>
+  <% if @driving_license.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@driving_license.errors.count, "error") %> prohibited this driving_license from being saved:</h2>
+
+      <ul>
+      <% @driving_license.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dl_am %><br>
+    <%= f.check_box :dl_am %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_aa %><br>
+    <%= f.check_box :dl_aa %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_a2 %><br>
+    <%= f.check_box :dl_a2 %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_a %><br>
+    <%= f.check_box :dl_a %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_b %><br>
+    <%= f.check_box :dl_b %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_be %><br>
+    <%= f.check_box :dl_be %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_c %><br>
+    <%= f.check_box :dl_c %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_c1 %><br>
+    <%= f.check_box :dl_c1 %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_ce %><br>
+    <%= f.check_box :dl_ce %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_c1e %><br>
+    <%= f.check_box :dl_c1e %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_d %><br>
+    <%= f.check_box :dl_d %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_d1 %><br>
+    <%= f.check_box :dl_d1 %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_de %><br>
+    <%= f.check_box :dl_de %>
+  </div>
+  <div class="field">
+    <%= f.label :dl_d1e %><br>
+    <%= f.check_box :dl_d1e %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

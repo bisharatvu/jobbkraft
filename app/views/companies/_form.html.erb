@@ -1,0 +1,86 @@
+<%= form_for(@company) do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% @company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :company_name %><br>
+    <%= f.text_field :company_name %>
+  </div>
+  <div class="field">
+    <%= f.label :company_address_street %><br>
+    <%= f.text_field :company_address_street %>
+  </div>
+  <div class="field">
+    <%= f.label :company_address_city %><br>
+    <%= f.text_field :company_address_city %>
+  </div>
+  <div class="field">
+    <%= f.label :company_address_zip %><br>
+    <%= f.text_field :company_address_zip %>
+  </div>
+  <div class="field">
+    <%= f.label :company_address_country %><br>
+    <%= f.text_field :company_address_country %>
+  </div>
+  <div class="field">
+    <%= f.label :company_invoice_address_street %><br>
+    <%= f.text_field :company_invoice_address_street %>
+  </div>
+  <div class="field">
+    <%= f.label :company_invoice_address_city %><br>
+    <%= f.text_field :company_invoice_address_city %>
+  </div>
+  <div class="field">
+    <%= f.label :company_invoice_address_zip %><br>
+    <%= f.text_field :company_invoice_address_zip %>
+  </div>
+  <div class="field">
+    <%= f.label :company_invoice_address_country %><br>
+    <%= f.text_field :company_invoice_address_country %>
+  </div>
+  <div class="field">
+    <%= f.label :company_invoice_reference %><br>
+    <%= f.text_field :company_invoice_reference %>
+  </div>
+  <div class="field">
+    <%= f.label :company_invoice_email %><br>
+    <%= f.text_field :company_invoice_email %>
+  </div>
+  <div class="field">
+    <%= f.label :company_contact_person_first_name %><br>
+    <%= f.text_field :company_contact_person_first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :company_contact_person_last_name %><br>
+    <%= f.text_field :company_contact_person_last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :company_contact_person_cell_phone %><br>
+    <%= f.text_field :company_contact_person_cell_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :company_contact_person_phone_no %><br>
+    <%= f.text_field :company_contact_person_phone_no %>
+  </div>
+  <div class="field">
+    <%= f.label :company_contact_person_email %><br>
+    <%= f.text_field :company_contact_person_email %>
+  </div>
+  <div class="field">
+    <%= f.label :right_of_hiring %><br>
+    <%= f.check_box :right_of_hiring %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,66 @@
+<div class="dbbody_wrap">
+  <div class="addnew_job_con">
+    <h1><%=t('page_profile.edit_language') %></h1>
+    <div class="addnew_job_box">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="addjobpopup_box">
+            <%= form_for(@driving_license, html: {id: 'addDrivingLicenseForm'}) do |f| %>
+              <div class="consultant_con">
+                <div class="addjob_subbox">
+
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_am %>AM</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_aa %>Aa</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_a2 %>A2</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_a %>A</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_b %>B</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_be %>BE</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_c1 %>C1</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_c1e %>C1E</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_c %>C</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_ce %>CE</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_d1 %>D1</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_d1e %>D1E</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_d %>D</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><%= f.check_box :dl_de %>DE</label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="modal-footer">
+                <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+              </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

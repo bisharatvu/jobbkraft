@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render "shared/head" %>
+</head>
+
+<body>
+<div class="main_wrapper">
+  <div style="background-color: #888888">
+    <% if notice %>
+      <script>toastr.success("<%= notice %>")</script>
+    <% end %>
+    <% if alert %>
+      <script>toastr.error("<%= alert %>")</script>
+    <% end %>
+  </div>
+
+
+
+    <%= yield %>
+
+    <%= render "shared/footer_for_home" unless @skip_footer_for_home %>
+  </div>
+</body>
+</html>

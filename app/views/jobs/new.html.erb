@@ -1,0 +1,416 @@
+
+<div class="dbbody_wrap">
+  <div class="addnew_job_con">
+    <h1><%= t('page_job_new.add_new_job')%></h1>
+    <div class="addnew_job_box">
+      <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="addjobpopup_box">
+              <div class="form-group">
+                <label for="exampleInputEmail1"><%= t('page_job_new.job_type')%></label>
+                <select class="form-control" id="selectJobType">
+                  <option><%= t('page_job_new.consultant')%></option>
+                  <option><%= t('page_job_new.hire')%></option>
+                </select>
+              </div>
+
+              <div id="showHideConsultantForm" class="">
+              <div id="newJobForm">
+              <div id="consultant_fields">
+                <%= nested_form_for(@job, html: {id: "addJobConsultantForm", "data-toggle" => "validator", role: "form"} ) do |f| %>
+              <div class="consultant_con" >
+                  <div class="mainheading_addjob"><%= t('page_job_new.consultant')%></div>
+
+                  <div class="addjob_subbox">
+                    <div class="subheading_addjob"><%= t('page_job_new.what')%></div>
+                    <div class="form-group">
+                      <%= f.label t('company_my_jobs.add_job_popup.job_title') %>
+                      <%= f.text_field :job_name, placeholder:  t('company_my_jobs.add_job_popup.placeholder.job_title'), id: 'consultantJobName', class: 'form-control', required: true %>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label t('company_my_jobs.add_job_popup.job_description')  %>
+                      <%= f.text_area :job_discription, rows: 6,  :'data-minlength' => '20','data-error' => 't Should be between 20 to 400 Character', placeholder:  t('company_my_jobs.add_job_popup.placeholder.job_description'), id: 'consultantJobDescription', class: "form-control", required: true %>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><%= t('page_job_new.category')%></label>
+                      <%= f.select :job_category, options_from_collection_for_select(Category.all, :name, :name), { prompt: t('page_job_new.choose_a_category')}, class: 'form-control', id: 'consultantJobCategory' , required: true %>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label t('page_job_new.tasks_to_be_performed')%>
+                      <%= f.text_area :job_tasks, rows: 6,  :'data-minlength' => '20','data-error' => 'It Should be between 20 to 400 Character', placeholder: t('page_job_new.tasks_to_be_performed'), id: 'consultantJobTask', class: "form-control", required: true %>
+                      <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><%= t('page_job_new.requirements')%></label>
+                      <div class="form-group">
+                        <%= f.fields_for :job_requirements do |jr_form| %>
+                          <div class="form-group">
+                            <div class="input-group stylish-input-group">
+                              <%= jr_form.text_field :requirement_name,  placeholder: t('page_job_new.one_requirement_per_line') , id: 'job_requirements', class: "form-control" %>
+                              <span class="input-group-addon">
+                            <%= jr_form.link_to_remove do %><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i><%end%>
+                           </span>
+                            </div>
+                          </div>
+                        <%end%>
+                        <%= f.link_to_add '', :job_requirements, type: 'button',  class: "fa fa-plus-square-o fa-lg"%>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><%= t('page_job_new.number_of_workers_needed')%></label>
+                      <%= f.number_field :job_workers_needed, placeholder: '1', id: 'consultantJobWorkerNeeded', class: "form-control", required: true %>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="checkbox">
+                      <label><%= f.check_box :job_hire_in_house, id: 'consultantJobHireInHouse', onchange: "changeGFLDiv();" %><%= t('page_job_new.hired_in_house')%></label>
+                    </div>
+                    <div id="addGfl">
+                    </div>
+                    <div class="form-group">
+                      <%= f.label t('company_my_jobs.add_job_popup.extra_question')  %>
+                      <div class="form-group">
+                        <%= f.fields_for :extra_questions do |eq_form| %>
+                          <div class="form-group">
+                            <div class="input-group stylish-input-group">
+                              <%= eq_form.text_field :job_question,  placeholder: t('page_job_new.one_question_per_line') , id: 'job_requirements', class: "form-control" %>
+                              <span class="input-group-addon">
+                            <%= eq_form.link_to_remove do %><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i><%end%>
+                           </span>
+                            </div>
+                          </div>
+                        <%end%>
+                        <%= f.link_to_add '', :extra_questions, type: 'button',  class: "fa fa-plus-square-o fa-lg"%>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="addjob_subbox">
+                    <div class="subheading_addjob"><%= t('page_job_new.where')%></div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><%= t('page_job_new.company')%></label>
+                      <%= f.select :job_company_index, options_for_select(Array[*@user_companies.collect {|v ,i| [v.company_name ,@user_companies.index(v)] }]), { prompt: t('page_job_new.choose_a_company')}, class: 'form-control', id: 'selectedCompany', required: true %>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="hidden">
+                      <%= f.text_field :company_id, id: 'company_id', required: true %>
+                      <%= f.text_field :job_type, value:'Consultant', id: 'job_type', required: true %>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><%= t('page_job_new.company_description')%></label>
+                      <%= f.text_area :job_company_description, rows: 6,  :'data-minlength' => '20','data-error' => 'It Should be between 20 to 400 Character', placeholder:  'Company Description', id: 'job_company_description', class: "form-control", required: true %>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><%= t('page_job_new.address')%></label>
+                      <%= f.text_field :job_company_address, placeholder: t('page_job_new.address'), id: 'job_company_address', class: "form-control", required: true %>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><%= t('page_job_new.zip')%></label>
+                      <%= f.text_field :job_company_address_zip, placeholder: t('page_job_new.zip'), id: 'job_company_address_zip', class: "form-control", required: true %>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><%= t('page_job_new.town')%></label>
+                      <%= f.text_field :job_company_address_city, placeholder: t('page_job_new.town'), id: 'job_company_address_city', class: "form-control", required: true %>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                  </div>
+
+                  <div class="addjob_subbox">
+                    <div class="subheading_addjob"><%= t('page_job_new.when')%></div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><%= t('page_job_new.job_time')%></label>
+                      <%= f.select :job_consultant_type, options_for_select(['Single Day', 'Multi-Day']), {}, class: 'form-control', id: "job_consultant_type" %>
+                    </div>
+                    <div id="consultantWhen">
+                      <div id="singleDayFields">
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <label for="exampleInputEmail1"><%= t('page_job_new.start_time')%></label>
+                              <div class="input-group" id='datetimepicker8' onclick="datetimepicker1();">
+                                <%= f.text_field :job_start_time, placeholder: '11/23/2016 12:49 PM', id: 'singleDayStartTime', class: "form-control", required: true %>
+                                <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1"><%= t('page_job_new.estimated_job_duration')%></label>
+                          <div class="form-inline">
+                            <div class="form-group">
+                              <%= f.select :job_consultant_duration, options_for_select(['0','1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']), { prompt: t('page_job_new.choose_a_duration')}, class: 'form-control', id: 'singleDayDuration' , required: true %>
+                              <label for="exampleInputEmail3"><%= t('page_job_new.hours')%></label>
+                            </div>
+                            <!--<div class="form-group">
+                              <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                              </select>
+                              <label  for="exampleInputPassword3">Mins</label>
+                            </div>-->
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="addjob_subbox">
+                    <div class="subheading_addjob"><%= t('page_job_new.payment')%></div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><%= t('page_job_new.total_cost_for_the_job_per_person')%></label>
+                      <%= f.number_field :job_total_cost_per_person, class: 'form-control', id: "" , readonly: true %>
+                    </div>
+                    <div class="checkbox">
+                      <label><%= f.check_box :accept_agreement, checked: true, id: 'accept_agreement' %>
+                        <%= link_to 'Accept Agreement', '#' %>
+
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+            <div class="panel-footer text-center">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="checkConsultantForm ();"><%= t('company_my_jobs.add_job_popup.save_job') %></button>
+
+            </div>
+        <%end%>
+        </div>
+        </div>
+        </div>
+
+              <!--//////////////////////////////////// Hire Fields ///////////////////////////////////-->
+
+              <div id="showHideHireForm" class="hidden">
+                <div id="hire_fields">
+                  <%= nested_form_for(@job, html: {id: "AddJobHirForm", "data-toggle" => "validator", role: "form"} ) do |f| %>
+
+                    <div class="consultant_con" >
+                      <div class="mainheading_addjob"><%= t('page_job_new.hire')%></div>
+
+                      <div class="addjob_subbox">
+                        <div class="subheading_addjob"><%= t('page_job_new.what')%></div>
+                        <div class="form-group">
+                          <%= f.label t('company_my_jobs.add_job_popup.job_title') %>
+                          <%= f.text_field :job_name, placeholder:  t('company_my_jobs.add_job_popup.placeholder.job_title'), id: "hireJobName", class: 'form-control', required: true %>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label t('company_my_jobs.add_job_popup.job_description')  %>
+                          <%= f.text_area :job_discription, rows: 6,  :'data-minlength' => '20','data-error' => 'It Should be between 20 to 400 Character', placeholder:  t('company_my_jobs.add_job_popup.placeholder.job_description'), id: 'hireJobDescription', class: "form-control", required: true %>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1"><%= t('page_job_new.category')%></label>
+                          <%= f.select :job_category, options_for_select(['Administrative', 'Brand Ambassador', 'Customer Service', 'Data Entry', 'Delivery', 'Event Staff', 'Fulfillment / Warehousing', 'General Labor', 'Market Research', 'Marketing', 'Merchandising', 'Sales', 'Software Testing', 'Volunteer', 'Washing & Cleaning', 'Other']), { prompt: t('page_job_new.choose_a_category')}, class: 'form-control', id: 'hireJobCategory' , required: true %>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label t('page_job_new.tasks_to_be_performed')%>
+                          <%= f.text_area :job_tasks, rows: 6,  :'data-minlength' => '20','data-error' => 'It Should be between 20 to 400 Character', placeholder: t('page_job_new.tasks_to_be_performed'), id: 'hireJobTask', class: "form-control", required: true %>
+                          <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1"><%= t('page_job_new.requirements')%></label>
+                          <div class="form-group">
+                            <%= f.fields_for :job_requirements do |jr_form| %>
+                              <div class="form-group">
+                                <div class="input-group stylish-input-group">
+                                  <%= jr_form.text_field :requirement_name,  placeholder: t('page_job_new.one_requirement_per_line') , id: 'job_requirements', class: "form-control" %>
+                                  <span class="input-group-addon">
+                    <%= jr_form.link_to_remove do %><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i><%end%>
+                  </span>
+                                </div>
+                              </div>
+                            <%end%>
+                            <%= f.link_to_add '', :job_requirements, type: 'button',  class: "fa fa-plus-square-o fa-lg"%>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1"><%= t('page_job_new.number_of_workers_needed')%></label>
+                          <%= f.number_field :job_workers_needed, placeholder: '1', id: 'hireJobWorkerNeeded', class: "form-control", required: true %>
+                          <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group">
+                          <%= f.label t('company_my_jobs.add_job_popup.extra_question')  %>
+                          <div class="form-group">
+                            <%= f.fields_for :extra_questions do |eq_form| %>
+                              <div class="form-group">
+                                <div class="input-group stylish-input-group">
+                                  <%= eq_form.text_field :job_question,  placeholder: t('page_job_new.one_question_per_line'), id: 'job_requirements', class: "form-control" %>
+                                  <span class="input-group-addon">
+                    <%= eq_form.link_to_remove do %><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i><%end%>
+                  </span>
+                                </div>
+                              </div>
+                            <%end%>
+                            <%= f.link_to_add '', :extra_questions, type: 'button',  class: "fa fa-plus-square-o fa-lg"%>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="addjob_subbox">
+                        <div class="subheading_addjob"><%=t('page_job_new.where')%></div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1"><%=t('page_job_new.company')%></label>
+                          <%= f.select :job_company_index, options_for_select(Array[*@user_companies.collect {|v ,i| [v.company_name ,@user_companies.index(v)] }]), { prompt: t('page_job_new.choose_a_company')}, class: 'form-control', id: 'selectedCompanyHire', required: true %>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="hidden">
+                          <%= f.text_field :company_id, id: 'company_id_hire', required: true %>
+                          <%= f.text_field :job_type, value:'Hire', id: 'job_type' %>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1"><%=t('page_job_new.company_description')%></label>
+                          <%= f.text_area :job_company_description, rows: 6,  :'data-minlength' => '20','data-error' => 'It Should be between 20 to 400 Character', placeholder: t('page_job_new.company_description'), id: 'job_company_description_hire', class: "form-control", required: true %>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1"><%=t('page_job_new.address')%></label>
+                          <%= f.text_field :job_company_address, placeholder:  'Company Address', id: 'job_company_address_hire', class: "form-control", required: true %>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1"><%=t('page_job_new.zip')%></label>
+                          <%= f.text_field :job_company_address_zip, placeholder:  'Company Zip', id: 'job_company_address_zip_hire', class: "form-control", required: true %>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1"><%=t('page_job_new.town')%></label>
+                          <%= f.text_field :job_company_address_city, placeholder:  'Company Town', id: 'job_company_address_city_hire', class: "form-control", required: true %>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                      </div>
+                      <div class="addjob_subbox">
+                        <div class="subheading_addjob"><%=t('page_job_new.when')%></div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1"><%=t('page_job_new.job_time')%></label>
+                          <%= f.select :job_hire_type, options_for_select(['Full Time', 'Half Time']), {}, class: 'form-control', id: 'hireSelectJobType' %>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <label for="exampleInputEmail1"><%=t('page_job_new.start_time')%></label>
+                              <div class="input-group" id='datetimepicker6' onclick="datetimepicker1();">
+                                <%= f.text_field :job_start_time, placeholder:  '11/23/2016 12:49 PM', id: 'hireStartTime', class: "form-control", required: true %>
+                                <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <label for="exampleInputEmail1"><%=t('page_job_new.last_date_to_pply')%></label>
+                              <div class="input-group" id='datetimepicker5' onclick="datepicker1();">
+                                <%= f.text_field :job_last_date_to_apply, placeholder:  '11/23/2016', id: 'hireApplyDate', class: "form-control", required: true %>
+                                <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true" ></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="checkbox">
+                          <label><%= f.check_box :accept_agreement, checked: true, id: 'accept_agreement' %>
+                            <%= link_to 'Accept Agreement', '#' %>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="panel-footer text-center">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="checkHireForm();"><%= t('company_my_jobs.add_job_popup.save_job') %></button>
+                    </div>
+                  <%end%>
+                </div>
+              </div>
+              <!--///////////////////////////////////// Hire Fields END ///////////////////////////////////-->
+
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="hidden">
+
+<%= nested_form_for(@job, url: jobs_path, html: {id: "add_job_form", "data-toggle" => "validator", role: "form"} ) do |f| %>
+
+<!--///////////////////////////////////// Multi-day Fields START ///////////////////////////////////-->
+<div id="multiDayFields">
+  <div class="subheading_addjob"><%=t('page_job_new.multi_day')%></div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-6">
+        <label for="exampleInputEmail1"><%=t('page_job_new.first_day_start_time')%></label>
+        <div class="input-group" id='datetimepicker7' onclick='datepicker2(datetimepicker7);'>
+          <%= f.text_field :job_start_time, placeholder:  '11/23/2016 12:49 PM', id: 'multiDayStartTime', class: "form-control", required: true %>
+          <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1"><%=t('page_job_new.estimated_job_duration')%></label>
+    <div class="form-inline">
+      <div class="form-group">
+        <%= f.select :job_consultant_duration, options_for_select(['0','1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']), { prompt: t('page_job_new.choose_a_duration')}, class: 'form-control', id: 'multiDayDuration' , required: true %>
+        <label for="exampleInputEmail3"><%=t('page_job_new.hours')%></label>
+      </div>
+      <!--<div class="form-group">
+        <select class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+        <label  for="exampleInputPassword3">Mins</label>
+      </div>-->
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1"><%=t('page_job_new.repeat')%></label>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="">
+          <%= f.select :job_consultant_repeat_type, options_for_select(['Daily', 'Weekly', 'Monthly']), {}, class: 'form-control', id: 'multiDayRepeatType' %>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-inline">
+          <%= f.number_field :job_consultant_repeat_days, class: 'form-control', id: 'multiDayRepeatHours' %>
+          <label for="exampleInputEmail3"><%=t('page_job_new.hours')%></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1"><%=t('page_job_new.price_per_hours')%></label>
+    <%= f.number_field :job_price_per_hour, class: 'form-control', id: 'multiDayPerHour'%>
+  </div>
+</div>
+<!--///////////////////////////////////// Multi-day Fields END ///////////////////////////////////-->
+<!--///////////////////////////////////// GFL Fields END ///////////////////////////////////-->
+<div id="gfl">
+  <div class="form-group" id="gfl_fields">
+    <label for="exampleInputEmail1"><%=t('page_job_new.gfl')%></label>
+    <%= f.number_field :job_gfl, id: 'consultantJobGFL', class: 'form-control' %>
+  </div>
+</div>
+<!--///////////////////////////////////// GFL Fields END ///////////////////////////////////-->
+<%end%>
+</div>

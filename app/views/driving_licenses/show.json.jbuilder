@@ -1,0 +1,1 @@
+json.partial! "driving_licenses/driving_license", driving_license: @driving_license

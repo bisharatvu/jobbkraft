@@ -1,0 +1,58 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel"><%=t('page_profile.add_driving_license') %></h4>
+    </div>
+    <%= form_for(@driving_license, html: {id: 'editDrivingLicenseForm'},format: :js, remote: true ) do |f| %>
+      <div class="modal-body">
+        <div class="checkbox">
+          <label><%= f.check_box :dl_am %>AM</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_aa %>Aa</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_a2 %>A2</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_a %>A</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_b %>B</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_be %>BE</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_c1 %>C1</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_c1e %>C1E</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_c %>C</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_ce %>CE</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_d1 %>D1</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_d1e %>D1E</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_d %>D</label>
+        </div>
+        <div class="checkbox">
+          <label><%= f.check_box :dl_de %>DE</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%=t('cancel') %></button>
+        <%= f.submit t('ok'), id: '', class: "btn btn-primary"%>
+      </div>
+    <%end%>
+  </div>
+</div>
